@@ -23,6 +23,13 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::post('password-changing', 'AuthController@passwordChanging');
     });
 
+    Route::group(['prefix' => 'adminusers'], function () {
+        Route::get('create-form', 'AdminUserController@addAdminUserForm');
+        Route::post('/', 'AdminUserController@addAdminUser');
+        Route::get('/', 'AdminUserController@listAll');
+        Route::delete('/{id}', 'AdminUserController@delAdminUser');
+    });
+
     Route::get('clients', 'ClientController@clientList')->name('admin.dashboard');
     Route::get('clients/create-form', 'ClientController@showCreateNewClientForm');
     Route::put('clients', 'ClientController@createNewClient');
