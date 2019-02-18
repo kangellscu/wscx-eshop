@@ -33,4 +33,11 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Tell Whether admin is superadmin
+     */
+    public function isSuperAdmin() : bool {
+        return $this->name === 'superman';
+    }
 }

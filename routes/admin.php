@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::delete('/{id}', 'AdminUserController@delAdminUser');
         Route::get('{id}/password-reset', 'AdminUserController@resetPasswordForm');
         Route::put('{id}/password-reset', 'AdminUserController@resetPassword');
-    });
+    })->middleware('can:manage-adminuser');
 
     Route::get('clients', 'ClientController@clientList')->name('admin.dashboard');
     Route::get('clients/create-form', 'ClientController@showCreateNewClientForm');
