@@ -1,1 +1,1 @@
-## jiangyi software authorization site
+## WSCX eshop
