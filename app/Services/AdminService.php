@@ -65,6 +65,7 @@ class AdminService
                 return (object) [
                     'id'        => $admin->id,
                     'name'      => $admin->name,
+                    'isSuperAdmin'  => $admin->isSuperAdmin(),
                     'createdAt' => $admin->created_at,
                     ];
             });

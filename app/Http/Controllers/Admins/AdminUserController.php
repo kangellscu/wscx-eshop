@@ -46,7 +46,7 @@ class AdminUserController extends BaseController
     ) {
         $adminUsers = $adminService->getAllAdminUsers();
 
-        return view('admin.listAllAdminUsers', [
+        return view('admin.adminUserList', [
             'adminUsers'    => $adminUsers,
             ]);
     }
@@ -81,7 +81,7 @@ class AdminUserController extends BaseController
             'adminId'   => 'required|uuid',
             ]);
 
-        return view('admin.resetAdminUserPassword', [
+        return view('admin.adminUserPasswordResetForm', [
             'adminId'   => $request->query->get('adminId'),
             ]);
     }
