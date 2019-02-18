@@ -26,8 +26,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'adminusers'], function () {
         Route::get('create-form', 'AdminUserController@addAdminUserForm');
         Route::post('/', 'AdminUserController@addAdminUser');
-        Route::get('/', 'AdminUserController@listAll');
+        Route::get('/', 'AdminUserController@listAll')->name('admin.list');
         Route::delete('/{id}', 'AdminUserController@delAdminUser');
+        Route::get('{id}/password-reset', 'AdminUserController@resetPasswordForm');
+        Route::put('{id}/password-reset', 'AdminUserController@resetPassword');
     });
 
     Route::get('clients', 'ClientController@clientList')->name('admin.dashboard');

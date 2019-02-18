@@ -28,4 +28,5 @@ final class ExceptionCode
     //      Admin
     //**********************
     const ADMIN_PASSWORD_INCORRECT = 10201;
+    const ADMIN_EXISTS = 10202;
 }
