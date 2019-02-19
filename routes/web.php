@@ -11,6 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('admin/aaa/login');
-});
+Route::get('/', 'IndexController@index');
