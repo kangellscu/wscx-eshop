@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             AdminsTableSeeder::class,
             BrandsTableSeeder::class,
             CategoriesTableSeeder::class,
+            BannersTableSeeder::class,
         ]);
     }
 }
