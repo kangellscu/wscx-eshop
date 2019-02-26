@@ -3,11 +3,19 @@
 namespace App\Http\Controllers\Admins;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller as BaseController;
 use App\Services\AdminService;
+use App\Exceptions\Auth\AuthorizationException;
 
 class AdminUserController extends BaseController
 {
+    public function __construct(Request $request) {
+        if (Gate::denies('manage-adminuser', $request->user())) {
+            throw new AuthorizationException();
+        }
+    }
+
     /**
      * Show admin user creation form
      */

@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::delete('/{id}', 'AdminUserController@delAdminUser');
         Route::get('{id}/password-reset', 'AdminUserController@resetPasswordForm');
         Route::post('{id}/password-reset', 'AdminUserController@resetPassword');
-    })->middleware('can:manage-adminuser');
+    });
 
     Route::group(['prefix' => 'pagemgt'], function () {
         Route::group(['prefix' => 'banners'], function () {

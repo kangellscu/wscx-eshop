@@ -14,6 +14,7 @@ final class ExceptionCode
     const GENERAL = 10000;
     const FORM_VALIDATION = 10001;
     const AUTHENTICATION = 10002;
+    const AUTHORIZATION = 10003;
 
     //**********************
     //      Client 
