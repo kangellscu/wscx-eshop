@@ -6,6 +6,8 @@ use App\Supports\Models\Model;
 
 class Category extends Model
 {
+    const LEVEL_TOP = 1;
+
     /**
      * The attributes that are mass assignable.
      *

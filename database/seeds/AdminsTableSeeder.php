@@ -14,7 +14,7 @@ class AdminsTableSeeder extends Seeder
     {
         $admins = [
             [
-                'name'      => 'admin',
+                'name'      => 'superadmin',
                 'password'  => bcrypt('admin'),
             ],
             [

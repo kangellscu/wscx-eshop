@@ -18,4 +18,15 @@ class Brand extends Model
         'logo_url',
         'story',
     ];
+
+    /**
+     * Set the name_capital, make sure the value be capitalized
+     *
+     * @param string    $value
+     *
+     * @return void
+     */
+    public function setNameCapitalAttribute($value) {
+        $this->attributes['name_capital'] = strtoupper($value);
+    }
 }

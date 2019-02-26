@@ -38,6 +38,6 @@ class Admin extends Authenticatable
      * Tell Whether admin is superadmin
      */
     public function isSuperAdmin() : bool {
-        return $this->name === 'superman';
+        return $this->name === 'superadmin';
     }
 }
