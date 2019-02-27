@@ -32,13 +32,13 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::post('{id}/password-reset', 'AdminUserController@resetPassword');
     });
 
-    Route::group(['prefix' => 'pagemgt'], function () {
-        Route::group(['prefix' => 'banners'], function () {
-            Route::get('/', 'BannerController@listAll');
-            Route::put('/', 'BannerController@createBanner');
-            Route::delete('/{id}', 'BannerController@delBanner');
-        });
+    Route::group(['prefix' => 'banners'], function () {
+        Route::get('/', 'BannerController@listAll');
+        Route::put('/', 'BannerController@createBanner');
+        Route::delete('/{id}', 'BannerController@delBanner');
     });
+
+    Route::get('comments', 'UserCommentController@listAll');
 
     Route::get('clients', 'ClientController@clientList')->name('admin.dashboard');
     Route::get('clients/create-form', 'ClientController@showCreateNewClientForm');
