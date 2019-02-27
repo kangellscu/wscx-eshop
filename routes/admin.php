@@ -35,7 +35,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'banners'], function () {
         Route::get('/', 'BannerController@listAll');
         Route::put('/', 'BannerController@createBanner');
-        Route::delete('/{id}', 'BannerController@delBanner');
+        Route::post('/{id}/activation', 'BannerController@activateBanner');
+        Route::post('/{id}/deactivation', 'BannerController@deactivateBanner');
     });
 
     Route::get('comments', 'UserCommentController@listAll');

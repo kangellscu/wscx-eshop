@@ -30,7 +30,7 @@
                   <td>
                     <a href="/admin/adminusers/{{ $admin->id }}/password-reset">重置密码</a>
                     &npsb;
-                    <a class="delAdminUser" data-adminid="{{ $admin->id }}" data-adminname="{{ $admin->name }}" href="javascript:void">删除</a>
+                    <a class="delAdminUser" data-adminid="{{ $admin->id }}" data-adminname="{{ $admin->name }}" href="javascript:void()">删除</a>
                   </td>
                 </tr>
               @endforeach
@@ -48,7 +48,7 @@
 @section('body-assets')
 <script type="application/javascript">
 
-$("delAdminUser").on("click", function() {
+$(".delAdminUser").on("click", function() {
     if (confirm("确定要删除管理员: " + $(this).data("adminname"))) {
         var delUrl = "/admin/adminusers/" + $(this).data("adminid");
         $("#delForm").attr("action", $delUrl).submit(); 
