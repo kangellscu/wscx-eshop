@@ -20,17 +20,18 @@
                 </tr>
               </thead>
               <tbody>
-                  @foreach ($deactivedBanners as $banner)
+                  @foreach ($activedBanners as $banner)
                     <tr>
-                      <td><img src="{{ $banner->image_url }}" width="100" height="100" /></td>
+                      <td><img src="{{ $banner->imageUrl }}" width="100" height="100" /></td>
                       <td>{{ $banner->createdAt->format('Y-m-d H:i:s') }}</td>
                       <td><a class="handleBanner"
-                            data-action="{{/admin/banners/{{ $banner->id }}/deactivation"
+                            data-action="/admin/banners/{{ $banner->id }}/deactivation"
                             data-actionname="下架"
                             href="javascript:void();">下架</a></td>
                     </tr>
                   @endforeach
               </tbody>
+            </table>
           </div>
 
           <h2 class="sub-header">待上架Banners</h2>
@@ -42,17 +43,23 @@
                   <th>Banner图片</th>
                   <th>创建时间</th>
                   <th>上架</th>
+                  <th>删除</th>
                 </tr>
               </thead>
               <tbody>
               @foreach ($deactivedBanners as $banner)
                 <tr>
-                  <td><img src="{{ $banner->image_url }}" width="100" height="100" /></td>
+                  <td><img src="{{ $banner->imageUrl }}" width="100" height="100" /></td>
                   <td>{{ $banner->createdAt->format('Y-m-d H:i:s') }}</td>
                   <td><a class="handleBanner"
-                        data-action="{{/admin/banners/{{ $banner->id }}/deactivation"
+                        data-action="/admin/banners/{{ $banner->id }}/activation"
                         data-actionname="上架"
                         href="javascript:void();">上架</a></td>
+                  <td><a class="handleBanner"
+                        data-action="/admin/banners/{{ $banner->id }}"
+                        data-actionname="删除"
+                        data-method="delete"
+                        href="javascript:void();">删除</a></td>
                 </tr>
               @endforeach
               </tbody>
@@ -61,7 +68,8 @@
           @component('admin.componentPagination', ['page' => $page, 'totalPages' => $totalPages])
           @endcomponent
 
-          <form id="handleBannerForm">
+          <form id="handleBannerForm" method="post">
+            <input id="handleBannerMethod" type="hidden" name="_method" value="post" />
             {{ csrf_field() }}
           </form>
 @endsection
@@ -71,7 +79,10 @@
 
 $(".handleBanner").on("click", function() {
     if (confirm("确定要" + $(this).data("actionname") + "么?")) {
-        $("#handleBannerForm").attr("action", $(this).data("action").submit(); 
+        var submitMethod = $(this).data('method') === undefined ?
+            'post' : $(this).data('method');
+        $("#handleBannerMethod").val(submitMethod);
+        $("#handleBannerForm").attr("action", $(this).data("action")).submit(); 
     }
 });
 

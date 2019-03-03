@@ -30,4 +30,9 @@ final class ExceptionCode
     //**********************
     const ADMIN_PASSWORD_INCORRECT = 10201;
     const ADMIN_EXISTS = 10202;
+
+    //**********************
+    //      Banner
+    //**********************
+    const BANNER_ACTIVE_REACH_MAX_THRESHOLD = 10301;
 }

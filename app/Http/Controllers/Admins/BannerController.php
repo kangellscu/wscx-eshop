@@ -27,8 +27,9 @@ class BannerController extends BaseController
         );
 
         return view('admin.banners', [
-            'activedBanners'    => $res->$activedBanners,
-            'deactivedBanners'   => $res->$deactivedBanners,
+            'activedBanners'    => $res->activedBanners,
+            'deactivedBanners'  => $res->deactivedBanners,
+            'page'              => $page >= $res->totalPages ? $res->totalPages : $page,
             'totalPages'        => $res->totalPages,
         ]);
     }
@@ -36,8 +37,19 @@ class BannerController extends BaseController
     /**
      * Create banner
      */
-    public function createBanner() {
-        // todo
+    public function createBanner(
+        Request $request,
+        BannerService $bannerService
+    ) {
+        $this->validate($request, [
+            'image' => 'required|max:300|mimes:jpeg,png,jpg',
+        ]);
+
+        $bannerService->createBanner(
+            $request->file('image')
+        );
+
+        return back();
     }
 
     /**
@@ -48,12 +60,12 @@ class BannerController extends BaseController
         BannerService $bannerService,
         string $id
     ) {
-        $this->request->set('bannerId', $id);
+        $request->request->set('bannerId', $id);
         $this->validate($request, [
             'bannerId'  => 'required|uuid',
         ]);
 
-        $bannerService->activateBanner($bannerId);
+        $bannerService->activateBanner($request->request->get('bannerId'));
 
         return back();
     }
@@ -66,12 +78,30 @@ class BannerController extends BaseController
         BannerService $bannerService,
         string $id
     ) {
-        $this->request->set('bannerId', $id);
+        $request->request->set('bannerId', $id);
         $this->validate($request, [
             'bannerId'  => 'required|uuid',
         ]);
 
-        $bannerService->deactivateBanner($bannerId);
+        $bannerService->deactivateBanner($request->request->get('bannerId'));
+
+        return back();
+    }
+
+    /**
+     * Delete banner
+     */
+    public function delBanner(
+        Request $request,
+        BannerService $bannerService,
+        string $id
+    ) {
+        $request->request->set('bannerId', $id);
+        $this->validate($request, [
+            'bannerId'  => 'required|uuid',
+        ]);
+
+        $bannerService->delBanner($request->request->get('bannerId'));
 
         return back();
     }

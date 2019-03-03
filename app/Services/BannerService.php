@@ -4,11 +4,33 @@ namespace App\Services;
 
 use DB;
 use Carbon\Carbon;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use App\Models\Banner as BannerModel;
+use App\Exceptions\Banners\BannerActiveReachMaxThresholdException;
 
-class UserCommentService 
+class BannerService
 {
+    /**
+     * Create banner
+     *
+     * @param UploadedFile $image
+     *
+     * @return void
+     */
+    public function createBanner(UploadedFile $imageFile) {
+        $imagePath = $imageFile->store('images/admin');
+
+        // todo
+        $image = BannerModel::create([
+            'image_url' => $imagePath,
+            'begin_time'    => Carbon::createFromFormat(self::TIME_FORMAT, '1990-01-01 00:00:01'),
+            'end_time'      => Carbon::createFromFormat(self::TIME_FORMAT, '2999-01-01 00:00:01'),
+            'status'        => Banner::STATUS_DEACTIVE,
+        ]);
+    }
+
+
     /**
      * List all banners for management
      *
@@ -17,9 +39,9 @@ class UserCommentService
      *
      * @return Collection   elements as below:
      *                      - activedBanners
-     *                          - image_url string
+     *                          - imageUrl string
      *                      - deactivedBanners
-     *                          - image_url string
+     *                          - imageUrl string
      *                      - totalPages int
      */
     public function listBanners(int $page, int $size) {
@@ -28,7 +50,7 @@ class UserCommentService
         $query = BannerModel::query();
         $queryCount = clone($query);
         $offset = ($page - 1) * $size;
-        $banners = $query->where('status', BannerModel::STATUS_DEACTIVE)
+        $deactivedBanners = $query->where('status', BannerModel::STATUS_DEACTIVE)
             ->orderBy('created_at', 'desc')
             ->offset($offset)
             ->limit($size)
@@ -36,7 +58,9 @@ class UserCommentService
             ->map(function ($banner) {
                 return (object) [
                     'id'        => $banner->id,
-                    'image_url' => $banner->image_url,
+                    'imageUrl'  => $banner->image_url,
+                    'beginTime' => $banner->begin_time,
+                    'endTime'   => $banner->end_time,
                     'createdAt' => $banner->created_at,
                 ];
             });
@@ -56,9 +80,10 @@ class UserCommentService
      * @param string $bannerId
      */
     public function activateBanner(string $bannerId) {
+        $this->checkActiveBannerThreshold();
         return BannerModel::where('id', $bannerId)
             ->where('status', BannerModel::STATUS_DEACTIVE)
-            ->update('status', BannerModel::STATUS_ACTIVE);
+            ->update(['status'  => BannerModel::STATUS_ACTIVE]);
     }
 
     /**
@@ -69,7 +94,26 @@ class UserCommentService
     public function deactivateBanner(string $bannerId) {
         return BannerModel::where('id', $bannerId)
             ->where('status', BannerModel::STATUS_ACTIVE)
-            ->update('status', BannerModel::STATUS_DEACTIVE);
+            ->update(['status'  => BannerModel::STATUS_DEACTIVE]);
+    }
+
+    /**
+     * Delete banner
+     *
+     * @param string $bannerId
+     */
+    public function delBanner(string $bannerId) {
+        return BannerModel::where('id', $bannerId)
+            ->where('status', BannerModel::STATUS_DEACTIVE)
+            ->delete();
+    }
+
+    protected function checkActiveBannerThreshold() {
+        $activeCount = BannerModel::where('status', BannerModel::STATUS_ACTIVE)
+            ->count();
+        if ($activeCount >= BannerModel::ACTIVE_MAX_THRESHOLD) {
+            throw new BannerActiveReachMaxThresholdException();
+        }
     }
 
     protected function getActivedBanners() : Collection
@@ -82,6 +126,7 @@ class UserCommentService
                     'imageUrl'  => $banner->image_url,
                     'beginTime' => $banner->begin_time,
                     'endTime'   => $banner->end_time,
+                    'createdAt' => $banner->created_at,
                 ];
             });
     }

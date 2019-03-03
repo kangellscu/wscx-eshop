@@ -6,6 +6,8 @@ use App\Supports\Models\Model;
 
 class Banner extends Model
 {
+    const ACTIVE_MAX_THRESHOLD = 4;
+
     const STATUS_ACTIVE = 1;
     const STATUS_DEACTIVE = -1;
 

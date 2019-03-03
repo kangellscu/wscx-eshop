@@ -33,10 +33,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
     });
 
     Route::group(['prefix' => 'banners'], function () {
-        Route::get('/', 'BannerController@listAll');
+        Route::get('/', 'BannerController@listAll')->name('admin.banner');
         Route::put('/', 'BannerController@createBanner');
         Route::post('/{id}/activation', 'BannerController@activateBanner');
         Route::post('/{id}/deactivation', 'BannerController@deactivateBanner');
+        Route::delete('/{id}', 'BannerController@delBanner');
     });
 
     Route::get('comments', 'UserCommentController@listAll');

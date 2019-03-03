@@ -47,7 +47,7 @@ class AuthController extends BaseController
             $request->request->get('password')
         );
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.banner');
     }
 
     protected function validateLogin(Request $request)
@@ -70,6 +70,6 @@ class AuthController extends BaseController
 
     protected function redirectTo() : string
     {
-        return 'admin/clients';
+        return 'admin/banners/';
     }
 }
