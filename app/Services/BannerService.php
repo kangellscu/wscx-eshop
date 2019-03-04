@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use DB;
+use Storage;
 use Carbon\Carbon;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
@@ -11,6 +11,8 @@ use App\Exceptions\Banners\BannerActiveReachMaxThresholdException;
 
 class BannerService
 {
+    const TIME_FORMAT = 'Y-m-d H:i:s';
+
     /**
      * Create banner
      *
@@ -21,12 +23,11 @@ class BannerService
     public function createBanner(UploadedFile $imageFile) {
         $imagePath = $imageFile->store('images/admin');
 
-        // todo
         $image = BannerModel::create([
-            'image_url' => $imagePath,
+            'image_path'    => $imagePath,
             'begin_time'    => Carbon::createFromFormat(self::TIME_FORMAT, '1990-01-01 00:00:01'),
             'end_time'      => Carbon::createFromFormat(self::TIME_FORMAT, '2999-01-01 00:00:01'),
-            'status'        => Banner::STATUS_DEACTIVE,
+            'status'        => BannerModel::STATUS_DEACTIVE,
         ]);
     }
 
@@ -58,7 +59,7 @@ class BannerService
             ->map(function ($banner) {
                 return (object) [
                     'id'        => $banner->id,
-                    'imageUrl'  => $banner->image_url,
+                    'imageUrl'  => Storage::url($banner->image_path),
                     'beginTime' => $banner->begin_time,
                     'endTime'   => $banner->end_time,
                     'createdAt' => $banner->created_at,
@@ -103,9 +104,13 @@ class BannerService
      * @param string $bannerId
      */
     public function delBanner(string $bannerId) {
-        return BannerModel::where('id', $bannerId)
+        $banner = BannerModel::where('id', $bannerId)
             ->where('status', BannerModel::STATUS_DEACTIVE)
-            ->delete();
+            ->first();
+        if ($banner) {
+            $banner->delete();
+            Storage::delete($banner->image_path);
+        }
     }
 
     protected function checkActiveBannerThreshold() {
@@ -122,8 +127,8 @@ class BannerService
             ->get()
             ->map(function ($banner) {
                 return (object) [
-                    'id'    => $banner->id,
-                    'imageUrl'  => $banner->image_url,
+                    'id'        => $banner->id,
+                    'imageUrl'  => Storage::url($banner->image_path),
                     'beginTime' => $banner->begin_time,
                     'endTime'   => $banner->end_time,
                     'createdAt' => $banner->created_at,

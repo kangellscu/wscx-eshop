@@ -17,7 +17,7 @@ class Banner extends Model
      * @var array
      */
     protected $fillable = [
-        'image_url',
+        'image_path',
         'begin_time',
         'end_time',
         'status',
