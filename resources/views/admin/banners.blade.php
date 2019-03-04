@@ -8,7 +8,16 @@
 
 @section('body-content')
           <h1 class="page-header">Banner管理</h1>
-
+          <form method="post" action="/admin/banners" enctype="multipart/form-data">
+              <div class="form-group">
+                <input type="hidden" name="_method" value="put" />
+                {{ csrf_field() }}
+                <label for="exampleFormControlFile1">上传新banner</label>
+                <input type="file" name="image"class="form-control-file"
+                    id="exampleFormControlFile1" accept="image/*">
+                <button type="submit" class="btn btn-primary mb-2">上传</button>
+              </div>
+          </form>
           <h2 class="sub-header">已上架Banners</h2>
           <div class="table-responsive">
             <table class="table table-striped">
