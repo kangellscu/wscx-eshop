@@ -6,6 +6,11 @@
 <link href="/css/dashboard.css" rel="stylesheet">
 @endsection
 
+@section('nav-sidebar')
+    @component('admin.componentSidebar', ['navActive' => 'banners'])
+    @endcomponent
+@endsection
+
 @section('body-content')
           <h1 class="page-header">Banner管理</h1>
           <form method="post" action="/admin/banners" enctype="multipart/form-data">

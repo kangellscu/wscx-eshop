@@ -28,7 +28,7 @@ class UserCommentController extends BaseController
         );
 
         return view('admin.userComments', [
-            'comments'  => $res->comments,
+            'comments'      => $res->comments,
             'page'          => $page >= $res->totalPages ? $res->totalPages : $page,
             'totalPages'    => $res->totalPages,
         ]);

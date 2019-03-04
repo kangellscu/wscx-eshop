@@ -6,10 +6,15 @@
 <link href="/css/dashboard.css" rel="stylesheet">
 @endsection
 
-@section('body-content')
-          <h1 class="page-header">用户评论</h1>
+@section('nav-sidebar')
+    @component('admin.componentSidebar', ['navActive' => 'userComments'])
+    @endcomponent
+@endsection
 
-          <h2 class="sub-header">评论列表</h2>
+@section('body-content')
+          <h1 class="page-header">用户留言</h1>
+
+          <h2 class="sub-header">留言列表</h2>
           <div class="table-responsive">
             <!-- 列表 -->
             <table class="table table-striped">

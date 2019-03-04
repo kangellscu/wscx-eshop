@@ -25,7 +25,7 @@ class UserCommentService
      *                              - createdAt Carbon
      *                          - totalPages int
      */
-    public function listComments(int $page, int $size) : object {
+    public function listComments(int $page, int $size) {
         $query = UserCommentModel::query();
         $queryCount = clone($query);
 

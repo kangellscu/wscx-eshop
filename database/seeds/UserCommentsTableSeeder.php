@@ -14,14 +14,16 @@ class UserCommentsTableSeeder extends Seeder
     {
         $comments = [
             [
-                'name'  => '章三',
-                'phone' => '13800138000',
-                'comment'   => '你好，我想要川崎挖掘机3台',
+                'name'          => '章三',
+                'phone'         => '13800138000',
+                'comment'       => '你好，我想要川崎挖掘机3台',
+                'created_at'    => \Carbon\Carbon::yesterday(),
             ],
             [
                 'name'  => '方文山',
                 'phone' => '13900138000',
                 'comment'   => '你好，我想要防寒服20件',
+                'created_at'    => \Carbon\Carbon::now(),
             ],
         ];
 
