@@ -42,6 +42,13 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
     Route::get('comments', 'UserCommentController@listAll');
 
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('categories', 'CategoryController@listAll')->name('admin.categories');
+        Route::put('categories', 'CategoryController@createCategory');
+        Route::post('categories/{id}', 'CategoryController@editCatetory');
+        Route::delete('categories/{id}', 'CategoryController@delCatetory');
+    });
+
     Route::get('clients', 'ClientController@clientList')->name('admin.dashboard');
     Route::get('clients/create-form', 'ClientController@showCreateNewClientForm');
     Route::put('clients', 'ClientController@createNewClient');

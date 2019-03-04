@@ -17,12 +17,13 @@ class CreateCategoriesTable extends Migration
             $table->uuid('id')->primary();
             $table->string('name', 16);
             $table->uuid('parent_id')->nullable();
-            $table->integer('level')->unsigned();
+            $table->integer('display_order');
             $table->timestamps();
             $table->softDeletes();
 
             // Index definition
             $table->index('parent_id');
+            $table->index('display_order');
         });
     }
 

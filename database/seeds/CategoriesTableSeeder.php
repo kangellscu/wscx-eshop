@@ -16,30 +16,30 @@ class CategoriesTableSeeder extends Seeder
             [
                 'name'      => '劳保工具',
                 'parent_id' => null,
-                'level'     => Category::LEVEL_TOP,
+                'display_order' => 0,
                 'subs'      => [
                     [
                         'name'  => '防寒服',
-                        'level' => 10,
+                        'display_order' => 10,
                     ],
                     [
                         'name'  => '防辐射眼镜',
-                        'level' => 10,
+                        'display_order' => 20,
                     ],
                 ],
             ],
             [
                 'name'      => '建筑工具',
                 'parent_id' => null,
-                'level'     => Category::LEVEL_TOP,
+                'display_order' => 30,
                 'subs'      => [
                     [
                         'name'  => '挖掘机',
-                        'level' => 10,
+                        'display_order' => 40,
                     ],
                     [
                         'name'  => '吊车',
-                        'level' => 10,
+                        'display_order' => 50,
                     ],
                 ],
             ],

@@ -35,4 +35,10 @@ final class ExceptionCode
     //      Banner
     //**********************
     const BANNER_ACTIVE_REACH_MAX_THRESHOLD = 10301;
+
+    //**********************
+    //      Products
+    //**********************
+    const PRODUCT_CATEGORY_CANT_DELETE = 10401;
+    const PRODUCT_CATEGORY_NOT_EXISTS = 10402;
 }
