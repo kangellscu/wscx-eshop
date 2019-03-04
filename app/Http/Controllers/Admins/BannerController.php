@@ -43,6 +43,8 @@ class BannerController extends BaseController
     ) {
         $this->validate($request, [
             'image' => 'required|max:300|mimes:jpeg,png,jpg',
+        ], [
+            'image.max' => 'Banner图片不能超过 :max KB', 
         ]);
 
         $bannerService->createBanner(
