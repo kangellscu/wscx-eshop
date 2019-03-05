@@ -24,7 +24,7 @@ class Sku extends Model
         'brand_id',
         'category_id',
         'brief_description',
-        'thumbnail_url',
+        'thumbnail_path',
         'status',
     ];
 

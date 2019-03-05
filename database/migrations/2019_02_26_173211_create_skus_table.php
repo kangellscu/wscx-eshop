@@ -19,7 +19,7 @@ class CreateSkusTable extends Migration
             $table->uuid('brand_id');
             $table->uuid('category_id');
             $table->text('brief_description')->nullable();
-            $table->string('thumbnail_url')->nullable();
+            $table->string('thumbnail_path')->nullable();
             $table->integer('status');
             $table->timestamps();
             $table->softDeletes();

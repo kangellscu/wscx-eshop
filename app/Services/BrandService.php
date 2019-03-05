@@ -16,14 +16,16 @@ class BrandService
      * @param int $page
      * @param int $size
      *
-     * @return Collection   elements as below
+     * @return object   elements as below
+     *                  - brands Collection
      *                      - id string
      *                      - name string
      *                      - nameCapital string
      *                      - logoUrl string
      *                      - story string
+     *                  - totalPages int
      */
-    public function listBrands(int $page, int $size) : Collection {
+    public function listBrands(int $page, int $size) {
         $query = BrandModel::query();
         $queryCount = clone($query);
         $offset = ($page - 1) * $size;
@@ -47,6 +49,47 @@ class BrandService
             'brands'        => $brands,
             'totalPages'    => $totalPages,
         ];
+    }
+
+    /**
+     * Get brands, group by name capital
+     *
+     * @return array    dict, key is capital, value as below:
+     *                  - id string
+     *                  - name string
+     */
+    public function getBrandsGroupByCapital() : array {
+        return BrandModel::all()
+            ->map(function ($brand) {
+                return [
+                    'id'        => $brand->id,
+                    'capital'   => $brand->name_capital,
+                    'name'      => $brand->name,
+                    'logoUrl'   => Category::url($brand->logo_path),
+                ];
+            })
+            ->groupBy('name_capital')
+            ->toArray();
+    }
+
+    /**
+     * Get brands, sort by name_capital
+     *
+     * @return Collection   elements as below
+     *                      - id string
+     *                      - nameCapital string
+     *                      - name string
+     */
+    public function getBrands() : Collection {
+        return BrandModel::orderBy('name_capital')
+            ->get()
+            ->map(function ($brand) {
+                return (object) [
+                    'id'            => $brand->id,
+                    'nameCapital'   => $brand->name_capital,
+                    'name'          => $brand->name,
+                    'logoUrl'       => Storage::url($brand->logo_path),
+            });
     }
 
     /**

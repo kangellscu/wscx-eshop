@@ -55,6 +55,12 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::put('brands', 'BrandController@createBrand');
         Route::post('brands/{id}', 'BrandController@editBrand');
         Route::delete('brands/{id}', 'BrandController@delBrand');
+
+        Route::get('/', 'ProductController@listAll');
+        Route::get('/form', 'ProductController@showForm');
+        Route::put('/', 'ProductController@createProduct');
+        Route::post('/{id}', 'ProductController@editProduct');
+        Route::delete('/{id}', 'ProductController@delProduct');
     });
 
     Route::get('clients', 'ClientController@clientList')->name('admin.dashboard');
