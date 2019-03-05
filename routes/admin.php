@@ -41,6 +41,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     });
 
     Route::get('comments', 'UserCommentController@listAll');
+    Route::get('aboutme', 'AboutmeController@showPage');
+    Route::put('aboutme', 'AboutmeController@setAboutme');
 
     Route::group(['prefix' => 'products'], function () {
         Route::get('categories', 'CategoryController@listAll')->name('admin.categories');
