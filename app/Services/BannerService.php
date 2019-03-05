@@ -18,12 +18,12 @@ class BannerService
      *
      * @param UploadedFile $image
      *
-     * @return void
+     * @return int affected rows
      */
-    public function createBanner(UploadedFile $imageFile) {
-        $imagePath = $imageFile->store('images/admin');
+    public function createBanner(UploadedFile $imageFile) : int {
+        $imagePath = $imageFile->store('images/banners');
 
-        $image = BannerModel::create([
+        return BannerModel::create([
             'image_path'    => $imagePath,
             'begin_time'    => Carbon::createFromFormat(self::TIME_FORMAT, '1990-01-01 00:00:01'),
             'end_time'      => Carbon::createFromFormat(self::TIME_FORMAT, '2999-01-01 00:00:01'),

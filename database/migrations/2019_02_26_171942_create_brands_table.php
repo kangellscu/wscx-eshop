@@ -17,7 +17,7 @@ class CreateBrandsTable extends Migration
             $table->uuid('id')->primary();
             $table->string('name', 32);
             $table->string('name_capital', 1);
-            $table->string('logo_url', 255)->nullable();
+            $table->string('logo_path', 255)->nullable();
             $table->text('story')->nullable();
             $table->timestamps();
             $table->softDeletes();
