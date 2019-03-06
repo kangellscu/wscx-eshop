@@ -7,8 +7,10 @@ use Carbon\Carbon;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use App\Models\Category as CategoryModel;
+use App\Models\Sku as SkuModel;
 use App\Exceptions\Products\ProductCategoryCantDeleteException;
 use App\Exceptions\Products\ProductCategoryNotExistsException;
+use App\Exceptions\Products\ProductExistsException;
 
 class CategoryService
 {
@@ -45,6 +47,24 @@ class CategoryService
                     'subs'  => $subs,
                 ];
             });
+    }
+
+    /**
+     * @param string $categoryId
+     *
+     * @return ?object  properties as below
+     *                  - id string
+     *                  - parentId ?string
+     *                  - name string
+     */
+    public function getCategory(string $categoryId) {
+        $category = CategoryModel::find($categoryId);
+
+        return is_null($category) ? null : (object) [
+            'id'        => $category->id,
+            'parentId'  => $category->parent_id,
+            'name'      => $category->name,
+        ];
     }
 
     /**
@@ -128,9 +148,8 @@ class CategoryService
      * @return int affected rows
      */
     public function delCatetory(string $categoryId) : int {
-        // todo check products
         $category = CategoryModel::find($categoryId);
-        if ($category) {
+        if ( ! $category) {
             return 0;
         }
 
@@ -139,6 +158,10 @@ class CategoryService
             throw new ProductCategoryCantDeleteException(
                 sprintf('"%s"有子类别，请先删除子类别', $category->name)
             );
+        }
+
+        if (SkuModel::where('category_id', $categoryId)->count()) {
+            throw new ProductExistsException('该类别下仍有产品未删除，请先删除产品');
         }
 
         return CategoryModel::where('id', $categoryId)->delete();

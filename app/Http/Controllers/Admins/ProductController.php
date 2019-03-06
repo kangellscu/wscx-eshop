@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller as BaseController;
 use App\Services\ProductService;
 use App\Services\BrandService;
 use App\Services\CategoryService;
+use App\Exceptions\Products\ProductCategoryCantDeleteException;
+use App\Exceptions\Products\ProductBrandNotExistsException;
 
 class ProductController extends BaseController
 {
@@ -82,6 +84,9 @@ class ProductController extends BaseController
             'thumbnail'     => 'required|image|max:2000|mimes:jpeg,png,jpg',
         ]);
 
+        $this->checkBrand($request->request->get('brandId'));
+        $this->checkCategory($request->request->get('categoryId'));
+
         $product = $productService->createProduct(
             $request->request->get('name'),
             $request->request->get('brandId'),
@@ -109,6 +114,9 @@ class ProductController extends BaseController
             'briefDesc'     => 'required|string:512',
             'thumbnail'     => 'image|max:2000|mimes:jpeg,png,jpg',
         ]);
+
+        $this->checkBrand($request->request->get('brandId'));
+        $this->checkCategory($request->request->get('categoryId'));
 
         $productService->editProduct(
             $request->request->get('productId'),
@@ -138,5 +146,17 @@ class ProductController extends BaseController
         $productService->delProduct($request->request->get('productId'));
 
         return back();
+    }
+
+    protected function checkBrand(string $brandId, BrandService $brandService) {
+        if ( ! $brandService->getBrand($brandId)) {
+            throw new ProductBrandNotExistsException('品牌不存在');
+        }
+    }
+
+    protected function checkCategory(string $categoryId, CategoryService $categoryService) {
+        if ( ! $categoryService->getCategory($categoryId)) {
+            throw new ProductCategoryNotExistsException('类别不存在');
+        }
     }
 }

@@ -7,6 +7,8 @@ use Carbon\Carbon;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use App\Models\Brand as BrandModel;
+use App\Models\Sku as SkuModel;
+use App\Exceptions\Products\ProductExistsException;
 
 class BrandService 
 {
@@ -89,6 +91,7 @@ class BrandService
                     'nameCapital'   => $brand->name_capital,
                     'name'          => $brand->name,
                     'logoUrl'       => Storage::url($brand->logo_path),
+                ];
             });
     }
 
@@ -107,7 +110,7 @@ class BrandService
     public function getBrand(string $brandId) {
         $brand = BrandModel::find($brandId);
 
-        return is_null($brand) ?: (object) [
+        return is_null($brand) ? null : (object) [
             'id'            => $brand->id,
             'name'          => $brand->name,
             'nameCapital'   => $brand->name_capital,
@@ -124,14 +127,14 @@ class BrandService
      * @param string $story
      * @param UploadedFile $logo
      *
-     * @return int  affected num
+     * @return string brand id
      */
     public function createBrand(
         string $nameCapital,
         string $name,
         string $story,
         UploadedFile $logo
-    ) : int {
+    ) : string {
         $logoPath = $logo->store('images/brands');
 
         return BrandModel::create([
@@ -139,7 +142,7 @@ class BrandService
             'name'          => $name,
             'story'         => $story,
             'logo_path'     => $logoPath,
-        ]);
+        ])->id;
     }
 
     /**
@@ -181,15 +184,20 @@ class BrandService
      *
      * @param string $brandId
      *
-     * @return void
+     * @return int affected rows
      */
-    public function delBrand(string $brandId) {
-        // todo process products
+    public function delBrand(string $brandId) : int {
         $brand = BrandModel::find($brandId);
-        if ($brand) {
-            $logoPath = $brand->logo_path;
-            $brand->delete();
-            Storage::delete($logoPath);
+        if ( ! $brand) {
+            return 0;
         }
+
+        if (SkuModel::where('brand_id', $brandId)->count()) {
+            throw new ProductExistsException('该品牌下仍有产品未删除，请先删除产品');
+        }
+
+        $logoPath = $brand->logo_path;
+        $brand->delete();
+        Storage::delete($logoPath);
     }
 }

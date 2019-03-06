@@ -41,4 +41,6 @@ final class ExceptionCode
     //**********************
     const PRODUCT_CATEGORY_CANT_DELETE = 10401;
     const PRODUCT_CATEGORY_NOT_EXISTS = 10402;
+    const PRODUCT_BRAND_NOT_EXISTS = 10403;
+    const PRODUCT_EXISTS = 10404;
 }
