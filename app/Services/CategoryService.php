@@ -88,7 +88,7 @@ class CategoryService
         CategoryModel::create([
             'name'          => $name,
             'parent_id'     => $parentId,
-            'display_order' => $maxDisplayOrder,
+            'display_order' => $maxDisplayOrder + CategoryModel::DISPLAY_ORDER_STEP,
         ]);
     }
 
@@ -117,16 +117,25 @@ class CategoryService
         }
 
         // 前移 or 后移
-        if ( ! is_null($moveDirection) && $moveDirection != 0) {
+        if ( ! empty($moveDirection)) {
             $tmpDisplayOrder = $category->display_order;
             if ($moveDirection > 0) {
-                $exchangeCategory = CategoryModel::where('display_order', '>', $tmpDisplayOrder)
-                    ->orderBy('display_order')
-                    ->first();
+                $query = CategoryModel::where('display_order', '>', $tmpDisplayOrder);
+                if ($category->parent_id) {
+                    $query->where('parent_id', $category->parent_id);
+                } else {
+                    $query->whereNull('parent_id');
+                }
+
+                $exchangeCategory = $query->orderBy('display_order')->first();
             } else {
-                $exchangeCategory = CategoryModel::where('display_order', '<', $tmpDisplayOrder)
-                    ->orderBy('display_order', 'desc')
-                    ->first();
+                $query = CategoryModel::where('display_order', '<', $tmpDisplayOrder);
+                if ($category->parent_id) {
+                    $query->where('parent_id', $category->parent_id);
+                } else {
+                    $query->whereNull('parent_id');
+                }
+                $exchangeCategory = $query->orderBy('display_order', 'desc')->first();
             }
 
             if ($exchangeCategory) {
