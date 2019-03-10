@@ -197,7 +197,9 @@ class BrandService
         }
 
         $logoPath = $brand->logo_path;
-        $brand->delete();
+        $num = $brand->delete();
         Storage::delete($logoPath);
+
+        return $num;
     }
 }

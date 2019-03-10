@@ -62,16 +62,16 @@ class BrandController extends BaseController
         BrandService $brandService
     ) {
         $this->validate($request, [
-            'name_capital'  => 'required|alpha',
+            'nameCapital'   => 'required|alpha',
             'name'          => 'required|string|max:32',
             'logo'          => 'required|max:100|mimes:jpeg,png,jpg',
-            'story'         => 'string|max:512',
+            'story'         => 'string|nullable|max:512',
         ]);
 
         $brandService->createBrand(
-            $request->request->get('name_capital'),
+            $request->request->get('nameCapital'),
             $request->request->get('name'),
-            $request->request->get('story', ''),
+            (string) $request->request->get('story', ''),
             $request->file('logo')
         );
 
@@ -89,17 +89,17 @@ class BrandController extends BaseController
         $request->request->set('brandId', $id);
         $this->validate($request, [
             'brandId'       => 'required|uuid',
-            'name_capital'  => 'required|alpha',
+            'nameCapital'   => 'required|alpha',
             'name'          => 'required|string|max:32',
             'logo'          => 'max:100|mimes:jpeg,png,jpg',
-            'story'         => 'string|max:512',
+            'story'         => 'string|nullable|max:512',
         ]);
 
         $brandService->editBrand(
             $request->request->get('brandId'),
-            $request->request->get('name_capital'),
+            $request->request->get('nameCapital'),
             $request->request->get('name'),
-            $request->request->get('story', ''),
+            (string) $request->request->get('story', ''),
             $request->file('logo')
         );
 
