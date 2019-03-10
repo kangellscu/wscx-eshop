@@ -21,6 +21,7 @@ class ProductService
      * @return object   elements as below
      *                  - products Collection
      *                      - id string
+     *                      - name string
      *                      - brandId string
      *                      - categoryId string
      *                      - briefDesc string
@@ -49,10 +50,11 @@ class ProductService
             ->get()
             ->map(function ($product) {
                 return (object) [
-                    'id'        => $product->id,
-                    'brandId'   => $product->brand_id,
+                    'id'            => $product->id,
+                    'name'          => $product->name,
+                    'brandId'       => $product->brand_id,
                     'categoryId'    => $product->category_id,
-                    'briefDesc' => $product->brief_description,
+                    'briefDesc'     => $product->brief_description,
                     'thumbnailUrl'  => Storage::url($product->thumbnail_path),
                     'status'        => $product->status,
                     'statusDesc'    => $product->statusDesc(),

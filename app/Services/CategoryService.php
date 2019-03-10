@@ -50,6 +50,25 @@ class CategoryService
     }
 
     /**
+     * Get all categories
+     *
+     * @return Collection   elements as below:
+     *                      - id string
+     *                      - parentId string
+     *                      - name string
+     */
+    public function getCategories() : Collection {
+        return CategoryModel::get()
+            ->map(function ($category) {
+                return (object) [
+                    'id'        => $category->id,
+                    'parentId'  => $category->parent_id,
+                    'name'      => $category->name,
+                ];
+            });
+    }
+
+    /**
      * @param string $categoryId
      *
      * @return ?object  properties as below

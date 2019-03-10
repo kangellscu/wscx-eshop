@@ -33,6 +33,6 @@ class Sku extends Model
     }
 
     public function statusDesc() : string {
-        return array_get($statusMap, $this->status, '未知状态');
+        return array_get(self::$statusMap, $this->status, '未知状态');
     }
 }

@@ -33,12 +33,12 @@ class ProductController extends BaseController
             $request->request->get('categoryId'),
             $request->request->get('brandId'),
             $page,
-            $request->request->get('size')
+            $request->request->get('size', $this->defaultPageSize)
         );
 
         return view('admin.products', [
             'brands'        => $brandService->getBrands(),
-            'categories'    => $categoryService->listCategories(),
+            'categories'    => $categoryService->getCategories(),
             'brandId'       => $request->request->get('brandId'),
             'categoryId'    => $request->request->get('categoryId'),
             'products'      => $res->products,
@@ -60,10 +60,13 @@ class ProductController extends BaseController
             'productId' => 'uuid',
         ]);
 
-        $product = $productService->getProduct($request->query->get('productId'));
+        $product = null;
+        if ($productId = $request->query->get('productId')) {
+            $product = $productService->getProduct($productId);
+        }
 
         return view('admin.productForm', [
-            'product'   => $product,
+            'product'       => $product,
             'brands'        => $brandService->getBrands(),
             'categories'    => $categoryService->listCategories(),
         ]);
