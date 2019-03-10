@@ -19,7 +19,7 @@
         新增产品
     @endif
 </h1>
-<form class="form-horizontal" method="post" enctype="multipart/form-data">
+<form id="product-form" class="form-horizontal" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
         <label for="brand-name-capital" class="col-sm-2 control-label">品牌</label>
@@ -29,7 +29,7 @@
           </button>
           <ul class="dropdown-menu">
             @foreach ($brands as $brand)
-            <li><a class="brand-item" href="#">[{{ $brand->nameCapital }}]-{{ $brand->name }}</a></li>
+            <li><a class="brand-item" data-id="{{ $brand->id }}" href="#">[{{ $brand->nameCapital }}]-{{ $brand->name }}</a></li>
             @endforeach
           </ul>
         </div>
@@ -186,18 +186,21 @@ function renderSubCategory(topCategoryId, categories, selectedSubCategoryId) {
         }
     });
     $('#selected-subcategory').text(selectedCategory['name']);
+    $('#product-form input[name="categoryId"]').val(selectedCategory['id']);
 }
 
 $(document).ready(function () {
     init();
+    $('.brand-item').on('click', function () {
+        $('#selected-brand').text($(this).text().trim());
+        $('#product-form input[name="brandId"]').val($(this).data('id'));
+    });
+    $('button.action-button').on('click', function () {
+        $('#product-form').attr('action', $(this).data('action'));
+        $('#product-form input[name="_method"]').val($(this).data('method'));
+        $('#product-form').submit();
+    });
 });
 
-
-
-$('.capital-item').on('click', function () {
-    var capital = $(this).text().trim();
-    $('#selected-capital').text(capital);
-    $('form input[name="nameCapital"]').val(capital);
-});
 </script>
 @endsection

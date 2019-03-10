@@ -77,7 +77,9 @@ class ProductController extends BaseController
      */
     public function createProduct(
         Request $request,
-        ProductService $productService
+        ProductService $productService,
+        BrandService $brandService,
+        CategoryService $categoryService
     ) {
         $this->validate($request, [
             'name'          => 'required|string|max:128',
@@ -87,8 +89,8 @@ class ProductController extends BaseController
             'thumbnail'     => 'required|image|max:2000|mimes:jpeg,png,jpg',
         ]);
 
-        $this->checkBrand($request->request->get('brandId'));
-        $this->checkCategory($request->request->get('categoryId'));
+        $this->checkBrand($request->request->get('brandId'), $brandService);
+        $this->checkCategory($request->request->get('categoryId'), $categoryService);
 
         $product = $productService->createProduct(
             $request->request->get('name'),
@@ -118,8 +120,8 @@ class ProductController extends BaseController
             'thumbnail'     => 'image|max:2000|mimes:jpeg,png,jpg',
         ]);
 
-        $this->checkBrand($request->request->get('brandId'));
-        $this->checkCategory($request->request->get('categoryId'));
+        $this->checkBrand($request->request->get('brandId'), $brandService);
+        $this->checkCategory($request->request->get('categoryId'), $categoryService);
 
         $productService->editProduct(
             $request->request->get('productId'),
