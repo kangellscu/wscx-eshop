@@ -64,7 +64,7 @@ class BrandController extends BaseController
         $this->validate($request, [
             'nameCapital'   => 'required|alpha',
             'name'          => 'required|string|max:32',
-            'logo'          => 'required|max:100|mimes:jpeg,png,jpg',
+            'logo'          => 'required|max:100|mimes:jpeg,png,jpg,svg',
             'story'         => 'string|nullable|max:512',
         ]);
 
@@ -75,7 +75,7 @@ class BrandController extends BaseController
             $request->file('logo')
         );
 
-        return back();
+        return redirect('/admin/products/brands');
     }
 
     /**
@@ -91,7 +91,7 @@ class BrandController extends BaseController
             'brandId'       => 'required|uuid',
             'nameCapital'   => 'required|alpha',
             'name'          => 'required|string|max:32',
-            'logo'          => 'max:100|mimes:jpeg,png,jpg',
+            'logo'          => 'max:100|mimes:jpeg,png,jpg,svg',
             'story'         => 'string|nullable|max:512',
         ]);
 
@@ -121,6 +121,6 @@ class BrandController extends BaseController
 
         $brandService->delBrand($request->request->get('brandId'));
 
-        return back();
+        return redirect('/admin/products/brands');
     }
 }

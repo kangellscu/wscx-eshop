@@ -19,13 +19,13 @@
         新增品牌
     @endif
 </h1>
-<form class="form-horizontal" method="post">
+<form class="form-horizontal" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
         <label for="brand-name-capital" class="col-sm-2 control-label">首字母</label>
         <div class="btn-group">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span id="selected-capital">@if ($brand) {{ $brand->nameCapital }} @else 'A' @endif</span> <span class="caret"></span>
+            <span id="selected-capital">@if ($brand) {{ $brand->nameCapital }} @else A @endif</span> <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
             @foreach (range('A', 'Z') as $capital)
@@ -33,7 +33,7 @@
             @endforeach
           </ul>
         </div>
-        <input type="hidden" name="nameCapital" value="@if ($brand) {{ $brand->nameCapital }} @endif" />
+        <input type="hidden" name="nameCapital" value="@if ($brand) {{ $brand->nameCapital }} @else A @endif" />
     </div>
     <div class="form-group">
         <label for="brand-name" class="col-sm-2 control-label">品牌名字</label>

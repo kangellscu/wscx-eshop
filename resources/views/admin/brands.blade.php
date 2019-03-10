@@ -16,6 +16,7 @@
 
           <h2 class="sub-header">品牌列表</h2>
           <div class="table-responsive">
+            <a href="/admin/products/brand-form">新增品牌</a>
             <!-- 列表 -->
             <table class="table table-striped">
               <thead>
