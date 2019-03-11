@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="password" class="col-sm-2 control-label">当前密码</label>
+        <label for="password" class="col-sm-2 control-label">密码</label>
         <div class="col-sm-2">
             <input type="password" id="password" name="password" class="form-control" />
         </div>

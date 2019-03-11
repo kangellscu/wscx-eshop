@@ -10,12 +10,6 @@ use App\Exceptions\Auth\AuthorizationException;
 
 class AdminUserController extends BaseController
 {
-    public function __construct(Request $request) {
-        if (Gate::denies('manage-adminuser', $request->user())) {
-            throw new AuthorizationException();
-        }
-    }
-
     /**
      * Show admin user creation form
      */
@@ -52,10 +46,10 @@ class AdminUserController extends BaseController
         Request $request,
         AdminService $adminService
     ) {
-        $adminUsers = $adminService->getAllAdminUsers();
+        $res = $adminService->getAllAdminUsers();
 
         return view('admin.adminUserList', [
-            'adminUsers'    => $adminUsers,
+            'adminUsers'    => $res->admins,
             ]);
     }
 

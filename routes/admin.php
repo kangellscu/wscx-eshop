@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::post('password-changing', 'AuthController@passwordChanging');
     });
 
-    Route::group(['prefix' => 'adminusers'], function () {
+    Route::group(['prefix' => 'adminusers', 'middleware' => 'can:manage-adminuser'], function () {
         Route::get('create-form', 'AdminUserController@addAdminUserForm');
         Route::put('/', 'AdminUserController@addAdminUser');
         Route::get('/', 'AdminUserController@listAll')->name('admin.list');

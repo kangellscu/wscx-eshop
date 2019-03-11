@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Admin as AdminModel;
 use App\Exceptions\Admins\AdminPasswordIncorrectException;
 use App\Exceptions\Admins\AdminExistsException;
+use App\Exceptions\Admins\AdminSuperadminCantDeleteException;
 
 class AdminService
 {
@@ -43,7 +44,7 @@ class AdminService
 
         $admin = AdminModel::create([
             'name'      => $name,
-            'password'  => $password,
+            'password'  => bcrypt($password),
             ]);
 
         return $admin->id;
@@ -58,7 +59,7 @@ class AdminService
      *                          - name  String              admin username
      *                          - createdAt \Carbon\Carbon  admin user created time
      */
-    public function getAllAdminUsers() : object {
+    public function getAllAdminUsers() {
         $admins = AdminModel::orderBy('created_at', 'desc')
             ->get()
             ->map(function ($admin) {
@@ -80,8 +81,16 @@ class AdminService
      *
      * @param String $adminId
      */
-    public function delAdminUser(String $adminId) : void {
-        AdminModel::where('id', $adminId)->delete();
+    public function delAdminUser(String $adminId) {
+        $admin = AdminModel::find($adminId);
+        if ( ! $admin) {
+            return null;
+        }
+        if ($admin->isSuperAdmin()) {
+            throw new AdminSuperadminCantDeleteException();
+        }
+
+        return $admin->delete();
     }
 
     /**

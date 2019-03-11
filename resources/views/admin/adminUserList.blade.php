@@ -10,6 +10,7 @@
           <h1 class="page-header">管理员管理版块</h1>
 
           <h2 class="sub-header">管理员列表</h2>
+          <a href="/admin/adminusers/create-form">新增管理员</a>
           <div class="table-responsive">
             <!-- 列表 -->
             <table class="table table-striped">
@@ -22,15 +23,17 @@
                 </tr>
               </thead>
               <tbody>
-              @foreach ($admins as $admin)
+              @foreach ($adminUsers as $admin)
                 <tr>
                   <td>{{ $admin->name }}
-                  <td>@if($admin->isSuperAdmin) 是 @else 否 </td>
+                  <td>@if($admin->isSuperAdmin) 是 @else 否 @endif</td>
                   <td>{{ $admin->createdAt->format('Y-m-d H:i:s') }}</td>
                   <td>
                     <a href="/admin/adminusers/{{ $admin->id }}/password-reset">重置密码</a>
-                    &npsb;
+                @if ( ! $admin->isSuperAdmin)
+                    &nbsp;
                     <a class="delAdminUser" data-adminid="{{ $admin->id }}" data-adminname="{{ $admin->name }}" href="javascript:void()">删除</a>
+                @endif
                   </td>
                 </tr>
               @endforeach
@@ -51,7 +54,7 @@
 $(".delAdminUser").on("click", function() {
     if (confirm("确定要删除管理员: " + $(this).data("adminname"))) {
         var delUrl = "/admin/adminusers/" + $(this).data("adminid");
-        $("#delForm").attr("action", $delUrl).submit(); 
+        $("#delForm").attr("action", delUrl).submit(); 
     }
 });
 

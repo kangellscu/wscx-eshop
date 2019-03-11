@@ -10,13 +10,15 @@
         <a href="/admin/products/brands">品牌管理</a>
     </li>
     <li @if ($navActive == 'products') class="active" @endif>
-        <a href="/admin/products">产品管理</a>
+        <a href="/admin/products">产品管理 <span class="sr-only">(current)</span></a>
     </li>
     <li @if ($navActive == 'userComments') class="active" @endif>
         <a href="/admin/comments">用户留言</a>
     </li>
-    <li @if ($navActive == 'new') class="active" @endif>
-        <a href="/admin/clients/create-form">新增 <span class="sr-only">(current)</span></a>
+@can('manage-adminuser')
+    <li @if ($navActive == 'adminusers') class="active" @endif>
+        <a href="/admin/adminusers">账户管理</a>
     </li>
+@endcan
   </ul>
 </div>

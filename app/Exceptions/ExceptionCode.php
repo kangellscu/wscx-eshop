@@ -30,6 +30,7 @@ final class ExceptionCode
     //**********************
     const ADMIN_PASSWORD_INCORRECT = 10201;
     const ADMIN_EXISTS = 10202;
+    const ADMIN_SUPERADMIN_CANT_DELETE = 10203;
 
     //**********************
     //      Banner
