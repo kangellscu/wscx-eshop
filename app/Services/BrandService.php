@@ -67,7 +67,7 @@ class BrandService
                     'id'        => $brand->id,
                     'capital'   => $brand->name_capital,
                     'name'      => $brand->name,
-                    'logoUrl'   => Category::url($brand->logo_path),
+                    'logoUrl'   => Storage::url($brand->logo_path),
                 ];
             })
             ->groupBy('name_capital')

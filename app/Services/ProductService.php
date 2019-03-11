@@ -72,16 +72,28 @@ class ProductService
     /**
      * Get all products
      *
+     * @param ?string $brandId
+     * @param ?string $categoryId
+     *
      * @return Collection elements as below:
      *                      - id string
      *                      - name string
      *                      - briefDesc string
      *                      - thumbnailUrl string
      */
-    public function getAllProducts() : Collection {
-        return SkuModel::with('category')
-            ->where('status', SkuModel::STATUS_SHELVE)
-            ->get()
+    public function getAllProducts(
+        ?string $brandId,
+        ?string $categoryId
+    ) : Collection {
+        $query = SkuModel::with('category')
+            ->where('status', SkuModel::STATUS_SHELVE);
+        if ($brandId) {
+            $query->where('brand_id', $brandId);
+        }
+        if ($categoryId) {
+            $query->where('category_id', $categoryId);
+        }
+        return $query->get()
             ->map(function ($product) {
                 return (object) [
                     'id'            => $product->id,

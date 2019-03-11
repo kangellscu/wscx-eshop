@@ -87,6 +87,25 @@ class CategoryService
     }
 
     /**
+     * Get all sub categories 
+     * @return Collection   elements as below:
+     *                      - id string
+     *                      - parentId string
+     *                      - name string
+     */
+    public function getSubCategories() : Collection {
+        return CategoryModel::where('parent_id', '<>', null)
+            ->get()
+            ->map(function ($category) {
+                return (object) [
+                    'id'        => $category->id,
+                    'parentId'  => $category->parent_id,
+                    'name'      => $category->name,
+                ];
+            });
+    }
+
+    /**
      * @param string $categoryId
      *
      * @return ?object  properties as below
