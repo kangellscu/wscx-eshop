@@ -29,6 +29,12 @@ class AuthController extends BaseController
         return view('admin.passwordChanging');
     }
 
+    public function logout(Request $request) {
+        $this->guard()->logout();
+        $request->session()->invalidate();
+        return redirect()->route('admin.login');
+    }
+
     /**
      * Change admin himself password
      */
