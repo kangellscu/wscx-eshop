@@ -70,6 +70,20 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="product-status" class="col-sm-2 control-label">状态</label>
+        <div class="btn-group">
+          <button id="product-status" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="selected-status">@if ($product) {{ $product->statusDesc }} @else 已下架 @endif</span> <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            @foreach ($productStatusMap as $status => $desc)
+            <li><a class="status-item" data-status="{{ $status }}" href="#">{{ $desc }}</a></li>
+            @endforeach
+          </ul>
+        </div>
+        <input type="hidden" name="status" value="@if ($product) {{ $product->status }} @else -1 @endif" />
+    </div>
+    <div class="form-group">
         <label class="col-sm-2 control-label">图片</label>
         <div class="col-sm-10 input-group">
             @if ($product)
@@ -117,9 +131,9 @@
     ];
 
     var categories = {
-@foreach ($categories as $category)
+@foreach ($categories->where('parentId', null) as $category)
         "{{ $category->id }}": [
-    @foreach ($category->subs as $sub)
+    @foreach ($categories->where('parentId', $category->id) as $sub)
             {
                 "id": "{{ $sub->id }}",
                 "name": "{{ $sub->name }}"
@@ -129,9 +143,9 @@
 @endforeach
     };
 
-function init() {
-    var selectedCategoryId = renderTopCategory(topCategories);
-    renderSubCategory(selectedCategoryId, categories);
+function init(selectedCategoryId, selectedSubCategoryId) {
+    var selectedCategoryId = renderTopCategory(topCategories, selectedCategoryId);
+    renderSubCategory(selectedCategoryId, categories, selectedSubCategoryId);
 }
 
 function renderTopCategory(topCategories, selectedCategoryId) {
@@ -190,7 +204,11 @@ function renderSubCategory(topCategoryId, categories, selectedSubCategoryId) {
 }
 
 $(document).ready(function () {
-    init();
+    @if ($product)
+    init('{{ $categories->where('id', $product->categoryId)->first()->parentId }}', '{{ $product->categoryId }}');
+    @else
+    init(); 
+    @endif
     $('.brand-item').on('click', function () {
         $('#selected-brand').text($(this).text().trim());
         $('#product-form input[name="brandId"]').val($(this).data('id'));
@@ -198,7 +216,16 @@ $(document).ready(function () {
     $('button.action-button').on('click', function () {
         $('#product-form').attr('action', $(this).data('action'));
         $('#product-form input[name="_method"]').val($(this).data('method'));
+        if ($(this).data('action-name') === 'delete') {
+            if ( ! confirm('确定要删除么')) {
+                return;
+            }
+        }
         $('#product-form').submit();
+    });
+    $('.status-item').on('click', function () {
+        $('#selected-status').text($(this).text().trim());
+        $('#product-form input[name="status"]').val($(this).data('status'));
     });
 });
 

@@ -9,7 +9,7 @@ class Sku extends Model
     const STATUS_UNSHELVE = -1;
     const STATUS_SHELVE = 1;
 
-    static public $statusMap = [
+    static private $statusMap = [
         self::STATUS_UNSHELVE => '已下架',
         self::STATUS_SHELVE => '已上架',
     ];
@@ -30,6 +30,10 @@ class Sku extends Model
 
     static public function isStatusValid(int $status) : bool {
         return array_key_exists($status, self::$statusMap);
+    }
+
+    static public function statusMap() {
+        return self::$statusMap;
     }
 
     public function statusDesc() : string {

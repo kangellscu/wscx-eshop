@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::post('brands/{id}', 'BrandController@editBrand');
         Route::delete('brands/{id}', 'BrandController@delBrand');
 
-        Route::get('/', 'ProductController@listAll');
+        Route::get('/', 'ProductController@listAll')->name('admin.products');
         Route::get('/form', 'ProductController@showForm');
         Route::put('/', 'ProductController@createProduct');
         Route::post('/{id}', 'ProductController@editProduct');

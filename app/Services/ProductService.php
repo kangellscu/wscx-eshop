@@ -70,6 +70,15 @@ class ProductService
     }
 
     /**
+     * Get product status map
+     *
+     * @return dict     key is status, value is status desc
+     */
+    public function getStatusMap() {
+        return SkuModel::statusMap();
+    }
+
+    /**
      * Get one product
      *
      * @param string $productId
@@ -78,6 +87,7 @@ class ProductService
      *                          - id string
      *                          - brandId string
      *                          - categoryId string
+     *                          - name string
      *                          - briefDesc string
      *                          - thumbnailUrl string
      *                          - status int
@@ -87,13 +97,14 @@ class ProductService
         $sku = SkuModel::find($productId);
 
         return is_null($sku) ? null : (object) [
-            'id'        => $product->id,
-            'brandId'   => $product->brand_id,
-            'categoryId'    => $product->category_id,
-            'briefDesc' => $product->brief_description,
-            'thumbnailUrl'  => Storage::url($product->thumbnail_path),
-            'status'        => $product->status,
-            'statusDesc'    => $product->statusDesc(),
+            'id'            => $sku->id,
+            'brandId'       => $sku->brand_id,
+            'categoryId'    => $sku->category_id,
+            'name'          => $sku->name,
+            'briefDesc'     => $sku->brief_description,
+            'thumbnailUrl'  => Storage::url($sku->thumbnail_path),
+            'status'        => $sku->status,
+            'statusDesc'    => $sku->statusDesc(),
         ];
     }
 
@@ -104,6 +115,7 @@ class ProductService
      * @param string $brandId
      * @param string $categoryId
      * @param string $briefDesc
+     * @param int $status
      * @param UploadedFile $thumbnail
      *
      * @return string product id
@@ -113,6 +125,7 @@ class ProductService
         string $brandId,
         string $categoryId,
         string $briefDesc,
+        int $status,
         UploadedFile $thumbnail
     ) : string {
         $sku = SkuModel::create([
@@ -120,6 +133,7 @@ class ProductService
             'brand_id'          => $brandId,
             'category_id'       => $categoryId,
             'brief_description' => $briefDesc,
+            'status'            => $status,
             'thumbnail_path'    => $thumbnail->store('images/skus'),
             'status'            => SkuModel::STATUS_UNSHELVE,
         ]);
@@ -135,6 +149,7 @@ class ProductService
      * @param string $brandId
      * @param string $categoryId
      * @param string $briefDesc
+     * @param int $status
      * @param ?UploadedFile $thumbnail
      *
      * @return int affected rows
@@ -145,6 +160,7 @@ class ProductService
         string $brandId,
         string $categoryId,
         string $briefDesc,
+        int $status,
         ?UploadedFile $thumbnail
     ) : int {
         $sku = SkuModel::find($productId);
@@ -156,6 +172,7 @@ class ProductService
         $sku->brand_id = $brandId;
         $sku->category_id = $categoryId;
         $sku->brief_description = $briefDesc;
+        $sku->status = $status;
         if ($thumbnail) {
             $oldThumbnailPath = $sku->thumbnail_path;
             $sku->thumbnail_path = $thumbnail->store('images/skus');

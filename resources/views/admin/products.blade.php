@@ -63,9 +63,7 @@
                   <td><img src="{{ $product->thumbnailUrl }}" width="60" height="60" /></td>
                   <td>{{ $product->statusDesc }}</td>
                   <td>
-                    <a herf="#">编辑</a>
-                    &nbsp;
-                    <a href-"#">删除</a>
+                    <a href="/admin/products/form?productId={{ $product->id }}">编辑</a>
                   </td>
                 </tr>
               @endforeach
@@ -80,17 +78,4 @@
                 {{ csrf_field() }}
             </form>
           </div>
-@endsection
-
-@section('body-assets')
-<script type="application/javascript">
-
-$(".delAdminUser").on("click", function() {
-    if (confirm("确定要删除管理员: " + $(this).data("adminname"))) {
-        var delUrl = "/admin/adminusers/" + $(this).data("adminid");
-        $("#delForm").attr("action", $delUrl).submit(); 
-    }
-});
-
-</script>
 @endsection

@@ -68,7 +68,8 @@ class ProductController extends BaseController
         return view('admin.productForm', [
             'product'       => $product,
             'brands'        => $brandService->getBrands(),
-            'categories'    => $categoryService->listCategories(),
+            'categories'    => $categoryService->getCategories(),
+            'productStatusMap'  => $productService->getStatusMap(),
         ]);
     }
 
@@ -86,7 +87,8 @@ class ProductController extends BaseController
             'brandId'       => 'required|uuid',
             'categoryId'    => 'required|uuid',
             'briefDesc'     => 'required|string:512',
-            'thumbnail'     => 'required|image|max:2000|mimes:jpeg,png,jpg',
+            'status'        => 'required|integer|in:1,-1',
+            'thumbnail'     => 'required|image|max:2000|mimes:jpeg,png,jpg,svg',
         ]);
 
         $this->checkBrand($request->request->get('brandId'), $brandService);
@@ -97,6 +99,7 @@ class ProductController extends BaseController
             $request->request->get('brandId'),
             $request->request->get('categoryId'),
             $request->request->get('briefDesc'),
+            $request->request->get('status'),
             $request->file('thumbnail')
         );
 
@@ -109,15 +112,18 @@ class ProductController extends BaseController
     public function editProduct(
         Request $request,
         ProductService $productService,
+        BrandService $brandService,
+        CategoryService $categoryService,
         string $id
     ) {
         $request->request->set('productId', $id);
         $this->validate($request, [
-            'parentId'  => 'required|uuid',
+            'productId'     => 'required|uuid',
             'brandId'       => 'required|uuid',
             'categoryId'    => 'required|uuid',
             'briefDesc'     => 'required|string:512',
-            'thumbnail'     => 'image|max:2000|mimes:jpeg,png,jpg',
+            'status'        => 'required|integer|in:1,-1',
+            'thumbnail'     => 'image|max:2000|mimes:jpeg,png,jpg,svg',
         ]);
 
         $this->checkBrand($request->request->get('brandId'), $brandService);
@@ -129,6 +135,7 @@ class ProductController extends BaseController
             $request->request->get('brandId'),
             $request->request->get('categoryId'),
             $request->request->get('briefDesc'),
+            (int) $request->request->get('status'), 
             $request->file('thumbnail')
         );
 
@@ -145,12 +152,12 @@ class ProductController extends BaseController
     ) {
         $request->request->set('productId', $id);
         $this->validate($request, [
-            'parentId'  => 'required|uuid',
+            'productId'  => 'required|uuid',
         ]);
 
         $productService->delProduct($request->request->get('productId'));
 
-        return back();
+        return redirect()->route('admin.products');
     }
 
     protected function checkBrand(string $brandId, BrandService $brandService) {
