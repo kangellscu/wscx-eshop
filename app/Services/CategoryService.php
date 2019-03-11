@@ -69,6 +69,24 @@ class CategoryService
     }
 
     /**
+     * Get top categories
+     *
+     * @return Collection   elements as below:
+     *                      - id string
+     *                      - name string
+     */
+    public function getTopCategories() : Collection {
+        return CategoryModel::whereNull('parent_id')
+            ->get()
+            ->map(function ($category) {
+                return (object) [
+                    'id'        => $category->id,
+                    'name'      => $category->name,
+                ];
+            });
+    }
+
+    /**
      * @param string $categoryId
      *
      * @return ?object  properties as below

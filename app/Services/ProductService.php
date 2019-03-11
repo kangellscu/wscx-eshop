@@ -70,6 +70,32 @@ class ProductService
     }
 
     /**
+     * Get all products
+     *
+     * @return Collection elements as below:
+     *                      - id string
+     *                      - name string
+     *                      - briefDesc string
+     *                      - thumbnailUrl string
+     */
+    public function getAllProducts() : Collection {
+        return SkuModel::with('category')
+            ->where('status', SkuModel::STATUS_SHELVE)
+            ->get()
+            ->map(function ($product) {
+                return (object) [
+                    'id'            => $product->id,
+                    'name'          => $product->name,
+                    'brandId'       => $product->brand_id,
+                    'categoryId'    => $product->category_id,
+                    'parentId'      => $product->category->parent_id,
+                    'briefDesc'     => $product->brief_description,
+                    'thumbnailUrl'  => Storage::url($product->thumbnail_path),
+                ];
+            });
+    }
+
+    /**
      * Get product status map
      *
      * @return dict     key is status, value is status desc

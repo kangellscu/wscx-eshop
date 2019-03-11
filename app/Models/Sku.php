@@ -39,4 +39,16 @@ class Sku extends Model
     public function statusDesc() : string {
         return array_get(self::$statusMap, $this->status, '未知状态');
     }
+
+    //===========================
+    //  Relations
+    //===========================
+    
+    /**
+     * Get the category the owns the product
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

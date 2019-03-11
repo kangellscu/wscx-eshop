@@ -18,9 +18,9 @@ class BannerService
      *
      * @param UploadedFile $image
      *
-     * @return int affected rows
+     * @return string   new record id
      */
-    public function createBanner(UploadedFile $imageFile) : int {
+    public function createBanner(UploadedFile $imageFile) : string {
         $imagePath = $imageFile->store('images/banners');
 
         return BannerModel::create([
@@ -28,7 +28,7 @@ class BannerService
             'begin_time'    => Carbon::createFromFormat(self::TIME_FORMAT, '1990-01-01 00:00:01'),
             'end_time'      => Carbon::createFromFormat(self::TIME_FORMAT, '2999-01-01 00:00:01'),
             'status'        => BannerModel::STATUS_DEACTIVE,
-        ]);
+        ])->id;
     }
 
 
@@ -113,15 +113,7 @@ class BannerService
         }
     }
 
-    protected function checkActiveBannerThreshold() {
-        $activeCount = BannerModel::where('status', BannerModel::STATUS_ACTIVE)
-            ->count();
-        if ($activeCount >= BannerModel::ACTIVE_MAX_THRESHOLD) {
-            throw new BannerActiveReachMaxThresholdException();
-        }
-    }
-
-    protected function getActivedBanners() : Collection
+    public function getActivedBanners() : Collection
     {
         return BannerModel::where('status', BannerModel::STATUS_ACTIVE)
             ->get()
@@ -134,5 +126,13 @@ class BannerService
                     'createdAt' => $banner->created_at,
                 ];
             });
+    }
+
+    protected function checkActiveBannerThreshold() {
+        $activeCount = BannerModel::where('status', BannerModel::STATUS_ACTIVE)
+            ->count();
+        if ($activeCount >= BannerModel::ACTIVE_MAX_THRESHOLD) {
+            throw new BannerActiveReachMaxThresholdException();
+        }
     }
 }

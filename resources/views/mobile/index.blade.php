@@ -16,21 +16,13 @@
 	  	<div class="banner">
 	  		<div class="swiper-container swiper-container1">
 			  	<div class="swiper-wrapper">
+                @foreach ($banners as $banner)
 				    <div class="swiper-slide">
-				    	<a href="">
-				    		<img src="/h5/image/banner1.png"/>
+				    	<a href="javascript:void(0)">
+				    		<img src="{{ $banner->imageUrl }}"/>
 				    	</a>
 				    </div>
-				    <div class="swiper-slide">
-				    	<a href="">
-				    		<img src="/h5/image/banner1.png"/>
-				    	</a>
-				    </div>
-				    <div class="swiper-slide">
-				    	<a href="">
-				    		<img src="/h5/image/banner1.png"/>
-				    	</a>
-				    </div>
+                @endforeach
 			  	</div>
 			  	<div class="swiper-pagination swiper-pagination1"></div>
 			</div>
@@ -38,29 +30,17 @@
 	  	<!--banner end-->
 	  	
 	  	<div class="content">
+        @foreach ($topCategories as $category)
 	  		<div class="c_main">
-	  			<h1>工具类耗材<a href="">全部1000种 <img src="/h5/image/right.png"/></a></h1>
-	  			<ul>
-	  				<li><a href=""><img src="/h5/image/product1.jpg"/><span>防护眼镜</span></a></li>
-	  				<li><a href=""><img src="/h5/image/product2.png"/><span>防护眼镜</span></a></li>
-	  				<li><a href=""><img src="/h5/image/product3.jpg"/><span>防护眼镜</span></a></li>
-	  				<li><a href=""><img src="/h5/image/product4.jpg"/><span>防护眼镜</span></a></li>
-	  				<li><a href=""><img src="/h5/image/product5.jpg"/><span>防护眼镜</span></a></li>
-	  				<li><a href=""><img src="/h5/image/product6.jpg"/><span>防护眼镜</span></a></li>
-	  			</ul>
+	  			<h1>{{ $category->name }}<a href="">更多 <img src="/h5/image/right.png"/></a></h1>
+                <ul>
+            @foreach ($products->where('parentId', $category->id) as $product)
+	  				<li><a href=""><img src="{{ $product->thumbnailUrl }}"/><span>{{ $product->name }}</span></a></li>
+            @endforeach
+                </ul>
+
 	  		</div>
-	  		<div class="c_main">
-	  			<h1>工具类耗材<a href="">全部1000种<img src="/h5/image/right.png"/></a></h1>
-	  			<ul>
-	  				<li><a href=""><img src="/h5/image/product1.jpg"/><span>防护眼镜</span></a></li>
-	  				<li><a href=""><img src="/h5/image/product2.png"/><span>防护眼镜</span></a></li>
-	  				<li><a href=""><img src="/h5/image/product3.jpg"/><span>防护眼镜</span></a></li>
-	  				<li><a href=""><img src="/h5/image/product4.jpg"/><span>防护眼镜</span></a></li>
-	  				<li><a href=""><img src="/h5/image/product5.jpg"/><span>防护眼镜</span></a></li>
-	  				<li><a href=""><img src="/h5/image/product6.jpg"/><span>防护眼镜</span></a></li>
-	  				<li><a href=""><img src="/h5/image/product6.jpg"/><span>防护眼镜</span></a></li>
-	  			</ul>
-	  		</div>
+        @endforeach
 	  	</div>
 	  	
 	  	<div class="footer">
