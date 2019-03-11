@@ -19,9 +19,9 @@ class AboutmeService
     public function getAboutme()
     {
         $aboutme = AboutmeModel::first();
-        return is_null($aboutme) ?: (object) [
+        return $aboutme ? (object) [
             'imageUrl'  => Storage::url($aboutme->image_path),
-        ];
+        ] : null;
     }
 
     /**
@@ -29,9 +29,9 @@ class AboutmeService
      *
      * @param UploadedFile $image
      *
-     * @return int affected rows
+     * @return string   new record id
      */
-    public function setAboutme(UploadedFile $image) : int {
+    public function setAboutme(UploadedFile $image) : string {
         $aboutme = AboutmeModel::first();
         if ($aboutme) {
             $oldImagePath = $aboutme->image_path;
@@ -40,7 +40,7 @@ class AboutmeService
         }
 
         return AboutmeModel::create([
-            'image_path'    => $image->save('images/aboutme'),
-        ]);
+            'image_path'    => $image->store('images/aboutme'),
+        ])->id;
     }
 }

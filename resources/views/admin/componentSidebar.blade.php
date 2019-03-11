@@ -3,6 +3,9 @@
     <li @if ($navActive == 'banners') class="active" @endif>
         <a href="/admin/banners">Banner管理</a>
     </li>
+    <li @if ($navActive == 'aboutme') class="active" @endif>
+        <a href="/admin/aboutme">联系我们</a>
+    </li>
     <li @if ($navActive == 'categories') class="active" @endif>
         <a href="/admin/products/categories">产品类别管理</a>
     </li>

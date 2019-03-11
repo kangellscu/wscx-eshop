@@ -30,7 +30,7 @@ class AboutmeController extends BaseController
         AboutmeService $aboutmeService
     ) {
         $this->validate($request, [
-            'image' => 'required|max:2000|mimes:jpeg,png,jpg',
+            'image' => 'required|max:2000|mimes:jpeg,png,jpg,svg',
         ]);
 
         $aboutmeService->setAboutme($request->file('image'));
