@@ -1,0 +1,73 @@
+.leave{
+	width: 100%;
+	background: #fff;
+	box-sizing: border-box;
+	padding: 1.2rem 1rem;
+	margin: 1rem 0;
+}
+.leave p{
+	font-size: 1.4rem;
+	color: #ADADAD;
+	line-height: 1.8rem;
+}
+.leave h1{
+	margin-top: 2rem;
+	color: #E83935;
+	font-size: 1.4rem;
+	font-weight: 700;
+	font-style: italic;
+}
+
+.userInfo{
+	background: #fff;
+	padding: 0 1.5rem;
+}
+.userInfo ul li{
+	line-height: 4.8rem;
+	border-bottom:1px solid #EEEEEE;
+	overflow: hidden;
+}
+.userInfo ul li:last-child{
+	border: none;
+}
+.userInfo ul li input{
+	font-size: 1.4rem;
+	color: #363636;
+	border: none;
+	max-width: 70%;
+	outline: none;
+	border: none;
+}
+.userInfo ul li textarea{
+	display: block;
+	width: 100%;
+	margin-bottom: 1.7rem;
+	border: none;
+	outline: none;
+	font-size: 1.4rem;
+	color: #363636;
+	line-height: 1.6rem;
+	resize: none;
+}
+.btn{
+	width: 100%;
+	padding: 0 1.5rem;
+	box-sizing: border-box;
+	margin-top: 1.5rem;
+	margin-bottom: 5.5rem;
+}
+.btn button{
+	display: block;
+	margin-top: .5rem;
+	border: none;
+	width: 100%;
+	border-radius: .3rem;
+	height: 4.2rem;
+	color: #fff;
+	font-size: 1.6rem;
+	background: #D2D2D2;
+}
+.btn .btnActive{
+	background: #E24946;
+}
+

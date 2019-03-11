@@ -1,0 +1,148 @@
+
+.proNav{
+	width: 100%;
+	padding: 0 1.5rem;
+	background: #fff;
+	box-sizing: border-box;
+	border-top: 1px solid #EEEEEE;
+	border-bottom: 1px solid #eeeeee;
+	padding-bottom: 1.5rem;
+}
+.proNav h1{
+	font-size: 1.4rem;
+	color: #363636;
+	padding: 1.5rem 0;
+}
+.wrap{
+	width: 100%;
+	margin:0 auto;
+	overflow:hidden;
+	position:relative;
+}
+.wrapper {
+	position:relative;
+	height: 3.1rem;
+	width: 100%;
+	overflow: hidden;
+	margin:0 auto;
+}
+.wrapper .scroller {
+	position:absolute;
+}
+
+#wrapper1 .scroller li {
+	float: left;
+	width: 7.9rem;
+	height:2.9rem;
+	font-size: 1.2rem;
+	text-align: center;
+	font-style: none;
+	margin-right:1rem; 
+	border: 1px solid #BDBDBD;
+	border-radius: .3rem;
+	overflow: hidden;
+}
+.wrapper .scroller li img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.wrapper .scroller li span{
+	display:block;
+}
+#wrapper2 .scroller li {
+	float: left;
+	height:2.9rem;
+	line-height: 2.9rem;
+	font-size: 1.2rem;
+	padding: 0 2rem;
+	text-align: center;
+	font-style: none;
+	margin-right:1rem; 
+	border: 1px solid #BDBDBD;
+	border-radius: .3rem;
+	overflow: hidden;
+	color: #898989;
+}
+#wrapper1 .scroller li.cur{
+	color:#E24946;
+	border: 1px solid #E24946;
+}
+#wrapper2 .scroller li.cur{
+	color:#E24946;
+	border: 1px solid #E24946;
+}
+
+.product{
+	width: 100%;
+	
+	background: #fff;
+	margin: 1rem 0 5.5rem;
+	
+}
+.product ul li{
+	width: 100%;
+	padding: 0 1.5rem;
+	box-sizing: border-box;
+}
+/*.product ul li:active{
+	background: #F3F3F3;
+}*/
+.product a{
+	display: block;
+	text-decoration: none;
+	overflow: hidden;
+	position: relative;
+	border-bottom: 1px solid #F3F3F3;
+	padding: 1.5rem 0;
+}
+.product a img{
+	display: block;
+	float: left;
+	width: 5rem;
+	height: 4.6rem;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	margin-top: -2.3rem;
+}
+.product a span{
+	width: 100%;
+	display: block;
+	float: left;
+	padding-left:6.5rem;
+	box-sizing: border-box;
+}
+.product a h1{
+	display: block;
+	width: 100%;
+	font-size: 1.4rem;
+	font-weight: 700;
+	color: #232323;
+	margin-bottom: .8rem;
+	overflow:hidden; 
+	text-overflow:ellipsis; 
+	white-space:nowrap;
+
+	
+}
+.product a p{
+	font-size: 1.2rem;
+	color: #DDDCDC;
+	margin-top: .8rem;
+}
+.product a h2{
+	font-size: 1.5rem;
+	color: #E83935;
+	margin-top: 1.6rem;
+}
+.product a h2 small{
+	font-size: 2rem;
+	font-weight: 700;
+	
+}
+
+.product li:last-child a{
+	border: none;
+}
+
