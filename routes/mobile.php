@@ -13,3 +13,4 @@
 
 Route::get('/', 'IndexController@index');
 Route::get('products', 'IndexController@listProducts');
+Route::get('brands', 'IndexController@listBrands');

@@ -70,7 +70,7 @@
 		<div class="footer">
 	  		<a href="/mobile"><span><img src="/h5/image/tab1-1.png"/>首页</span></a>
 	  		<a href="javascript:void(0)" class="tabActive"><span><img src="/h5/image/tab2.png"/>产品</span></a>
-	  		<a href="classify.html"><span><img src="/h5/image/tab3-1.png"/>品牌</span></a>
+	  		<a href="/mobile/brands"><span><img src="/h5/image/tab3-1.png"/>品牌</span></a>
 	  		<a href="leave.html"><span><img src="/h5/image/tab4-1.png"/>留言</span></a>
 	  	</div>
 		

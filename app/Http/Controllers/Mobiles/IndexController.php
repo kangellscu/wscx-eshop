@@ -62,4 +62,18 @@ class IndexController extends BaseController
             'products'      => $products,
         ]);
     }
+
+    /**
+     * Show brands
+     */
+    public function listBrands(
+        Request $request,
+        BrandService $brandService
+    ) {
+        $brands = $brandService->getBrands();
+
+        return view('mobile.brands', [
+            'brands'    => $brands,
+        ]);
+    }
 }

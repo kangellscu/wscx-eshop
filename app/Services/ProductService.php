@@ -82,8 +82,8 @@ class ProductService
      *                      - thumbnailUrl string
      */
     public function getAllProducts(
-        ?string $brandId,
-        ?string $categoryId
+        ?string $brandId = null,
+        ?string $categoryId = null
     ) : Collection {
         $query = SkuModel::with('category')
             ->where('status', SkuModel::STATUS_SHELVE);
