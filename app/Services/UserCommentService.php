@@ -52,4 +52,28 @@ class UserCommentService
             'totalPages'    => $totalPages,
         ];
     }
+
+    /**
+     * Create new comment
+     *
+     * @param string $name
+     * @param ?string $email
+     * @param ?string $phone
+     * @param string $comment
+     *
+     * @return string new comment id
+     */
+    public function addComment(
+        string $name,
+        ?string $email,
+        ?string $phone,
+        ?string $comment
+    ) {
+        return UserCommentModel::create([
+            'name'  => $name,
+            'email' => $email,
+            'phone' => $phone,
+            'comment'   => $comment
+        ])->id;
+    }
 }

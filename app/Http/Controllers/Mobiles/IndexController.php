@@ -9,6 +9,7 @@ use App\Services\BannerService;
 use App\Services\CategoryService;
 use App\Services\ProductService;
 use App\Services\BrandService;
+use App\Services\UserCommentService;
 
 class IndexController extends BaseController
 {
@@ -75,5 +76,38 @@ class IndexController extends BaseController
         return view('mobile.brands', [
             'brands'    => $brands,
         ]);
+    }
+
+    /**
+     * show comment form
+     */
+    public function showCommentForm(
+        Request $request
+    ) {
+        return view('mobile.comments');
+    }
+
+    /**
+     *
+     */
+    public function addComment(
+        Request $request,
+        UserCommentService $userCommentService
+    ) {
+        $this->validate($request, [
+            'name'  => 'required|string|max:16',
+            'comment'   => 'required|string|max:256',
+            'email' => 'nullable|email|max:100',
+            'phone' => 'nullable|phone',
+        ]);
+
+        $commentId = $userCommentService->addComment(
+            $request->request->get('name'),
+            $request->request->get('email'),
+            $request->request->get('phone'),
+            $request->request->get('comment')
+        );
+
+        return back()->with('submitStatus', 'success');
     }
 }

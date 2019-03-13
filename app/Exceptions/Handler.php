@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Support\Arr;
 use Illuminate\Validation\ValidationException;
 use App\Exceptions\ExceptionCode;
 use App\Exceptions\AppException;

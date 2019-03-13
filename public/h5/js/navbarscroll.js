@@ -11,7 +11,7 @@
             className:'cur', //当前选中点击元素的class类名
             clickScrollTime:300, //点击后滑动时间
             duibiScreenWidth:0.4, //单位以rem为准，默认为0.4rem
-            scrollerWidth:3, //单位以px为准，默认为3,[仅用于特殊情况：外层宽度因为小数点造成的不精准情况]
+            scrollerWidth:5, //单位以px为准，默认为3,[仅用于特殊情况：外层宽度因为小数点造成的不精准情况]
             defaultSelect:0, //初始选中第n个，默认第0个
             fingerClick:0, //目标第0或1个选项触发,必须每一项长度一致，方可用此项
             endClickScroll:function(thisObj){}//回调函数
@@ -26,11 +26,16 @@
             var _obj_scroller = _wrapper.children('.scroller');
             var _obj_ul = _obj_scroller.children('ul');
             var _obj_li = _obj_ul.children('li');
+//          console.log(_obj_li);
             var _scroller_w = 0;
 //          _obj_li.css({"margin-left":"0","margin-right":"0"});
             for (var i = 0; i < _obj_li.length; i++) {
                 _scroller_w += _obj_li[i].offsetWidth;
+//               console.log(_obj_li[i].offsetWidth);
             }
+             _scroller_w+=parseInt(_obj_li.css('marginRight'))*_obj_li.length;
+
+           
             _obj_scroller.width(_scroller_w+_opt.scrollerWidth);
             var myScroll = new IScroll('#'+_wrapper.attr('id'), {
                 eventPassthrough: true,
@@ -81,7 +86,7 @@
                         }
                     }
                 }
-                $this_obj.addClass(_opt.className).siblings('li').removeClass(_opt.className);
+//              $this_obj.addClass(_opt.className).siblings('li').removeClass(_opt.className);
                 _opt.endClickScroll.call(this,$this_obj);
             }
         });

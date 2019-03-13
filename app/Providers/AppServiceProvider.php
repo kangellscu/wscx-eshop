@@ -51,5 +51,11 @@ class AppServiceProvider extends ServiceProvider
             $pattern = '/^[A-Z]\d{3,5}$/';
             return empty($value) || preg_match($pattern, $value);
         });
+
+        // phone
+        Validator::extend('phone', function ($attribute, $value, $parameters, $validator) {
+            $pattern = '/1[35789]\d{9}$/';
+            return empty($value) || preg_match($pattern, $value);
+        });
     }
 }
