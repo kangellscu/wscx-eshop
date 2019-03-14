@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<title>留言</title>
-		<link rel="stylesheet" type="text/css" href="/h5/css/reset.css"/>
-		<link rel="stylesheet" href="/h5/css/leave.css" />
-        <link rel="stylesheet" href="/h5/css/alert.css" />
+		<link rel="stylesheet" type="text/css" href="/h5/css/reset.css?{{ config('assets.version') }}"/>
+		<link rel="stylesheet" href="/h5/css/leave.css?{{ config('assets.version') }}" />
+        <link rel="stylesheet" href="/h5/css/alert.css?{{ config('assets.version') }}" />
 	</head>
 	<body>
 		
@@ -34,24 +34,24 @@
 		</div>
 		
 		<div class="footer">
-	  		<a href="/mobile"><span><img src="/h5/image/tab1-1.png"/>首页</span></a>
-	  		<a href="/mobile/products"><span><img src="/h5/image/tab2-1.png"/>产品</span></a>
-	  		<a href="/mobile/brands"><span><img src="/h5/image/tab3-1.png"/>品牌</span></a>
-	  		<a href="javascript:vido(0)" class="tabActive"><span><img src="/h5/image/tab4.png"/>留言</span></a>
+	  		<a href="/mobile"><span><img src="/h5/image/tab1-1.png?{{ config('assets.version') }}"/>首页</span></a>
+	  		<a href="/mobile/products"><span><img src="/h5/image/tab2-1.png?{{ config('assets.version') }}"/>产品</span></a>
+	  		<a href="/mobile/brands"><span><img src="/h5/image/tab3-1.png?{{ config('assets.version') }}"/>品牌</span></a>
+	  		<a href="javascript:vido(0)" class="tabActive"><span><img src="/h5/image/tab4.png?{{ config('assets.version') }}"/>留言</span></a>
 	  	</div>
-	    <script src="/h5/js/jquery-1.9.0.min.js"></script>
-        <script src="/h5/js/alert.js"></script>
+	    <script src="/h5/js/jquery-1.9.0.min.js?{{ config('assets.version') }}"></script>
+        <script src="/h5/js/alert.js?{{ config('assets.version') }}"></script>
         <script type="application/javascript">
             function showError(message) {
                 jqueryAlert({
-                    icon    : '/h5/image/warning.png',
+                    icon    : '/h5/image/warning.png?{{ config('assets.version') }}',
                     content : message,
                     closeTime : 2000
                 }).show();
             }
             function showInfo(message) {
                 jqueryAlert({
-                    icon    : '/h5/image/right2.png',
+                    icon    : '/h5/image/right2.png?{{ config('assets.version') }}',
                     content : message,
                     closeTime : 2000
                 }).show();
