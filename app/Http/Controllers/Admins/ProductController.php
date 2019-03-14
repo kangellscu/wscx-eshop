@@ -88,7 +88,9 @@ class ProductController extends BaseController
             'categoryId'    => 'required|uuid',
             'briefDesc'     => 'required|string:512',
             'status'        => 'required|integer|in:1,-1',
-            'thumbnail'     => 'required|image|max:2000|mimes:jpeg,png,jpg,svg',
+            'thumbnail'     => 'required|image|max:2000|mimes:jpeg,png,jpg,svg|dimensions:width=102,height=93',
+        ], [
+            'thumbnail.dimensions'  => '图片规格为: 102 * 93',
         ]);
 
         $this->checkBrand($request->request->get('brandId'), $brandService);
@@ -123,7 +125,9 @@ class ProductController extends BaseController
             'categoryId'    => 'required|uuid',
             'briefDesc'     => 'required|string:512',
             'status'        => 'required|integer|in:1,-1',
-            'thumbnail'     => 'image|max:2000|mimes:jpeg,png,jpg,svg',
+            'thumbnail'     => 'image|max:2000|mimes:jpeg,png,jpg,svg|dimensions:width=102,height=93',
+        ], [
+            'thumbnail.dimensions'  => '图片规格为: 102 * 93',
         ]);
 
         $this->checkBrand($request->request->get('brandId'), $brandService);

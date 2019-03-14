@@ -21,6 +21,10 @@
                 <input type="file" name="image"class="form-control-file"
                     id="exampleFormControlFile1" accept="image/*">
                 <button type="submit" class="btn btn-primary mb-2">上传</button>
+                <p />
+                <div class="alert alert-info">
+                    <p>Tips: 上传Banner图片规格为 750 * 298 或 785 * 360</p>
+                </div>
               </div>
           </form>
           <h2 class="sub-header">已上架Banners</h2>

@@ -90,6 +90,10 @@
             <img src="{{ $product->thumbnailUrl }}" width="100" height="100" />
             @endif
             <input type="file" name="thumbnail" class="form-content-file" accept="image/*" />
+            <p />
+            <div class="alert alert-info col-sm-4">
+                <p>Tips: 上传产品图片规格为 102 * 93</p>
+            </div>
         </div>
     </div>
     {{ csrf_field() }}

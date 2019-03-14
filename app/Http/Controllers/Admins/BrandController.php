@@ -64,8 +64,10 @@ class BrandController extends BaseController
         $this->validate($request, [
             'nameCapital'   => 'required|alpha',
             'name'          => 'required|string|max:32',
-            'logo'          => 'required|max:100|mimes:jpeg,png,jpg,svg',
+            'logo'          => 'required|max:100|mimes:jpeg,png,jpg,svg|dimensions:width=158,height=60',
             'story'         => 'string|nullable|max:512',
+        ], [
+            'logo.dimensions'   => 'logo图片规格为: 158 * 60', 
         ]);
 
         $brandService->createBrand(
@@ -91,8 +93,10 @@ class BrandController extends BaseController
             'brandId'       => 'required|uuid',
             'nameCapital'   => 'required|alpha',
             'name'          => 'required|string|max:32',
-            'logo'          => 'max:100|mimes:jpeg,png,jpg,svg',
+            'logo'          => 'max:100|mimes:jpeg,png,jpg,svg|dimensions:width=158,height=60',
             'story'         => 'string|nullable|max:512',
+        ], [
+            'logo.dimensions'   => 'logo图片规格为: 158 * 60', 
         ]);
 
         $brandService->editBrand(

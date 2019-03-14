@@ -56,6 +56,10 @@
             <img src="{{ $brand->logoUrl }}" width="60" height="60" />
             @endif
             <input type="file" name="logo" class="form-content-file" accept="image/*" />
+            <p />
+            <div class="alert alert-info col-sm-4">
+                <p>Tips: 上传logo图片规格为 158 * 60</p>
+            </div>
         </div>
     </div>
     {{ csrf_field() }}

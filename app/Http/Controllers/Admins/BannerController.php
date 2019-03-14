@@ -42,9 +42,10 @@ class BannerController extends BaseController
         BannerService $bannerService
     ) {
         $this->validate($request, [
-            'image' => 'required|max:2000|mimes:jpeg,png,jpg,svg',
+            'image' => 'required|max:2000|mimes:jpeg,png,jpg,svg|dimensions:min_height=298,max_height=360,min_width=750,max_width=785',
         ], [
             'image.max' => 'Banner图片不能超过 :max KB', 
+            'image.dimensions'  => 'Banner图片规格为:750 * 298 或 785 * 360',
         ]);
 
         $bannerService->createBanner(
