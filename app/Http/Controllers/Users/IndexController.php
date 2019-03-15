@@ -12,8 +12,6 @@ class IndexController extends BaseController
      * Show index page
      */
     public function index(IndexService $indexService) {
-        $data = $indexService->getIndexInfo();
-
-        return view('user.index');
+        return view('web.index');
     }
 }
