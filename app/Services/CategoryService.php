@@ -77,6 +77,7 @@ class CategoryService
      */
     public function getTopCategories() : Collection {
         return CategoryModel::whereNull('parent_id')
+            ->orderBy('display_order')
             ->get()
             ->map(function ($category) {
                 return (object) [

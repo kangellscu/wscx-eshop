@@ -33,7 +33,7 @@
             @endforeach
           </ul>
         </div>
-        <input type="hidden" name="brandId" value="@if ($product) {{ $brands->where('id', $product->brandId)->first()->id }} @else $brands->first()->id @endif" />
+        <input type="hidden" name="brandId" value="@if ($product) {{ $brands->where('id', $product->brandId)->first()->id }} @else {{ $brands->first()->id }} @endif" />
     </div>
     <div class="form-group">
         <label for="category-top" class="col-sm-2 control-label">类别</label>
