@@ -89,6 +89,10 @@ class ProductController extends BaseController
             'briefDesc'     => 'required|string:512',
             'status'        => 'required|integer|in:1,-1',
             'thumbnail'     => 'required|image|max:2000|mimes:jpeg,png,jpg,svg|dimensions:width=102,height=93',
+            'docSpecification'  => 'file|max:2000|mimes:pdf',
+            'doc'               => 'file|max:2000|mimes:pdf',
+            'docInstruction'    => 'file|max:2000|mimes:pdf',
+            'docOther'          => 'file|max:2000|mimes:pdf',
         ], [
             'thumbnail.dimensions'  => '图片规格为: 102 * 93',
         ]);
@@ -102,7 +106,11 @@ class ProductController extends BaseController
             $request->request->get('categoryId'),
             $request->request->get('briefDesc'),
             $request->request->get('status'),
-            $request->file('thumbnail')
+            $request->file('thumbnail'),
+            $request->file('docSpecification'),
+            $request->file('doc'),
+            $request->file('docInstruction'),
+            $request->file('docOther')
         );
 
         return back();
@@ -126,6 +134,10 @@ class ProductController extends BaseController
             'briefDesc'     => 'required|string:512',
             'status'        => 'required|integer|in:1,-1',
             'thumbnail'     => 'image|max:2000|mimes:jpeg,png,jpg,svg|dimensions:width=102,height=93',
+            'docSpecification'  => 'file|max:2000|mimes:pdf',
+            'doc'           => 'file|max:2000|mimes:pdf',
+            'docInstruction'    => 'file|max:2000|mimes:pdf',
+            'docOther'      => 'file|max:2000|mimes:pdf',
         ], [
             'thumbnail.dimensions'  => '图片规格为: 102 * 93',
         ]);
@@ -140,7 +152,11 @@ class ProductController extends BaseController
             $request->request->get('categoryId'),
             $request->request->get('briefDesc'),
             (int) $request->request->get('status'), 
-            $request->file('thumbnail')
+            $request->file('thumbnail'),
+            $request->file('docSpecification'),
+            $request->file('doc'),
+            $request->file('docInstruction'),
+            $request->file('docOther')
         );
 
         return back();

@@ -25,6 +25,10 @@ class Sku extends Model
         'category_id',
         'brief_description',
         'thumbnail_path',
+        'doc_specification_path',       // 说明书
+        'doc_path',
+        'doc_instruction_path',   // 品牌介绍
+        'doc_other_path',
         'status',
     ];
 

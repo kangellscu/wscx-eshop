@@ -96,6 +96,58 @@
             </div>
         </div>
     </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">说明书</label>
+        <div class="col-sm-10 input-group">
+            @if ($product && $product->docSpecificationUrl)
+            <a href="{{ $product->docSpecificationUrl }}" target="_blank">说明书</a>
+            @endif
+            <input type="file" name="docSpecification" class="form-content-file" />
+            <p />
+            <div class="alert alert-info col-sm-4">
+                <p>Tips: 上传文档为pdf, 大小限制为2M</p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">文档</label>
+        <div class="col-sm-10 input-group">
+            @if ($product && $product->docUrl)
+            <a href="{{ $product->docUrl }}" target="_blank">文档</a>
+            @endif
+            <input type="file" name="doc" class="form-content-file" />
+            <p />
+            <div class="alert alert-info col-sm-4">
+                <p>Tips: 上传文档为pdf, 大小限制为2M</p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">品牌介绍</label>
+        <div class="col-sm-10 input-group">
+            @if ($product && $product->docInstructionUrl)
+            <a href="{{ $product->docInstructionUrl }}" target="_blank">品牌介绍</a>
+            @endif
+            <input type="file" name="docInstruction" class="form-content-file" />
+            <p />
+            <div class="alert alert-info col-sm-4">
+                <p>Tips: 上传文档为pdf, 大小限制为2M</p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">其它文档</label>
+        <div class="col-sm-10 input-group">
+            @if ($product && $product->docOtherUrl)
+            <a href="{{ $product->docOtherUrl }}" target="_blank">其它文档</a>
+            @endif
+            <input type="file" name="docOther" class="form-content-file" />
+            <p />
+            <div class="alert alert-info col-sm-4">
+                <p>Tips: 上传文档为pdf, 大小限制为2M</p>
+            </div>
+        </div>
+    </div>
     {{ csrf_field() }}
     {{ method_field('post') }}
     <div class="form-group">
@@ -115,7 +167,7 @@
                 data-method="put"
                 data-action-name="add"->新增</button>
           @endif
-            <a href="{{ URL::previous() }}" class="btn btn-primary" type="button">返回</a>
+            <a href="/admin/products" class="btn btn-primary" type="button">返回</a>
         </div>
     </div>
 </form>

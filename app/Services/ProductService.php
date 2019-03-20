@@ -141,6 +141,13 @@ class ProductService
             'name'          => $sku->name,
             'briefDesc'     => $sku->brief_description,
             'thumbnailUrl'  => Storage::url($sku->thumbnail_path),
+            'docSpecificationUrl'   => $sku->doc_specification_path ?
+                Storage::url($sku->doc_specification_path) : null,
+            'docUrl'        => $sku->doc_path ? Storage::url($sku->doc_path) : null,
+            'docInstructionUrl' => $sku->doc_instruction_path ?
+                Storage::url($sku->doc_instruction_path) : null,  
+            'docOtherUrl'   => $sku->doc_other_path ?
+                Storage::url($sku->doc_other_path) : null,     
             'status'        => $sku->status,
             'statusDesc'    => $sku->statusDesc(),
         ];
@@ -155,6 +162,10 @@ class ProductService
      * @param string $briefDesc
      * @param int $status
      * @param UploadedFile $thumbnail
+     * @param ?UploadedFile $docSpecification
+     * @param ?UploadedFile $doc
+     * @param ?UploadedFile $docInstruction
+     * @param ?UploadedFile $docOther
      *
      * @return string product id
      */
@@ -164,7 +175,11 @@ class ProductService
         string $categoryId,
         string $briefDesc,
         int $status,
-        UploadedFile $thumbnail
+        UploadedFile $thumbnail,
+        ?UploadedFile $docSpecification,
+        ?UploadedFile $doc,
+        ?UploadedFile $docInstruction,
+        ?UploadedFile $docOther
     ) : string {
         $sku = SkuModel::create([
             'name'              => $name,
@@ -173,6 +188,14 @@ class ProductService
             'brief_description' => $briefDesc,
             'status'            => $status,
             'thumbnail_path'    => $thumbnail->store('images/skus'),
+            'doc_specification_path'    => $docSpecification ?
+                $docSpecification->store('docs/skus') : null,
+            'doc_path'              => $doc ?
+                $doc->store('docs/skus') : null,
+            'doc_instruction_path'  => $docInstruction ?
+                $docInstruction->store('docs/skus') : null,
+            'doc_other_path'        => $docOther ?
+                $docOther->store('docs/skus') : null,
             'status'            => SkuModel::STATUS_UNSHELVE,
         ]);
 
@@ -189,6 +212,10 @@ class ProductService
      * @param string $briefDesc
      * @param int $status
      * @param ?UploadedFile $thumbnail
+     * @param ?UploadedFile $docSpecification
+     * @param ?UploadedFile $doc
+     * @param ?UploadedFile $docInstruction
+     * @param ?UploadedFile $docOther
      *
      * @return int affected rows
      */
@@ -199,7 +226,11 @@ class ProductService
         string $categoryId,
         string $briefDesc,
         int $status,
-        ?UploadedFile $thumbnail
+        ?UploadedFile $thumbnail,
+        ?UploadedFile $docSpecification,
+        ?UploadedFile $doc,
+        ?UploadedFile $docInstruction,
+        ?UploadedFile $docOther
     ) : int {
         $sku = SkuModel::find($productId);
         if ( ! $sku) {
@@ -216,6 +247,34 @@ class ProductService
             $sku->thumbnail_path = $thumbnail->store('images/skus');
             Storage::delete($oldThumbnailPath);
         }
+        if ($docSpecification) {
+            $oldDocSpecificationPath = $sku->doc_specification_path;
+            $sku->doc_specification_path = $docSpecification->store('docs/skus');
+            if ($oldDocSpecificationPath) {
+                Storage::delete($oldDocSpecificationPath);
+            }
+        }
+        if ($doc) {
+            $oldDocPath = $sku->doc_path;
+            $sku->doc_path = $doc->store('docs/skus');
+            if ($oldDocPath) {
+                Storage::delete($oldDocPath);
+            }
+        }
+        if ($docInstruction) {
+            $oldDocInstructionPath = $sku->doc_instruction_path;
+            $sku->doc_instruction_path = $docInstruction->store('docs/skus');
+            if ($oldDocInstructionPath) {
+                Storage::delete($oldDocInstructionPath);
+            }
+        }
+        if ($docOther) {
+            $oldDocOtherPath = $sku->doc_other_path;
+            $sku->doc_other_path = $docOther->store('docs/skus');
+            if ($oldDocOtherPath) {
+                Storage::delete($oldDocOtherPath);
+            }
+        }
 
         return $sku->save();
     }
@@ -231,8 +290,24 @@ class ProductService
         $sku = SkuModel::find($productId);
         if ($sku) {
             $thumbnailPath = $sku->thumbnail_path;
+            $docSpecificationPath = $sku->doc_specification_path;
+            $docPath = $sku->doc_path;
+            $docInstructionPath = $sku->doc_instruction_path;
+            $docOtherPath = $sku->doc_other_path;
             $sku->delete();
             Storage::delete($thumbnailPath);
+            if ($docSpecificationPath) {
+                Storage::delete($docSpecificationPath);
+            }
+            if ($docPath) {
+                Storage::delete($docPath);
+            }
+            if ($docInstructionPath) {
+                Storage::delete($docInstructionPath);
+            }
+            if ($docOtherPath) {
+                Storage::delete($docOtherPath);
+            }
         }
     }
 }
