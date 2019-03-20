@@ -20,9 +20,11 @@ class CategoryService
      * @return Collection       elements as below:
      *                          - id string
      *                          - name string
+     *                          - level int
      *                          - subs Collection
      *                              - id string
-     *                              - name
+     *                              - name string
+     *                              - level int
      */
     public function listCategories() : Collection {
         $topCategories = CategoryModel::whereNull('parent_id')
@@ -37,6 +39,7 @@ class CategoryService
                     ->map(function ($subCategory) {
                             return (object) [
                                 'id'    => $subCategory->id,
+                                'level' => $subCategory->level,
                                 'name'  => $subCategory->name,
                             ];
                         });
@@ -44,7 +47,43 @@ class CategoryService
                 return (object) [
                     'id'    => $topCategory->id,
                     'name'  => $topCategory->name,
+                    'level' => $topCategory->level,
                     'subs'  => $subs,
+                ];
+            });
+    }
+
+    /**
+     * Get index products
+     *
+     * @return Collection   elements as below:
+     *                      - id string
+     *                      - name string
+     *                      - level int
+     *                      - products Collection
+     *                          - id string
+     *                          - name string
+     *                          - thumbnailUrl string
+     */
+    public function getCategoryProducts(int $level, int $maxDisplayNum) {
+        $query = CategoryModel::with(['products' => function ($query) use ($maxDisplayNum) {
+                $query->orderBy('created_at')
+                    ->limit($maxDisplayNum);
+            }])->where('level', $level)
+            ->orderBy('display_order')
+            ->get()
+            ->map(function ($category) {
+                return (object) [
+                    'id'    => $category->id,
+                    'name'  => $category->name,
+                    'level' => $category->level,
+                    'products'  => $category->products()->get()->map(function ($product) {
+                                    return (object) [
+                                        'id'    => $product->id,
+                                        'name'  => $product->name,
+                                        'thumbnailUrl'  => Storage::url($product->thumbnail_path),
+                                    ];
+                                }),
                 ];
             });
     }
@@ -64,6 +103,7 @@ class CategoryService
                     'id'        => $category->id,
                     'parentId'  => $category->parent_id,
                     'name'      => $category->name,
+                    'level'     => $category->level,
                 ];
             });
     }
@@ -76,13 +116,14 @@ class CategoryService
      *                      - name string
      */
     public function getTopCategories() : Collection {
-        return CategoryModel::whereNull('parent_id')
+        return CategoryModel::where('level', CategoryModel::TOP_CATEGORY_LEVEL)
             ->orderBy('display_order')
             ->get()
             ->map(function ($category) {
                 return (object) [
                     'id'        => $category->id,
                     'name'      => $category->name,
+                    'level'     => $category->level,
                 ];
             });
     }
@@ -95,13 +136,14 @@ class CategoryService
      *                      - name string
      */
     public function getSubCategories() : Collection {
-        return CategoryModel::where('parent_id', '<>', null)
+        return CategoryModel::where('level', CategoryModel::SUB_CATEGORY_LEVEL)
             ->get()
             ->map(function ($category) {
                 return (object) [
                     'id'        => $category->id,
                     'parentId'  => $category->parent_id,
                     'name'      => $category->name,
+                    'level'     => $category->level,
                 ];
             });
     }
@@ -121,6 +163,7 @@ class CategoryService
             'id'        => $category->id,
             'parentId'  => $category->parent_id,
             'name'      => $category->name,
+            'level'     => $category->level,
         ];
     }
 
@@ -133,6 +176,7 @@ class CategoryService
      * @return void
      */
     public function createCategory(string $name, ?string $parentId) {
+        $parentCategory = null;
         if ($parentId) {
             $parentCategory = CategoryModel::find($parentId);
             if ( ! $parentCategory) {
@@ -141,10 +185,14 @@ class CategoryService
         }
 
         $maxDisplayOrder = CategoryModel::max('display_order') ?: 0;
+        $level = $parentCategory ?
+            CategoryModel::nextLevel($parentCategory->level) :
+            CategoryModel::TOP_CATEGORY_LEVEL;
 
         CategoryModel::create([
             'name'          => $name,
             'parent_id'     => $parentId,
+            'level'         => $level,
             'display_order' => $maxDisplayOrder + CategoryModel::DISPLAY_ORDER_STEP,
         ]);
     }

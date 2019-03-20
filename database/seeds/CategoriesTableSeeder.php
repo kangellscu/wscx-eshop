@@ -16,14 +16,17 @@ class CategoriesTableSeeder extends Seeder
             [
                 'name'      => '劳保工具',
                 'parent_id' => null,
+                'level'     => 1,
                 'display_order' => 0,
                 'subs'      => [
                     [
                         'name'  => '防寒服',
+                        'level' => Category::nextLevel(1),
                         'display_order' => 10,
                     ],
                     [
                         'name'  => '防辐射眼镜',
+                        'level' => Category::nextLevel(1),
                         'display_order' => 20,
                     ],
                 ],
@@ -31,14 +34,17 @@ class CategoriesTableSeeder extends Seeder
             [
                 'name'      => '建筑工具',
                 'parent_id' => null,
+                'level'     => 1,
                 'display_order' => 30,
                 'subs'      => [
                     [
                         'name'  => '挖掘机',
+                        'level' => Category::nextLevel(1),
                         'display_order' => 40,
                     ],
                     [
                         'name'  => '吊车',
+                        'level' => Category::nextLevel(1),
                         'display_order' => 50,
                     ],
                 ],

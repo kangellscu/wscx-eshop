@@ -18,7 +18,7 @@
 				<p>你好，欢迎来到为时创想科技</p>
 				<div class="head_tel">
 					<p>联系我们</p>
-					<p><img src="image/phone.png"/>300-400-4325</p>
+					<p><img src="/web/image/phone.png"/>300-400-4325</p>
 				</div>
 			</div>
 		</div>

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Support\Collection;
+use App\Models\Category as CategoryModel;
 
 class IndexService {
     /**
@@ -29,7 +30,6 @@ class IndexService {
      *                          - materials Collection
      *                              - doc String    url
      */
-    public function getIndexInfo() : object {
-        // todo
+    public function getPCIndexInfo() : object {
     }
 }
