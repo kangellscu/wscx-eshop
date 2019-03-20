@@ -51,281 +51,32 @@
 			<div class="banner_main">
 				
 				<ul class="class_list">
+    @foreach($categories->where('level', 1) as $topCategory)
 					<li>
-						<p><img src="/web/image/icon1.png"/><a href="">工具</a><a href="">工具耗材</a></p>
+						<p><img src="/web/image/icon1.png"/><a href="">{{ $topCategory->name }}</a></p>
 						<div class="hideItem">
 							<div class="item">
-								<h1>手工具</h1>
+								<h1>{{ $topCategory->name }}</h1>
 								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>足部工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>电动工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>管道工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
+        @foreach($categories->where('parentId', $topCategory->id) as $subCategory)
+									<li><a href="">{{ $subCategory->name }}</a></li>
+        @endforeach
 								</ul>
 							</div>
 						</div>
 					</li>
-					<li>
-						<p><img src="/web/image/icon2.png"/><a href="">照明</a></p>
-						<div class="hideItem">
-							<div class="item">
-								<h1>手工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>足部工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>电动工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li>
-						<p><img src="/web/image/icon3.png"/><a href="">气动系统</a><a href="">液压系统</a></p>
-						<div class="hideItem">
-							<div class="item">
-								<h1>手工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>电动工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>管道工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li>
-						<p><img src="/web/image/icon4.png"/><a href="">切割</a><a href="">打磨</a><a href="">工业焊接</a></p>
-						<div class="hideItem">
-							<div class="item">
-								<h1>手工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>电动工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li>
-						<p><img src="/web/image/icon5.png"/><a href="">配电</a><a href="">工控</a><a href="">自动化</a></p>
-						<div class="hideItem">
-							<div class="item">
-								<h1>手工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>手工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>电动工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li>
-						<p><img src="/web/image/icon6.png"/><a href="">个人防护</a></p>
-						<div class="hideItem">
-							<div class="item">
-								<h1>手工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>手工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>电动工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li>
-						<p><img src="/web/image/icon7.png"/><a href="">安全防护</a></p>
-						<div class="hideItem">
-							<div class="item">
-								<h1>手工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>电动工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>手工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li>
-						<p><img src="/web/image/icon8.png"/><a href="">机电传动</a></p>
-						<div class="hideItem">
-							<div class="item">
-								<h1>手工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>电动工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>电动工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>电动工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li>
-						<p><img src="/web/image/icon9.png"/><a href="">泵</a><a href="">管</a><a href="">阀</a><a href="">水系统</a></p>
-						<div class="hideItem">
-							<div class="item">
-								<h1>手工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>电动工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-							<div class="item">
-								<h1>电动工具</h1>
-								<ul>
-									<li><a href="">扳手</a></li><li><a href="">手用套筒</a></li><li><a href="">螺丝刀</a></li><li><a href="">剪刀</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
+    @endforeach
 				</ul>
 				
 				
 				
 				<div class="banner">
 					<div class="slider6">
-				      	<div class="slide"><img src="/web/image/banner1.png"></div>
-				      	<div class="slide"><img src="/web/image/banner1.png"></div>
-				      	<div class="slide"><img src="/web/image/banner1.png"></div>
+                @forelse ($banners as $banner)
+				      	<div class="slide"><img src="{{ $banner->imageUrl }}"></div>
+                @empty
 				      	<div class="slide"><img src="/web/image/banner1.png"></div> 
+                @endforelse
 				   	</div>
 				    <script type="text/javascript">
 				        $(document).ready(function(){
@@ -364,103 +115,25 @@
 		<div class="main">
 			<div class="main_width">
 				
+    @foreach($categories->where('level', 1) as $topCategory)
 				<div class="product">
 					
-					<h1 class="class_title">工具 | 工具耗材</h1>
+					<h1 class="class_title">{{ $topCategory->name }}</h1>
+        @foreach($categories->where('parentId', $topCategory->id) as $subCategory)
 					<div class="prduct_lsit">
 						<div class="left_title">
-							<p>手工具</p>
+							<p>{{ $subCategory->name }}</p>
 						</div>
 						<ul>
-							<li><a href=""><span><img src="/web/image/product1.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product2.png"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product3.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product4.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product5.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product6.jpg"/></span><p>防护眼镜</p></a></li>
+            @foreach($categoryProducts->where('id', $subCategory->id)->first()->products->take($maxDisplayNum) as $product)
+							<li><a href=""><span><img src="{{ $product->thumbnailUrl }}"/></span><p>{{ $product->name }}</p></a></li>
 							
-							<li><a href=""><span><img src="/web/image/product1.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product2.png"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product3.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product4.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product5.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product6.jpg"/></span><p>防护眼镜</p></a></li>
-							
-							<li><a href=""><span><img src="/web/image/product1.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product2.png"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product3.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product4.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product5.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product6.jpg"/></span><p>防护眼镜</p></a></li>
-							
+            @endforeach
 						</ul>
 					</div>
-					
-					<div class="prduct_lsit">
-						<div class="left_title">
-							<p>管道工具</p>
-						</div>
-						<ul>
-							<li><a href=""><span><img src="/web/image/product1.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product2.png"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product3.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product4.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product5.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product6.jpg"/></span><p>防护眼镜</p></a></li>
-						</ul>
-					</div>
-					
+        @endforeach
 				</div>
-				
-				
-				<div class="product">
-					
-					<h1 class="class_title">个人防护</h1>
-					<div class="prduct_lsit">
-						<div class="left_title">
-							<p>足部防护</p>
-						</div>
-						<ul>
-							<li><a href=""><span><img src="/web/image/product1.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product2.png"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product3.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product4.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product5.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product6.jpg"/></span><p>防护眼镜</p></a></li>
-							
-							<li><a href=""><span><img src="/web/image/product1.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product2.png"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product3.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product4.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product5.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product6.jpg"/></span><p>防护眼镜</p></a></li>
-							
-						</ul>
-					</div>
-					
-					<div class="prduct_lsit">
-						<div class="left_title">
-							<p>手部防护</p>
-						</div>
-						<ul>
-							<li><a href=""><span><img src="/web/image/product1.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product2.png"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product3.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product4.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product5.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product6.jpg"/></span><p>防护眼镜</p></a></li>
-							
-							<li><a href=""><span><img src="/web/image/product1.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product2.png"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product3.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product4.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product5.jpg"/></span><p>防护眼镜</p></a></li>
-							<li><a href=""><span><img src="/web/image/product6.jpg"/></span><p>防护眼镜</p></a></li>
-						</ul>
-					</div>
-					
-				</div>
-				
+    @endforeach				
 				
 			</div>
 		</div>

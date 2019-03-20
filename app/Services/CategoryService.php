@@ -66,9 +66,8 @@ class CategoryService
      *                          - thumbnailUrl string
      */
     public function getCategoryProducts(int $level, int $maxDisplayNum) {
-        $query = CategoryModel::with(['products' => function ($query) use ($maxDisplayNum) {
-                $query->orderBy('created_at')
-                    ->limit($maxDisplayNum);
+        return CategoryModel::with(['products' => function ($query) use ($maxDisplayNum) {
+                $query->orderBy('created_at');
             }])->where('level', $level)
             ->orderBy('display_order')
             ->get()

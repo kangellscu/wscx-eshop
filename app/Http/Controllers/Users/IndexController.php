@@ -17,15 +17,17 @@ class IndexController extends BaseController
         CategoryService $categoryService,
         BannerService $bannerService
     ) {
+        $maxDisplayNum = 12;
         $banners = $bannerService->getActivedBanners();
         $categories = $categoryService->getCategories();
         $categoryProducts = $categoryService->getCategoryProducts(
-            CategoryModel::SUB_CATEGORY_LEVEL, 12
+            CategoryModel::SUB_CATEGORY_LEVEL, $maxDisplayNum
         );
         return view('web.index', [
             'banners'   => $banners,
             'categories'    => $categories,
             'categoryProducts'  => $categoryProducts,
+            'maxDisplayNum' => $maxDisplayNum,
         ]);
     }
 }
