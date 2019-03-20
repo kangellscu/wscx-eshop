@@ -24,6 +24,7 @@ class CreateSkusTable extends Migration
             $table->string('doc_path')->nullable();                 // 文档
             $table->string('doc_instruction_path')->nullable();     // 品牌介绍
             $table->string('doc_other_path')->nullable();           // 其它文档
+            $table->string('url')->nullable();
             $table->integer('status');
             $table->timestamps();
             $table->softDeletes();

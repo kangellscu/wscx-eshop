@@ -89,6 +89,7 @@ class ProductController extends BaseController
             'briefDesc'     => 'required|string:512',
             'status'        => 'required|integer|in:1,-1',
             'thumbnail'     => 'required|image|max:2000|mimes:jpeg,png,jpg,svg|dimensions:width=102,height=93',
+            'url'           => 'string|nullable|max:256',
             'docSpecification'  => 'file|max:2000|mimes:pdf',
             'doc'               => 'file|max:2000|mimes:pdf',
             'docInstruction'    => 'file|max:2000|mimes:pdf',
@@ -106,6 +107,7 @@ class ProductController extends BaseController
             $request->request->get('categoryId'),
             $request->request->get('briefDesc'),
             $request->request->get('status'),
+            $request->request->get('url') ?: null,
             $request->file('thumbnail'),
             $request->file('docSpecification'),
             $request->file('doc'),
@@ -113,7 +115,7 @@ class ProductController extends BaseController
             $request->file('docOther')
         );
 
-        return back();
+        return redirect()->route('admin.products');
     }
 
     /**
@@ -133,6 +135,7 @@ class ProductController extends BaseController
             'categoryId'    => 'required|uuid',
             'briefDesc'     => 'required|string:512',
             'status'        => 'required|integer|in:1,-1',
+            'url'           => 'string|nullable|max:256',
             'thumbnail'     => 'image|max:2000|mimes:jpeg,png,jpg,svg|dimensions:width=102,height=93',
             'docSpecification'  => 'file|max:2000|mimes:pdf',
             'doc'           => 'file|max:2000|mimes:pdf',
@@ -152,6 +155,7 @@ class ProductController extends BaseController
             $request->request->get('categoryId'),
             $request->request->get('briefDesc'),
             (int) $request->request->get('status'), 
+            $request->request->get('url') ?: null,
             $request->file('thumbnail'),
             $request->file('docSpecification'),
             $request->file('doc'),

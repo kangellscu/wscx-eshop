@@ -62,6 +62,12 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="product-url" class="col-sm-2 control-label">产品链接地址</label>
+        <div class="col-sm-4 input-group">
+            <input type="text" class="form-control" id="product-url" name="url" value="@if ($product) {{ $product->url }} @endif" placeholder="http://xxxxx" />
+        </div>
+    </div>
+    <div class="form-group">
         <label for="product-brief" class="col-sm-2 control-label">产品说明</label>
         <div class="col-sm-4 input-group">
             <textarea class="form-control" id="product-brief" name="briefDesc">

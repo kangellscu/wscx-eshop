@@ -45,7 +45,8 @@ class ProductService
         }
         $queryCount = clone($query);
         $offset = ($page - 1) * $size;
-        $products = $query->offset($offset)
+        $products = $query->orderBy('created_at', 'desc')
+            ->offset($offset)
             ->limit($size)
             ->get()
             ->map(function ($product) {
@@ -80,6 +81,7 @@ class ProductService
      *                      - name string
      *                      - briefDesc string
      *                      - thumbnailUrl string
+     *                      - url string
      */
     public function getAllProducts(
         ?string $brandId = null,
@@ -102,6 +104,7 @@ class ProductService
                     'categoryId'    => $product->category_id,
                     'parentId'      => $product->category->parent_id,
                     'briefDesc'     => $product->brief_description,
+                    'url'           => $product->url,
                     'thumbnailUrl'  => Storage::url($product->thumbnail_path),
                 ];
             });
@@ -140,6 +143,7 @@ class ProductService
             'categoryId'    => $sku->category_id,
             'name'          => $sku->name,
             'briefDesc'     => $sku->brief_description,
+            'url'           => $sku->url,
             'thumbnailUrl'  => Storage::url($sku->thumbnail_path),
             'docSpecificationUrl'   => $sku->doc_specification_path ?
                 Storage::url($sku->doc_specification_path) : null,
@@ -161,6 +165,7 @@ class ProductService
      * @param string $categoryId
      * @param string $briefDesc
      * @param int $status
+     * @param ?string $url
      * @param UploadedFile $thumbnail
      * @param ?UploadedFile $docSpecification
      * @param ?UploadedFile $doc
@@ -175,6 +180,7 @@ class ProductService
         string $categoryId,
         string $briefDesc,
         int $status,
+        ?string $url,
         UploadedFile $thumbnail,
         ?UploadedFile $docSpecification,
         ?UploadedFile $doc,
@@ -187,6 +193,7 @@ class ProductService
             'category_id'       => $categoryId,
             'brief_description' => $briefDesc,
             'status'            => $status,
+            'url'               => $url,
             'thumbnail_path'    => $thumbnail->store('images/skus'),
             'doc_specification_path'    => $docSpecification ?
                 $docSpecification->store('docs/skus') : null,
@@ -211,6 +218,7 @@ class ProductService
      * @param string $categoryId
      * @param string $briefDesc
      * @param int $status
+     * @param ?string $url
      * @param ?UploadedFile $thumbnail
      * @param ?UploadedFile $docSpecification
      * @param ?UploadedFile $doc
@@ -226,6 +234,7 @@ class ProductService
         string $categoryId,
         string $briefDesc,
         int $status,
+        ?string $url,
         ?UploadedFile $thumbnail,
         ?UploadedFile $docSpecification,
         ?UploadedFile $doc,
@@ -242,6 +251,7 @@ class ProductService
         $sku->category_id = $categoryId;
         $sku->brief_description = $briefDesc;
         $sku->status = $status;
+        $sku->url = $url;
         if ($thumbnail) {
             $oldThumbnailPath = $sku->thumbnail_path;
             $sku->thumbnail_path = $thumbnail->store('images/skus');

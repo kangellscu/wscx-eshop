@@ -55,7 +55,8 @@
 						<span>
 							<h1>{{ $product->name }}</h1>
 							<p>{{ $product->briefDesc }}</p>
-							<h2>￥<small>27.00</small>/个</h2>
+							<p>{{ $product->url }}</p>
+							<!--<h2>￥<small>27.00</small>/个</h2>-->
 						</span>
 					</a>
 				</li>

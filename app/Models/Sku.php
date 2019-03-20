@@ -30,6 +30,7 @@ class Sku extends Model
         'doc_instruction_path',   // 品牌介绍
         'doc_other_path',
         'status',
+        'url',
     ];
 
     static public function isStatusValid(int $status) : bool {
