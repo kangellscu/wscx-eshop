@@ -34,7 +34,7 @@
 	  		<div class="c_main">
 	  			<h1>{{ $category->name }}<a href="">更多 <img src="/h5/image/right.png?{{ config('assets.version') }}"/></a></h1>
                 <ul>
-            @foreach ($products->where('parentId', $category->id) as $product)
+            @foreach ($products->where('parentId', $category->id)->take(6) as $product)
 	  				<li><a href=""><img src="{{ $product->thumbnailUrl }}"/><span>{{ $product->name }}</span></a></li>
             @endforeach
                 </ul>

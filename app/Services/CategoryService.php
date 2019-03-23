@@ -66,17 +66,17 @@ class CategoryService
      *                          - thumbnailUrl string
      */
     public function getCategoryProducts(int $level, int $maxDisplayNum) {
-        return CategoryModel::with(['products' => function ($query) use ($maxDisplayNum) {
+        return CategoryModel::with(['products' => function ($query) {
                 $query->orderBy('created_at');
             }])->where('level', $level)
             ->orderBy('display_order')
             ->get()
-            ->map(function ($category) {
+            ->map(function ($category) use ($maxDisplayNum) {
                 return (object) [
                     'id'    => $category->id,
                     'name'  => $category->name,
                     'level' => $category->level,
-                    'products'  => $category->products()->get()->map(function ($product) {
+                    'products'  => $category->products()->take($maxDisplayNum)->get()->map(function ($product) {
                                     return (object) [
                                         'id'    => $product->id,
                                         'name'  => $product->name,
