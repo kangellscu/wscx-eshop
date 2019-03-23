@@ -23,8 +23,8 @@ class ProductController extends BaseController
         CategoryService $categoryService
     ) {
         $this->validate($request, [
-            'categoryId'    => 'uuid',
-            'brandId'       => 'uuid',
+            'categoryId'    => 'nullable|uuid',
+            'brandId'       => 'nullable|uuid',
             'page'          => 'integer|min:1|max:1000',
             'size'          => 'integer|min:1|max:100',
         ]);

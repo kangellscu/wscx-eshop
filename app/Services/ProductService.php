@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use App\Models\Sku as SkuModel;
+use App\Models\Category as CategoryModel;
 
 class ProductService 
 {
@@ -37,8 +38,16 @@ class ProductService
         int $size
     ) {
         $query = SkuModel::query();
-        if ($categoryId) {
-            $query->where('category_id', $categoryId);
+        $category = CategoryModel::find($categoryId);
+        if ($category) {
+            $categoryIds = [$category->id];
+            if ($category->level == CategoryModel::TOP_CATEGORY_LEVEL) {
+                $categoryIds = CategoryModel::where('parent_id', $category->id)
+                    ->get()
+                    ->pluck('id')
+                    ->toArray();
+            }
+            $query->whereIn('category_id', $categoryIds);
         }
         if ($brandId) {
             $query->where('brand_id', $brandId);
