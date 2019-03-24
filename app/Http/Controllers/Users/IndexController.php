@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as BaseController;
 use App\Services\CategoryService;
 use App\Services\BannerService;
+use App\Services\ProductService;
 use App\Models\Category as CategoryModel;
 
 class IndexController extends BaseController
@@ -15,19 +16,15 @@ class IndexController extends BaseController
      */
     public function index(
         CategoryService $categoryService,
-        BannerService $bannerService
+        BannerService $bannerService,
+        ProductService $productService
     ) {
-        $maxDisplayNum = 12;
         $banners = $bannerService->getActivedBanners();
         $categories = $categoryService->getCategories();
-        $categoryProducts = $categoryService->getCategoryProducts(
-            CategoryModel::SUB_CATEGORY_LEVEL, $maxDisplayNum
-        );
         return view('web.index', [
             'banners'   => $banners,
             'categories'    => $categories,
-            'categoryProducts'  => $categoryProducts,
-            'maxDisplayNum' => $maxDisplayNum,
+            'products'  => $productService->getAllProducts(),
         ]);
     }
 }
