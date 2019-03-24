@@ -15,8 +15,8 @@
 			<div class="wrapper" id="wrapper1">
 				<div class="scroller">
 					<ul class="clearfix">
-@foreach ($brands as $brand)
-						<li @if ($brand->id == $brandId) class="cur brand-item" @else class="brand-item" @endif data-id="{{ $brand->id }}"><span><img src="{{ $brand->logoUrl }}"/></span></li>
+@foreach ($distinctBrandIds as $brand)
+						<li @if ($brand->id == $brandId) class="cur brand-item" @else class="brand-item" @endif data-id="{{ $brand->id }}"><a href="/mobile/products?from={{ $from }}&brandId={{ $brand->id }}&categoryId={{ $categoryId }}"><span><img src="{{ $brands->where('id', $brand->id)->first()->logoUrl }}"/></span></a></li>
 @endforeach
 					</ul>
 				</div>
@@ -25,8 +25,8 @@
 			<div class="wrapper" id="wrapper2">
 				<div class="scroller">
 					<ul class="clearfix">
-@foreach ($subCategories as $category)
-						<li @if ($category->id == $categoryId) class="cur category-item" @else class="category-item" @endif data-id="{{ $category->id }}"><span>{{ $category->name }}</span></li>
+@foreach ($distinctCategoryIds as $category)
+						<li @if ($category->id == $categoryId) class="cur category-item" @else class="category-item" @endif data-id="{{ $category->id }}"><a href="/mobile/products?from={{ $from }}&brandId={{ $brandId }}&categoryId={{ $category->id }}"><span>{{ $subCategories->where('id', $category->id)->first()->name }}</span></a></li>
 @endforeach
 					</ul>
 				</div>

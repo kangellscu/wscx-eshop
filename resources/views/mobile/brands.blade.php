@@ -23,7 +23,7 @@
 			<div class="product louceng" id="pro1">
 				<ul>
     @foreach($brands->where('nameCapital', $nameCapital) as $brand)
-					<li>@if ($loop->first) <span>{{ $nameCapital }}</span> @endif <a href=""><img src="{{ $brand->logoUrl }}"/>{{ $brand->name }}</a></li>
+					<li>@if ($loop->first) <span>{{ $nameCapital }}</span> @endif <a href="/mobile/products?brandId={{ $brand->id }}&from=brand"><img src="{{ $brand->logoUrl }}"/>{{ $brand->name }}</a></li>
     @endforeach
 				</ul>
 			</div>

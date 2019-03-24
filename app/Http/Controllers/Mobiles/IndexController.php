@@ -39,27 +39,55 @@ class IndexController extends BaseController
         ProductService $productService
     ) {
         $this->validate($request, [
-            'brandId'       => 'uuid',
-            'categoryId'    => 'uuid',
+            'from'          => 'required|string|in:category,brand',
+            'brandId'       => 'uuid|required_if:from,brand',
+            'categoryId'    => 'uuid|required_if:from,category',
         ]);
         $brands = $brandService->getBrands();
         $subCategories = $categoryService->getSubCategories();
-
         $brandId = $request->query->get('brandId');
-        if ( ! $brandId && $brands->first()) {
-            $brandId = $brands->first()->id;
-        }
         $categoryId = $request->query->get('categoryId');
-        if ( ! $categoryId && $subCategories->first()) {
-            $categoryId = $subCategories->first()->id;
+        $from = $request->query->get('from');
+        if ($from == 'category') {
+            if ($subCategories->where('id', $categoryId)->count()) {
+                // sub category
+                $topCategoryId = $subCategories->where('id', $categoryId)->first()->parentId;    
+
+            } else {
+                // top category
+                $topCategoryId = $categoryId;
+            }
+            $ids = $subCategories->where('parentId', $topCategoryId)->pluck('id')->toArray();
+            $distinctCategoryIds = $subCategories->where('parentId', $topCategoryId)
+                ->map(function ($category) {
+                    return (object) [
+                        'id'    => $category->id,
+                    ];
+                });
+            $distinctBrandIds = $productService->getProductsDistinctBrandIds($ids);
+            $brandId = $brandId ?: $distinctBrandIds->first()->id;
+            if ($topCategoryId == $categoryId) {
+                $categoryId = $distinctCategoryIds->first()->id;
+            }
+        } else {
+            $distinctCategoryIds = $productService->getProductsDistinctCategoryIds($brandId);
+            $distinctBrandIds = collect([
+                (object) [
+                    'id'    => $brandId,
+                ]]);
+            $categoryId = $categoryId ?: $distinctCategoryIds->first()->id;
         }
+
         $products = $productService->getAllProducts($brandId, $categoryId);
 
         return view('mobile.products', [
+            'from'          => $from,
             'brandId'       => $brandId,
             'categoryId'    => $categoryId,
             'brands'        => $brands,
             'subCategories' => $subCategories,
+            'distinctCategoryIds'   => $distinctCategoryIds,
+            'distinctBrandIds'  => $distinctBrandIds,
             'products'      => $products,
         ]);
     }

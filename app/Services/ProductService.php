@@ -329,4 +329,46 @@ class ProductService
             }
         }
     }
+
+    /**
+     * Get distinct category id
+     *
+     * @param string $brandId
+     *
+     * @return Collection       elements as below:
+     *                          - id string
+     */
+    public function getProductsDistinctCategoryIds(string $brandId) : Collection {
+        return SkuModel::where('brand_id', $brandId)
+            ->where('status', SkuModel::STATUS_SHELVE)
+            ->select('category_id')
+            ->distinct()
+            ->get()
+            ->map(function ($product) {
+                return (object) [
+                    'id'    => $product->category_id,
+                ];
+            });
+    }
+
+    /**
+     * Get distinct brand id
+     *
+     * @param array $ids
+     *
+     * @return Collection       elements as below:
+     *                          - id string     brqnd id
+     */
+    public function getProductsDistinctBrandIds(array $ids) : Collection {
+        return SkuModel::whereIn('category_id', $ids)
+            ->where('status', SkuModel::STATUS_SHELVE)
+            ->select('brand_id')
+            ->distinct()
+            ->get()
+            ->map(function ($product) {
+                return (object) [
+                    'id'    => $product->brand_id,
+                ];
+            });
+    }
 }
