@@ -19,13 +19,13 @@ class BannersTableSeeder extends Seeder
             [
                 'image_path'     => 'https://oimagec3.ydstatic.com/image?id=1298949196441763131&product=xue',
                 'begin_time'    => Carbon::createFromFormat(self::TIME_FORMAT, '1990-01-01 00:00:01'),
-                'end_time'      => Carbon::createFromFormat(self::TIME_FORMAT, '2999-01-01 00:00:01'),
+                'end_time'      => Carbon::createFromFormat(self::TIME_FORMAT, '2029-01-01 00:00:01'),
                 'status'        => Banner::STATUS_ACTIVE,
             ],
             [
                 'image_path'     => 'https://oimageb5.ydstatic.com/image?id=1344915245099618583&product=xue',
                 'begin_time'    => Carbon::createFromFormat(self::TIME_FORMAT, '1990-01-01 00:00:01'),
-                'end_time'      => Carbon::createFromFormat(self::TIME_FORMAT, '2999-01-01 00:00:01'),
+                'end_time'      => Carbon::createFromFormat(self::TIME_FORMAT, '2029-01-01 00:00:01'),
                 'status'        => Banner::STATUS_ACTIVE,
             ],
         ];
