@@ -97,6 +97,7 @@ class CategoryService
      */
     public function getCategories() : Collection {
         return CategoryModel::get()
+            ->orderBy('display_order')
             ->map(function ($category) {
                 return (object) [
                     'id'        => $category->id,
