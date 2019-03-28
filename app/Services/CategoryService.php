@@ -96,8 +96,8 @@ class CategoryService
      *                      - name string
      */
     public function getCategories() : Collection {
-        return CategoryModel::get()
-            ->orderBy('display_order')
+        return CategoryModel::orderBy('display_order')
+            ->get()
             ->map(function ($category) {
                 return (object) [
                     'id'        => $category->id,
