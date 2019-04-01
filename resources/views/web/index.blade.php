@@ -3,12 +3,12 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>为时创想</title>
-		<link rel="stylesheet" href="/web/css/reset.css" />
-		<link rel="stylesheet" href="/web/css/jquery.bxslider.css" />
-		<link rel="stylesheet" href="/web/css/index.css" />
+		<link rel="stylesheet" href="/web/css/reset.css?{{ config('assets.version') }}" />
+		<link rel="stylesheet" href="/web/css/jquery.bxslider.css?{{ config('assets.version') }}" />
+		<link rel="stylesheet" href="/web/css/index.css?{{ config('assets.version') }}" />
 		
-		<script src="/web/js/jquery-1.9.1.min.js"></script>
-		<script src="/web/js/jquery.bxslider.js"></script>
+		<script src="/web/js/jquery-1.9.1.min.js?{{ config('assets.version') }}"></script>
+		<script src="/web/js/jquery.bxslider.js?{{ config('assets.version') }}"></script>
 	</head>
 	<body>
 		
@@ -18,7 +18,7 @@
 				<p>你好，欢迎来到为时创想科技</p>
 				<div class="head_tel">
 					<p>联系我们</p>
-					<p><img src="/web/image/phone.png"/>300-400-4325</p>
+					<p><img src="/web/image/phone.png?{{ config('assets.version') }}"/>300-400-4325</p>
 				</div>
 			</div>
 		</div>
@@ -29,14 +29,14 @@
 			<div class="nav_main">
 				
 				<div class="logo">
-					<a href="javascript:void(0)" class="logoImg"><img src="/web/image/logo.png"/></a>
-					<a href="javascript:void(0)" class="logoText"><img src="/web/image/logo_text.png"/></a>
+					<a href="javascript:void(0)" class="logoImg"><img src="/web/image/logo.png?{{ config('assets.version') }}"/></a>
+					<a href="javascript:void(0)" class="logoText"><img src="/web/image/logo_text.png?{{ config('assets.version') }}"/></a>
 				</div>
 				
 				<ul class="nav_list">
 					<li><a href="javascript:void(0)" class="total">产品分类</a></li>
-					<li><a href="javascript:void(0)">首页</a></li>
-					<li><a href="javascript:void(0)" class="nav_hover">制造商品牌</a></li>
+					<li><a href="javascript:void(0)" class="nav_hover">首页</a></li>
+					<li><a href="/brands">制造商品牌</a></li>
 					<li><a href="javascript:void(0)">需求留言</a></li>
 					<li><a href="javascript:void(0)">联系我们</a></li>
 				</ul>
@@ -53,7 +53,7 @@
 				<ul class="class_list">
     @foreach($categories->where('level', 1) as $topCategory)
 					<li>
-						<p><img src="/web/image/icon1.png"/><a href="">{{ $topCategory->name }}</a></p>
+						<p><img src="/web/image/icon1.png?{{ config('assets.version') }}"/><a href="">{{ $topCategory->name }}</a></p>
 						<div class="hideItem">
 							<div class="item">
 								<h1>{{ $topCategory->name }}</h1>
@@ -75,7 +75,7 @@
                 @forelse ($banners as $banner)
 				      	<div class="slide"><img src="{{ $banner->imageUrl }}"></div>
                 @empty
-				      	<div class="slide"><img src="/web/image/banner1.png"></div> 
+				      	<div class="slide"><img src="/web/image/banner1.png?{{ config('assets.version') }}"></div> 
                 @endforelse
 				   	</div>
 				    <script type="text/javascript">
@@ -92,12 +92,12 @@
 				
 				<div class="contact">
 					<ul class="contact_list">
-						<li><img src="/web/image/tel1.png"/><p>品类齐全</p></li>
-						<li><img src="/web/image/tel2.png"/><p>多仓直发 </p></li>
-						<li><img src="/web/image/tel3.png"/><p>正品行货</p></li>
-						<li><img src="/web/image/tel4.png"/><p>天天低价</p></li>
-						<li><img src="/web/image/tel5.png"/><p>专业客服</p></li>
-						<li><img src="/web/image/tel6.png"/><p>售后保障</p></li>
+						<li><img src="/web/image/tel1.png?{{ config('assets.version') }}"/><p>品类齐全</p></li>
+						<li><img src="/web/image/tel2.png?{{ config('assets.version') }}"/><p>多仓直发 </p></li>
+						<li><img src="/web/image/tel3.png?{{ config('assets.version') }}"/><p>正品行货</p></li>
+						<li><img src="/web/image/tel4.png?{{ config('assets.version') }}"/><p>天天低价</p></li>
+						<li><img src="/web/image/tel5.png?{{ config('assets.version') }}"/><p>专业客服</p></li>
+						<li><img src="/web/image/tel6.png?{{ config('assets.version') }}"/><p>售后保障</p></li>
 					</ul>
 					<div class="contact_tel">
 						<h1>服务热线</h1>
@@ -146,19 +146,19 @@
 				
 				<ul class="foot_tab">
 					<li>
-						<img src="/web/image/foot4.png"/>
+						<img src="/web/image/foot4.png?{{ config('assets.version') }}"/>
 						<h1>品类齐全<strong>省心省力，一站购齐</strong></h1>
 					</li>
 					<li>
-						<img src="/web/image/foot2.png"/>
+						<img src="/web/image/foot2.png?{{ config('assets.version') }}"/>
 						<h1>一对一客服<strong>快速响应</strong></h1>
 					</li>
 					<li>
-						<img src="/web/image/foot1.png"/>
+						<img src="/web/image/foot1.png?{{ config('assets.version') }}"/>
 						<h1>闪电发货<strong>货期保障</strong></h1>
 					</li>
 					<li>
-						<img src="/web/image/foot3.png"/>
+						<img src="/web/image/foot3.png?{{ config('assets.version') }}"/>
 						<h1>7天无理由退换货<strong>企业定制类产品除外</strong></h1>
 					</li>
 				</ul>
@@ -197,9 +197,9 @@
 				
 				<div class="foot_logo">
 					<p class="footLogo">
-						<a href=""><img src="/web/image/foot_logo.png"/></a>
+						<a href=""><img src="/web/image/foot_logo.png?{{ config('assets.version') }}"/></a>
 					</p>
-					<p class="foot_code"><img src="/web/image/code.png"/><span>微信服务号</span></p>
+					<p class="foot_code"><img src="/web/image/code.png?{{ config('assets.version') }}"/><span>微信服务号</span></p>
 				</div>
 				
 				<p class="copyright">版权所有©2006-2019 固安捷（中国）工业品销售有限责任公司 沪ICP备06042629号-1</p>

@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>制造商品牌</title>
-		<link rel="stylesheet" href="css/reset.css" />
-		<link rel="stylesheet" href="css/brand.css">
+		<link rel="stylesheet" href="/web/css/reset.css?{{ config('assets.version') }}" />
+		<link rel="stylesheet" href="/web/css/brand.css?{{ config('assets.version') }}">
 	</head>
 	<body>
 		
@@ -14,7 +14,7 @@
 				<p>你好，欢迎来到为时创想科技</p>
 				<div class="head_tel">
 					<p>联系我们</p>
-					<p><img src="image/phone.png"/>300-400-4325</p>
+					<p><img src="/web/image/phone.png?{{ config('assets.version') }}"/>300-400-4325</p>
 				</div>
 			</div>
 		</div>
@@ -25,13 +25,13 @@
 			<div class="nav_main">
 				
 				<div class="logo">
-					<a href="javascript:void(0)" class="logoImg"><img src="image/logo.png"/></a>
-					<a href="javascript:void(0)" class="logoText"><img src="image/logo_text.png"/></a>
+					<a href="javascript:void(0)" class="logoImg"><img src="/web/image/logo.png?{{ config('assets.version') }}"/></a>
+					<a href="javascript:void(0)" class="logoText"><img src="/web/image/logo_text.png?{{ config('assets.version') }}"/></a>
 				</div>
 				
 				<ul class="nav_list">
 					<li><a href="javascript:void(0)" class="total">产品分类</a></li>
-					<li><a href="index.html">首页</a></li>
+					<li><a href="/">首页</a></li>
 					<li><a href="javascript:void(0)" class="nav_hover">制造商品牌</a></li>
 					<li><a href="leave.html">需求留言</a></li>
 					<li><a href="javascript:void(0)">联系我们</a></li>
@@ -48,78 +48,27 @@
 				<!-- 字母排序 start -->
 				<div class="brandNav">
 					<p>按字母搜索</p>
-					<ul>
-						<!-- activeLi 字母选中样式 -->
-						<li class="firstLi activeLi">全部</li><li>A</li><li>B</li><li>C</li><li>D</li><li>E</li><li>F</li><li>G</li><li>H</li><li>I</li><li>J</li>
-						<li>K</li><li>L</li><li>M</li><li>N</li><li>O</li><li>P</li><li>Q</li><li>R</li><li>S</li><li>T</li>
-						<li class="activeLi">U</li><li>V</li><li>W</li><li>X</li><li>Y</li><li>X</li>
+					<ul data-type="name-capital">
+						<li class="firstLi activeLi">全部</li>
+@foreach (range('A', 'Z') as $nameCapital)
+                        <li>{{ $nameCapital }}</li>
+@endforeach
 					</ul>
 				</div>
 				<!-- 字母排序 end-->
 				<div class="brand_module">
 					
 					<!-- 单个字母模块start -->
-					<div class="brand_alone">
-						<h1><i></i>A</h1>
-						<ul>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand1.png" alt=""><span>ABB</span></a>
-						</ul>
-					</div>
-					<!-- 单个字母模块end -->
-					<div class="brand_alone">
-						<h1><i></i>B</h1>
-						<ul>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand2.png" alt=""><span>ABB</span></a>
-						</ul>
-					</div>
-					<div class="brand_alone">
-						<h1><i></i>C</h1>
-						<ul>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-							<li><a href=""><img src="image/brand3.png" alt=""><span>ABB</span></a>
-						</ul>
-					</div>
+@foreach(range('A', 'Z') as $nameCapital)
+					<div class="brand_alone" data-name-capital="{{ $nameCapital }}">
+                        <h1><i></i>{{ $nameCapital }}</h1>
+                        <ul>
+    @foreach($brands->where('nameCapital', $nameCapital) as $brand)
+                            <li><a href=""><img src="{{ $brand->logoUrl }}" alt=""><span>{{ $brand->name }}</span></a>
+    @endforeach
+                        </ul>
+                    </div>
+@endforeach
 				</div>
 			</div>
 		</div>
@@ -132,19 +81,19 @@
 				
 				<ul class="foot_tab">
 					<li>
-						<img src="image/foot4.png"/>
+						<img src="/web/image/foot4.png?{{ config('assets.version') }}"/>
 						<h1>品类齐全<strong>省心省力，一站购齐</strong></h1>
 					</li>
 					<li>
-						<img src="image/foot2.png"/>
+						<img src="/web/image/foot2.png?{{ config('assets.version') }}"/>
 						<h1>一对一客服<strong>快速响应</strong></h1>
 					</li>
 					<li>
-						<img src="image/foot1.png"/>
+						<img src="/web/image/foot1.png?{{ config('assets.version') }}"/>
 						<h1>闪电发货<strong>货期保障</strong></h1>
 					</li>
 					<li>
-						<img src="image/foot3.png"/>
+						<img src="/web/image/foot3.png?{{ config('assets.version') }}"/>
 						<h1>7天无理由退换货<strong>企业定制类产品除外</strong></h1>
 					</li>
 				</ul>
@@ -183,9 +132,9 @@
 				
 				<div class="foot_logo">
 					<p class="footLogo">
-						<a href=""><img src="image/foot_logo.png"/></a>
+						<a href=""><img src="/web/image/foot_logo.png?{{ config('assets.version') }}"/></a>
 					</p>
-					<p class="foot_code"><img src="image/code.png"/><span>微信服务号</span></p>
+					<p class="foot_code"><img src="/web/image/code.png?{{ config('assets.version') }}"/><span>微信服务号</span></p>
 				</div>
 				
 				<p class="copyright">版权所有©2006-2019 固安捷（中国）工业品销售有限责任公司 沪ICP备06042629号-1</p>
@@ -196,7 +145,7 @@
 		<!--footer end-->
 		
 	</body>
-	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="/web/js/jquery-1.9.1.min.js?{{ config('assets.version') }}"></script>
 	<script type="text/javascript">
 		$(function(){
 			// 获取导航栏到屏幕顶部的距离
@@ -221,6 +170,18 @@
 					$(".brand_module").css({ "margin-top": "0" });
 				}
 			})
+
+            $('ul[data-type="name-capital"] > li').on('click', function() {
+                $('ul[data-type="name-capital"] > li.activeLi').removeClass('activeLi');
+                $(this).addClass('activeLi');
+                var selected = $(this).text();
+                if (selected == '全部') {
+                    $('div.brand_module > div.brand_alone').show();
+                } else {
+                    $('div.brand_module > div.brand_alone').hide();
+                    $('div.brand_module > div.brand_alone[data-name-capital="' + selected + '"]').show();
+                }
+            });
 		})
 	</script>
 </html>
