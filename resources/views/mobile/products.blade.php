@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="/h5/css/product.css?{{ config('assets.version') }}" />
 	</head>
 	<body>
-		
+        <div class="return"><span></span><p>为时创想</p></div>
 		<div class="proNav">
 			<h1>推荐品牌</h1>
 			<div class="wrapper" id="wrapper1">
@@ -70,7 +70,7 @@
 		
 		<div class="footer">
 	  		<a href="/mobile"><span><img src="/h5/image/tab1-1.png?{{ config('assets.version') }}"/>首页</span></a>
-	  		<a href="javascript:void(0)" class="tabActive"><span><img src="/h5/image/tab2.png?{{ config('assets.version') }}"/>产品</span></a>
+	  		{{-- <a href="javascript:void(0)" class="tabActive"><span><img src="/h5/image/tab2.png?{{ config('assets.version') }}"/>产品</span></a> --}}
 	  		<a href="/mobile/brands"><span><img src="/h5/image/tab3-1.png?{{ config('assets.version') }}"/>品牌</span></a>
 	  		<a href="/mobile/comment"><span><img src="/h5/image/tab4-1.png?{{ config('assets.version') }}"/>留言</span></a>
 	  	</div>
@@ -108,6 +108,9 @@
             $('.category-item').on('click', function () {
                 $('form input[name="categoryId"]').val($(this).data('id'));
                 $('form').submit();
+            });
+            $('.return').on('click', function () {
+                window.location.href="/mobile";
             });
 		});
 	</script>

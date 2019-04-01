@@ -45,7 +45,7 @@
 	  	
 	  	<div class="footer">
 	  		<a href="javascript:void(0)" class="tabActive"><span><img src="/h5/image/tab1.png?{{ config('assets.version') }}"/>首页</span></a>
-	  		<a href="/mobile/products"><span><img src="/h5/image/tab2-1.png?{{ config('assets.version') }}"/>产品</span></a>
+	  		{{-- <a href="/mobile/products"><span><img src="/h5/image/tab2-1.png?{{ config('assets.version') }}"/>产品</span></a> --}}
 	  		<a href="/mobile/brands"><span><img src="/h5/image/tab3-1.png?{{ config('assets.version') }}"/>品牌</span></a>
 	  		<a href="/mobile/comment"><span><img src="/h5/image/tab4-1.png?{{ config('assets.version') }}"/>留言</span></a>
 	  	</div>

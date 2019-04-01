@@ -11,6 +11,7 @@
 	</head>
 	<body>
 		
+        <div class="return"><span></span><p>为时创想</p></div>
 		<div class="leave">
 			<p>这是一段信息这是一段信息这是一段信息这是一段信息这是一段信息这是一段信息这是一段信息这是一段信息</p>
 			<h1>我们的服务热线：300-400-5124</h1>
@@ -35,7 +36,7 @@
 		
 		<div class="footer">
 	  		<a href="/mobile"><span><img src="/h5/image/tab1-1.png?{{ config('assets.version') }}"/>首页</span></a>
-	  		<a href="/mobile/products"><span><img src="/h5/image/tab2-1.png?{{ config('assets.version') }}"/>产品</span></a>
+	  		{{-- <a href="/mobile/products"><span><img src="/h5/image/tab2-1.png?{{ config('assets.version') }}"/>产品</span></a> --}}
 	  		<a href="/mobile/brands"><span><img src="/h5/image/tab3-1.png?{{ config('assets.version') }}"/>品牌</span></a>
 	  		<a href="javascript:vido(0)" class="tabActive"><span><img src="/h5/image/tab4.png?{{ config('assets.version') }}"/>留言</span></a>
 	  	</div>
@@ -97,6 +98,10 @@
                     }
 
                     $('form').submit();
+                });
+
+                $('.return').on('click', function () {
+                    window.location.href="/mobile";
                 });
             });
         </script>

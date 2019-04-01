@@ -1,0 +1,258 @@
+.product{
+	width:1190px;
+	margin: 0 auto;
+	padding-bottom: 30px;
+}
+.select{
+	width: 100%;
+}
+.crumbs_nav{
+	width: 100%;
+}
+.crumbs_nav:after{
+	content: " ";
+	display: block;
+	clear: both;
+}
+.crumbs_nav li{
+	float: left;
+	padding: 20px 0 12px;
+	
+}
+.crumbs_nav li a{
+	display: block;
+	font-size:14px ;
+	color: #736E6E;
+	float: left;
+}
+.crumbs_nav li a:hover{
+	color: #E83935;
+}
+.crumbs_nav li:first-child::before{
+	display: none;
+}
+.crumbs_nav li:before{
+	content: ">";
+	display: block;
+	float: left;
+	line-height: 18px;
+	color: #736E6E;
+	font-size: 14px;
+
+}
+.classify{
+	width: 100%;
+	border: 1px solid #EFEFEF;
+	padding:0 0 35px;
+	overflow: hidden;
+}
+.classify_two{
+	border-top: none;
+}
+
+.classify h1{
+	color: #090909;
+	font-size: 14px;
+	width: 90px;
+	float: left;
+	padding-left: 20px;
+	margin-top: 35px;
+	box-sizing: border-box;
+}
+.class_overflow{
+	width: 940px;
+	float: left;
+	margin-top: 22px;
+}
+.class_overflow ul:after{
+	content: " ";
+	display: block;
+	clear: both;
+}
+.class_overflow ul{
+	overflow: hidden;
+	height: 80px;
+}
+.class_overflow ul li{
+	width:134px ;
+	float: left;
+	padding-left: 30px;
+	box-sizing: border-box;
+	height: 40px;
+	line-height: 40px;
+}
+.class_overflow ul li a{
+	color: #878787;
+	font-size: 14px;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.class_overflow ul li a:hover{
+	color: #E83935;
+}
+.more{
+	display: block;
+	float: right;
+	border: 1px solid #F3F3F3;
+	background: #F8F8F8;
+	font-size: 14px;
+	color: #9A9A9A;
+	height: 28px;
+	padding: 0 10px;
+	line-height: 28px;
+	margin-top: 35px;
+	margin-right: 20px;
+}
+.more img{
+	margin-left: 8px;
+	position: relative;
+	top: -1px;
+}
+
+.product_table{
+	width: 100%;
+	margin-top: 28px;
+}
+.product_table table{
+	width: 100%;
+}
+.tab_head{
+	width: 100%;
+	background: #F8F8F8;
+	overflow: hidden;
+	height: 48px;
+	border-top: 1px solid #EFEFEF;
+	border-left: 1px solid #efefef;
+}
+.tab_head li{
+	font-size: 20px;
+	color: #090909;
+	text-align: center;
+	float: left;
+	border-right: 1px solid #efefef;
+	height: 48px;
+	line-height: 48px;
+	width: 128px;
+}
+.tab_head .li1{
+	width: 673px;
+	text-align: left;
+	padding-left: 32px;
+	box-sizing: border-box;
+}
+.product_for{
+	width: 100%;
+	border-bottom: 1px solid #efefef;
+}
+.tab_main{
+	width: 100%;
+	background: #none;
+	overflow: hidden;
+	border-top: 1px solid #EFEFEF;
+	border-left: 1px solid #efefef;
+}
+
+.tab_main li{
+	border-right: 1px solid #efefef;
+	width: 128px;
+	float: left;
+	height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.tab_main .li1{
+	width: 673px;
+	/*padding:0 32px;*/
+	box-sizing: border-box;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	margin: 0 auto;
+	
+}
+.tab_main .li1 img{
+	display: block;
+	float: left;
+	width: 130px;
+	padding-left: 32px;
+}
+.product_text{
+	float: left;
+	width: 508px;
+	margin-left: 20px;
+	padding-right: 32px;
+}
+.product_text h1{
+	color: #242424;
+	font-size: 24px;
+	margin-bottom: 30px;
+	overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap
+}
+.product_text p{
+	font-size: 16px;
+	color: #C2C2C2;
+	margin-top: 15px;
+}
+.tab_main li button{
+	display: block;
+	outline: none;
+	border: none;
+	width:68px ;
+	color: #fff;
+	font-size: 12px;
+	height: 28px;
+	border: 1px solid #EFEFEF;
+	background: #E83935;
+}
+.tab_main li button:hover{
+	background: #bb3734;
+	cursor: pointer;
+}
+.page{
+	overflow: hidden;
+}
+.prevPage,.page ul,.nextPage{
+	float: left;
+}
+.page ul{
+	overflow: hidden;
+}
+.page ul li{
+	float: left;
+}
+.page ul li a{
+	display: block;
+	width: 50px;
+}
+#page{
+	width: 406px;
+	margin:100px auto 0;
+}
+.moreImg{
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+}
+
+/*.hideNav{
+	width: 1190px;
+	margin: 0 auto;
+	height: 1px;
+	position: relative;
+}
+.class_list{
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-left: 1px solid #E6E6E6;
+	border-bottom: 1px solid #E6E6E6;
+    box-shadow: 0 0 5px #E6E6E6;
+}
+.hideItem{
+	min-height: 361px;
+}*/

@@ -4,6 +4,7 @@
 	top:2rem;
 	right: 0;
 	z-index: 30000;
+	margin-top: 4.1rem;
 }
 #LoutiNav li{
 	display: block;
@@ -52,6 +53,7 @@
 	font-size: 1.4rem;
 	padding: 1rem 1.5rem 0;
 	box-sizing: border-box;
+	margin-top: 4.1rem;
 }
 .product ul li span{
 	display: block;
@@ -82,3 +84,5 @@
 .product ul li:last-child a{
 	border: none;
 }
+
+
