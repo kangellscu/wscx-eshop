@@ -13,3 +13,5 @@
 
 Route::get('/', 'IndexController@index');
 Route::get('brands', 'IndexController@listBrands');
+Route::get('comment', 'IndexController@showCommentForm');
+Route::put('comment', 'IndexController@addComment');

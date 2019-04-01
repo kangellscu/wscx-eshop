@@ -33,7 +33,7 @@
 					<li><a href="javascript:void(0)" class="total">产品分类</a></li>
 					<li><a href="/">首页</a></li>
 					<li><a href="javascript:void(0)" class="nav_hover">制造商品牌</a></li>
-					<li><a href="leave.html">需求留言</a></li>
+					<li><a href="/comment">需求留言</a></li>
 					<li><a href="javascript:void(0)">联系我们</a></li>
 				</ul>
 				
