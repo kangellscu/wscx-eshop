@@ -126,7 +126,7 @@
 						</div>
 						<ul>
             @foreach($products->where('categoryId', $subCategory->id)->take(12) as $product)
-							<li><a href=""><span><img src="{{ $product->thumbnailUrl }}"/></span><p>{{ $product->name }}</p></a></li>
+							<li><a href="/products?from=category&categoryId={{ $subCategory->id }}"><span><img src="{{ $product->thumbnailUrl }}"/></span><p>{{ $product->name }}</p></a></li>
 							
             @endforeach
 						</ul>

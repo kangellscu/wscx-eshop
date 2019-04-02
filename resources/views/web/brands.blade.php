@@ -64,7 +64,7 @@
                         <h1><i></i>{{ $nameCapital }}</h1>
                         <ul>
     @foreach($brands->where('nameCapital', $nameCapital) as $brand)
-                            <li><a href=""><img src="{{ $brand->logoUrl }}" alt=""><span>{{ $brand->name }}</span></a>
+                            <li><a href="/products?from=brand&brandId={{ $brand->id }}"><img src="{{ $brand->logoUrl }}" alt=""><span>{{ $brand->name }}</span></a>
     @endforeach
                         </ul>
                     </div>

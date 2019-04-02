@@ -91,6 +91,10 @@ class ProductService
      *                      - briefDesc string
      *                      - thumbnailUrl string
      *                      - url string
+     *                      - docSpecificationUrl string
+     *                      - docUrl string
+     *                      - docInstructionUrl string
+     *                      - docOtherUrl string
      */
     public function getAllProducts(
         ?string $brandId = null,
@@ -115,6 +119,14 @@ class ProductService
                     'briefDesc'     => $product->brief_description,
                     'url'           => $product->url,
                     'thumbnailUrl'  => Storage::url($product->thumbnail_path),
+                    'docSpecificationUrl'   => $product->doc_specification_path ?
+                        Storage::url($product->doc_specification_path) : null,
+                    'docUrl'        => $product->doc_path ?
+                        Storage::url($product->doc_path) : null,
+                    'docInstructionUrl' => $product->doc_instruction_path ?
+                        Storage::url($product->doc_instruction_path) : null,
+                    'docOtherUrl'   => $product->doc_other_path ?
+                        Storage::url($product->doc_other_path) : null,
                 ];
             });
     }

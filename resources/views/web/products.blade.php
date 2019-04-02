@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title>产品列表</title>
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/layui.css" />
-		<link rel="stylesheet" href="css/product.css">
+		<link rel="stylesheet" href="/web/css/reset.css?{{ config('assets.version') }}">
+		<link rel="stylesheet" href="/web/css/layui.css?{{ config('assets.version') }}" />
+		<link rel="stylesheet" href="/web/css/product.css?{{ config('assets.version') }}">
 	</head>
 	<body>
 		
@@ -15,7 +15,7 @@
 				<p>你好，欢迎来到为时创想科技</p>
 				<div class="head_tel">
 					<p>联系我们</p>
-					<p><img src="image/phone.png"/>300-400-4325</p>
+					<p><img src="/web/image/phone.png?{{ config('assets.version') }}"/>300-400-4325</p>
 				</div>
 			</div>
 		</div>
@@ -26,15 +26,15 @@
 			<div class="nav_main">
 				
 				<div class="logo">
-					<a href="javascript:void(0)" class="logoImg"><img src="image/logo.png"/></a>
-					<a href="javascript:void(0)" class="logoText"><img src="image/logo_text.png"/></a>
+					<a href="javascript:void(0)" class="logoImg"><img src="/web/image/logo.png?{{ config('assets.version') }}"/></a>
+					<a href="javascript:void(0)" class="logoText"><img src="/web/image/logo_text.png?{{ config('assets.version') }}"/></a>
 				</div>
 				
 				<ul class="nav_list">
 					<li><a href="javascript:void(0)" class="total">产品分类</a></li>
-					<li><a href="index.html">首页</a></li>
-					<li><a href="brand.html">制造商品牌</a></li>
-					<li><a href="leave.html">需求留言</a></li>
+					<li><a href="/">首页</a></li>
+					<li><a href="/brands">制造商品牌</a></li>
+					<li><a href="/comment">需求留言</a></li>
 					<li><a href="javascript:void(0)">联系我们</a></li>
 				</ul>
 				
@@ -49,79 +49,36 @@
 			<!--select start-->
 			<div class="select">
 				
+                {{--
 				<ul class="crumbs_nav">
 					<li><a href="javascript:void(0)">全部</a></li>
 					<li><a href="javascript:void(0)">手工具</a></li>
 					<li><a href="javascript:void(0)">扳手</a></li>
 				</ul>
+                --}}
 				
 				<div class="classify">
 					<h1>分类：</h1>
 					<div class="class_overflow">
 						<ul>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">手工具<span>（20）</span></a></li>
+@foreach ($distinctCategoryIds as $category)
+							<li><a href="/products?from={{ $from }}&brandId={{ $brandId }}&&categoryId={{ $category->id }}">{{ $subCategories->where('id', $category->id)->first()->name }}<span></span></a></li>
+@endforeach
 						</ul>
 					</div>
-					<a href="javascript:void(0)" class="more" name="false">更多<img src="image/xiangxia.png" alt=""></a>
+					<a href="javascript:void(0)" class="more" name="false">更多<img src="/web/image/xiangxia.png?{{ config('assets.version') }}" alt=""></a>
 				</div>
 				
 				<div class="classify classify_two">
 					<h1>品牌：</h1>
 					<div class="class_overflow">
 						<ul>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特2<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
-							<li><a href="javascript:void(0)">艾美特<span>（20）</span></a></li>
+@foreach ($distinctBrandIds as $brand)
+							<li><a href="/products?from={{ $from }}&brandId={{ $brand->id }}&categoryId={{ $categoryId }}">{{ $brands->where('id', $brand->id)->first()->name }}<span></span></a></li>
+@endforeach
 						</ul>
 					</div>
-					<a href="javascript:void(0)" class="more" name="false">更多<img src="image/xiangxia.png" alt=""></a>
+					<a href="javascript:void(0)" class="more" name="false">更多<img src="/web/image/xiangxia.png?{{ config('assets.version') }}" alt=""></a>
 				</div>
 				
 			</div>
@@ -134,82 +91,28 @@
 					<li class="li1">产品说明</li>
 					<li>产品手册</li>
 					<li>使用说明</li>
-					<li>产品应用</li>
-					<li>其他</li>
+					<li>品牌介绍</li>
+					<li>其他文档</li>
 				</ul>
 				
 				<div class="product_for">
 					
+@foreach ($products as $product)
 					<ul class="tab_main">
 						<li class="li1">
-							<img src="image/product2.png" alt="">
+							<img src="{{ $product->thumbnailUrl }}" alt="{{ $product->name }}">
 							<div class="product_text">
-								<h1 title="ABB S200系列微型断路器系列系列微型断路器系列系列微型断路器系列微型">ABB S200系列微型断路器系列系列微型断路器系列系列微型断路器系列微型</h1>
-								<p>型号：928343</p>
-								<p>品牌：艾美特</p>
+								<h1 title="{{ $product->name }}">{{ $product->name }}</h1>
+								<p>型号：{{ $product->briefDesc }}</p>
+								<p>品牌：{{ $brands->where('id', $product->brandId)->first()->name }}</p>
 							</div>
 						</li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
+						<li>@if ($product->docSpecificationUrl) <button class="product-doc" data-url="{{ $product->docSpecificationUrl }}">下载文档</button> @else - @endif</li>
+						<li>@if ($product->docUrl) <button class="product-doc" data-url="{{ $product->docUrl }}">文档</button> @else - @endif</li>
+						<li>@if ($product->docInstructionUrl) <button class="product-doc" data-url="{{ $product->docInstructionUrl }}">品牌介绍</button> @else - @endif</li>
+						<li>@if ($product->docOtherUrl) <button class="product-doc" data-url="{{ $product->docOtherUrl }}">其他文档</button> @else - @endif</li>
 					</ul>
-					<ul class="tab_main">
-						<li class="li1">
-							<img src="image/product2.png" alt="">
-							<div class="product_text">
-								<h1 title="ABB S200系列微型断路器系列系列微型断路器系列系列微型断路器系列微型">ABB S200系列微型断路器系列系列微型断路器系列系列微型断路器系列微型</h1>
-								<p>型号：928343</p>
-								<p>品牌：艾美特</p>
-							</div>
-						</li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-					</ul>
-					<ul class="tab_main">
-						<li class="li1">
-							<img src="image/product2.png" alt="">
-							<div class="product_text">
-								<h1 title="ABB S200系列微型断路器系列系列微型断路器系列系列微型断路器系列微型">ABB S200系列微型断路器系列系列微型断路器系列系列微型断路器系列微型</h1>
-								<p>型号：928343</p>
-								<p>品牌：艾美特</p>
-							</div>
-						</li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-					</ul>
-					<ul class="tab_main">
-						<li class="li1">
-							<img src="image/product2.png" alt="">
-							<div class="product_text">
-								<h1 title="ABB S200系列微型断路器系列系列微型断路器系列系列微型断路器系列微型">ABB S200系列微型断路器系列系列微型断路器系列系列微型断路器系列微型</h1>
-								<p>型号：928343</p>
-								<p>品牌：艾美特</p>
-							</div>
-						</li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-					</ul>
-					<ul class="tab_main">
-						<li class="li1">
-							<img src="image/product2.png" alt="">
-							<div class="product_text">
-								<h1 title="ABB S200系列微型断路器系列系列微型断路器系列系列微型断路器系列微型">ABB S200系列微型断路器系列系列微型断路器系列系列微型断路器系列微型</h1>
-								<p>型号：928343</p>
-								<p>品牌：艾美特</p>
-							</div>
-						</li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-						<li><button>下载文档</button></li>
-					</ul>
+@endforeach
 					
 				</div>
 				
@@ -217,7 +120,9 @@
 			<!--product_table end-->
 			
 			<!--分页-->
+            {{--
 			<div id="page"></div>
+            --}}
 			
 		</div>
 		<!--product end-->
@@ -229,19 +134,19 @@
 				
 				<ul class="foot_tab">
 					<li>
-						<img src="image/foot4.png"/>
+						<img src="/web/image/foot4.png?{{ config('assets.version') }}"/>
 						<h1>品类齐全<strong>省心省力，一站购齐</strong></h1>
 					</li>
 					<li>
-						<img src="image/foot2.png"/>
+						<img src="/web/image/foot2.png?{{ config('assets.version') }}"/>
 						<h1>一对一客服<strong>快速响应</strong></h1>
 					</li>
 					<li>
-						<img src="image/foot1.png"/>
+						<img src="/web/image/foot1.png?{{ config('assets.version') }}"/>
 						<h1>闪电发货<strong>货期保障</strong></h1>
 					</li>
 					<li>
-						<img src="image/foot3.png"/>
+						<img src="/web/image/foot3.png?{{ config('assets.version') }}"/>
 						<h1>7天无理由退换货<strong>企业定制类产品除外</strong></h1>
 					</li>
 				</ul>
@@ -280,9 +185,9 @@
 				
 				<div class="foot_logo">
 					<p class="footLogo">
-						<a href=""><img src="image/foot_logo.png"/></a>
+						<a href=""><img src="/web/image/foot_logo.png?{{ config('assets.version') }}"/></a>
 					</p>
-					<p class="foot_code"><img src="image/code.png"/><span>微信服务号</span></p>
+					<p class="foot_code"><img src="/web/image/code.png?{{ config('assets.version') }}"/><span>微信服务号</span></p>
 				</div>
 				
 				<p class="copyright">版权所有©2006-2019 固安捷（中国）工业品销售有限责任公司 沪ICP备06042629号-1</p>
@@ -295,8 +200,8 @@
 		
 		
 	</body>
-	<script src="js/jquery-1.9.1.min.js"></script>
-	<script src="js/layui.all.js"></script>
+	<script src="/web/js/jquery-1.9.1.min.js?{{ config('assets.version') }}"></script>
+	<script src="/web/js/layui.all.js?{{ config('assets.version') }}"></script>
 	<script>
 		layui.use('laypage', function(){
 	  		var laypage = layui.laypage
@@ -319,15 +224,22 @@
 				console.log(flag)
 				if(flag=="false"){
 					$this.prev().children("ul").css({"overflow-y":"auto","height":"auto","max-height":"160px"})
-					$this.attr("name","ture").html("收起<img src='image/xiangxia.png' class='moreImg'>");
+					$this.attr("name","ture").html("收起<img src='/web/image/xiangxia.png?{{ config('assets.version') }}' class='moreImg'>");
 					
 				}else{
 					
 					$this.prev().children("ul").css({"overflow-y":"hidden","height":"80px","max-height":"160px"})
-					$this.attr("name","false").html("更多<img src='image/xiangxia.png'>");
+					$this.attr("name","false").html("更多<img src='/web/image/xiangxia.png?{{ config('assets.version') }}'>");
 				}
 				
 			});
+
+            $('.product-doc').on('click', function () {
+                var url = $(this).data('url');
+                if (url) {
+                    window.open(url); 
+                }
+            });
 		});
 	</script>
 </html>
