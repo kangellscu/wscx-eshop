@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<title>制造商品牌</title>
+		<meta charset="utf-8" />
+		<title>为时创想</title>
 		<link rel="stylesheet" href="/web/css/reset.css?{{ config('assets.version') }}" />
-		<link rel="stylesheet" href="/web/css/brand.css?{{ config('assets.version') }}">
+		<link rel="stylesheet" href="/web/css/jquery.bxslider.css?{{ config('assets.version') }}" />
+		<link rel="stylesheet" href="/web/css/index.css?{{ config('assets.version') }}" />
+		
+		<script src="/web/js/jquery-1.9.1.min.js?{{ config('assets.version') }}"></script>
+		<script src="/web/js/jquery.bxslider.js?{{ config('assets.version') }}"></script>
 	</head>
 	<body>
 		
@@ -31,48 +35,21 @@
 				
 				<ul class="nav_list">
 					<li><a href="javascript:void(0)" class="total">产品分类</a></li>
-					<li><a href="/">首页</a></li>
-					<li><a href="javascript:void(0)" class="nav_hover">制造商品牌</a></li>
+					<li><a href="/" class="nav_hover">首页</a></li>
+					<li><a href="/brands">制造商品牌</a></li>
 					<li><a href="/comment">需求留言</a></li>
-					<li><a href="/aboutme">联系我们</a></li>
+					<li><a href="javascript:void(0)">联系我们</a></li>
 				</ul>
 				
 			</div>
 		</div>
 		<!--nav end-->
 		
-		<!-- brand start -->
-		<div class="brand">
-			<div class="brand_main">
-				
-				<!-- 字母排序 start -->
-				<div class="brandNav">
-					<p>按字母搜索</p>
-					<ul data-type="name-capital">
-						<li class="firstLi activeLi">全部</li>
-@foreach (range('A', 'Z') as $nameCapital)
-                        <li>{{ $nameCapital }}</li>
-@endforeach
-					</ul>
-				</div>
-				<!-- 字母排序 end-->
-				<div class="brand_module">
-					
-					<!-- 单个字母模块start -->
-@foreach(range('A', 'Z') as $nameCapital)
-					<div class="brand_alone" data-name-capital="{{ $nameCapital }}">
-                        <h1><i></i>{{ $nameCapital }}</h1>
-                        <ul>
-    @foreach($brands->where('nameCapital', $nameCapital) as $brand)
-                            <li><a href="/products?from=brand&brandId={{ $brand->id }}"><img src="{{ $brand->logoUrl }}" alt=""><span>{{ $brand->name }}</span></a>
-    @endforeach
-                        </ul>
-                    </div>
-@endforeach
-				</div>
+		<div class="main">
+			<div class="main_width">
 			</div>
 		</div>
-		<!-- brand end -->
+		<!--main end-->
 		
 		<!--footer start-->
 		<div class="footer">
@@ -145,43 +122,4 @@
 		<!--footer end-->
 		
 	</body>
-	<script src="/web/js/jquery-1.9.1.min.js?{{ config('assets.version') }}"></script>
-	<script type="text/javascript">
-		$(function(){
-			// 获取导航栏到屏幕顶部的距离
-			var oTop = $(".brandNav").offset().top;
-			//获取导航栏的高度，此高度用于保证内容的平滑过渡
-			var martop = $('.brandNav').outerHeight();
-		 
-			var sTop = 0;
-			// 监听页面的滚动
-			$(window).scroll(function () {
-				// 获取页面向上滚动的距离
-				sTop = $(this).scrollTop();
-				// 当导航栏到达屏幕顶端
-				if (sTop+32 >= oTop) {
-					// 修改导航栏position属性，使之固定在屏幕顶端
-					$(".brandNav").css({ "position": "fixed", "top": "0" });
-					// 修改内容的margin-top值，保证平滑过渡
-					$(".brand_module").css({ "margin-top": martop });
-				} else {
-					// 当导航栏脱离屏幕顶端时，回复原来的属性
-					$(".brandNav").css({ "position": "static" });
-					$(".brand_module").css({ "margin-top": "0" });
-				}
-			})
-
-            $('ul[data-type="name-capital"] > li').on('click', function() {
-                $('ul[data-type="name-capital"] > li.activeLi').removeClass('activeLi');
-                $(this).addClass('activeLi');
-                var selected = $(this).text();
-                if (selected == '全部') {
-                    $('div.brand_module > div.brand_alone').show();
-                } else {
-                    $('div.brand_module > div.brand_alone').hide();
-                    $('div.brand_module > div.brand_alone[data-name-capital="' + selected + '"]').show();
-                }
-            });
-		})
-	</script>
 </html>

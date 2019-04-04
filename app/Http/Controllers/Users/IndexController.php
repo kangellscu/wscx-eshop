@@ -9,6 +9,7 @@ use App\Services\BannerService;
 use App\Services\ProductService;
 use App\Services\BrandService;
 use App\Services\UserCommentService;
+use App\Services\AboutmeService;
 use App\Models\Category as CategoryModel;
 
 class IndexController extends BaseController
@@ -137,5 +138,17 @@ class IndexController extends BaseController
         );
 
         return back()->with('submitStatus', 'success');
+    }
+
+    /**
+     * Show contact us page
+     */
+    public function aboutme(AboutmeService $aboutmeService)
+    {
+        $aboutme = $aboutmeService->getAboutme();
+
+        return view('web.aboutme', [
+            'aboutme'   => $aboutme,
+        ]);
     }
 }
