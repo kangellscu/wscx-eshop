@@ -45,8 +45,11 @@
 		</div>
 		<!--nav end-->
 		
-		<div class="main">
-			<div class="main_width">
+		<div class="contact_main">
+			<div class="contact_width">
+@if ($aboutme)
+                <img src="{{ $aboutme->imageUrl }}" alt="联系我们" />
+@endif
 			</div>
 		</div>
 		<!--main end-->

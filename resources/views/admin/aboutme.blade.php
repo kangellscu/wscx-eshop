@@ -32,6 +32,11 @@
           </div>
         </div>
         @endif
+        <div>
+            <div class="alert alert-info col-sm-4">
+                <p>Tips: 上传图片宽度为 1190 时效果最好</p>
+            </div>
+        </div>
 
           <form id="handleBannerForm" method="post">
             <input id="handleBannerMethod" type="hidden" name="_method" value="post" />
