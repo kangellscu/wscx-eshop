@@ -30,7 +30,6 @@
 				</div>
 				
 				<ul class="nav_list">
-					<li><a href="javascript:void(0)" class="total">产品分类</a></li>
 					<li><a href="/">首页</a></li>
 					<li><a href="javascript:void(0)" class="nav_hover">制造商品牌</a></li>
 					<li><a href="/comment">需求留言</a></li>
