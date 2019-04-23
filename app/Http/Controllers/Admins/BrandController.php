@@ -107,7 +107,7 @@ class BrandController extends BaseController
             $request->file('logo')
         );
 
-        return back();
+        return redirect('/admin/products/brands');
     }
 
     /**
