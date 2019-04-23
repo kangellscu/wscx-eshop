@@ -163,7 +163,7 @@ class ProductController extends BaseController
             $request->file('docOther')
         );
 
-        return back();
+        return redirect()->route('admin.products');
     }
 
     /**
