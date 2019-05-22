@@ -72,6 +72,7 @@
 					<h1>品牌：</h1>
 					<div class="class_overflow">
 						<ul>
+                            <li><a href="/products?from={{ $from }}&categoryId={{ $categoryId }}">全部<span></span></a></li>
 @foreach ($distinctBrandIds as $brand)
 							<li><a href="/products?from={{ $from }}&brandId={{ $brand->id }}&categoryId={{ $categoryId }}">{{ $brands->where('id', $brand->id)->first()->name }}<span></span></a></li>
 @endforeach

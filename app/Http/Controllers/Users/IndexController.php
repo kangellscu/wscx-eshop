@@ -66,8 +66,10 @@ class IndexController extends BaseController
                     ];
                 });
             $distinctBrandIds = $productService->getProductsDistinctBrandIds($ids);
+            /*
             $brandId = $brandId ?: ($distinctBrandIds->count() ?
                 $distinctBrandIds->first()->id : null);
+                */
             if ($topCategoryId == $categoryId) {
                 $categoryId = $distinctCategoryIds->first()->id;
             }
