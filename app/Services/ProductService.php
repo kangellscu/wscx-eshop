@@ -226,7 +226,6 @@ class ProductService
                 $docInstruction->store('docs/skus') : null,
             'doc_other_path'        => $docOther ?
                 $docOther->store('docs/skus') : null,
-            'status'            => SkuModel::STATUS_UNSHELVE,
         ]);
 
         return $sku->id;
