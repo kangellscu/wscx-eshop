@@ -26,6 +26,7 @@ class ProductService
      *                      - brandId string
      *                      - categoryId string
      *                      - briefDesc string
+     *                      - url string
      *                      - thumbnailUrl string
      *                      - status int
      *                      - statusDesc string
@@ -65,6 +66,7 @@ class ProductService
                     'brandId'       => $product->brand_id,
                     'categoryId'    => $product->category_id,
                     'briefDesc'     => $product->brief_description,
+                    'url'           => $product->url,
                     'thumbnailUrl'  => Storage::url($product->thumbnail_path),
                     'status'        => $product->status,
                     'statusDesc'    => $product->statusDesc(),

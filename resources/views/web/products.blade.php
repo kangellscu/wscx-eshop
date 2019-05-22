@@ -102,8 +102,9 @@
 							<img src="{{ $product->thumbnailUrl }}" alt="{{ $product->name }}">
 							<div class="product_text">
 								<h1 title="{{ $product->name }}">{{ $product->name }}</h1>
-								<p>型号：{{ $product->briefDesc }}</p>
+								<p>产品说明：{{ $product->briefDesc }}</p>
 								<p>品牌：{{ $brands->where('id', $product->brandId)->first()->name }}</p>
+                                <p>网址：{{ $product->url }}</p>
 							</div>
 						</li>
 						<li>@if ($product->docSpecificationUrl) <button class="product-doc" data-url="{{ $product->docSpecificationUrl }}">下载文档</button> @else - @endif</li>
