@@ -79,8 +79,10 @@ class IndexController extends BaseController
                 (object) [
                     'id'    => $brandId,
                 ]]);
+            /*
             $categoryId = $categoryId ?: ($distinctCategoryIds->count() ?
                 $distinctCategoryIds->first()->id : null);
+            */
         }
 
         $products = $productService->getAllProducts($brandId, $categoryId);

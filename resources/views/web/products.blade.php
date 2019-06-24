@@ -60,6 +60,7 @@
 					<h1>分类：</h1>
 					<div class="class_overflow">
 						<ul>
+                            <li><a href="/products?from={{ $from }}&brandId={{ $brandId }}">全部<span></span></a></li>
 @foreach ($distinctCategoryIds as $category)
 							<li><a href="/products?from={{ $from }}&brandId={{ $brandId }}&&categoryId={{ $category->id }}">{{ $subCategories->where('id', $category->id)->first()->name }}<span></span></a></li>
 @endforeach
