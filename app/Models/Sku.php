@@ -31,6 +31,8 @@ class Sku extends Model
         'doc_other_path',
         'status',
         'url',
+        'contact_name',
+        'contact_phone',
     ];
 
     static public function isStatusValid(int $status) : bool {

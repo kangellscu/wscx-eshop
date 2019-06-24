@@ -76,6 +76,18 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="product-contact-name" class="col-sm-2 control-label">厂家联系人</label>
+        <div class="col-sm-4 input-group">
+            <input type="text" class="form-control" id="product-contact-name" name="contactName" value="@if ($product) {{ $product->contactName }} @endif" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="product-contact-phone" class="col-sm-2 control-label">厂家联系人电话</label>
+        <div class="col-sm-4 input-group">
+            <input type="text" class="form-control" id="product-contact-phone" name="contactPhone" value="@if ($product) {{ $product->contactPhone }} @endif" />
+        </div>
+    </div>
+    <div class="form-group">
         <label for="product-status" class="col-sm-2 control-label">状态</label>
         <div class="btn-group">
           <button id="product-status" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

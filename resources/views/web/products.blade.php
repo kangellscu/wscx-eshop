@@ -107,6 +107,7 @@
 								<p>产品说明：{{ $product->briefDesc }}</p>
 								<p>品牌：{{ $brands->where('id', $product->brandId)->first()->name }}</p>
                                 <p>网址：{{ $product->url }}</p>
+                                <p>厂家联系人：{{ $product->contactName }} {{ $product->contactPhone }}</p>
 							</div>
 						</li>
 						<li>@if ($product->docSpecificationUrl) <button class="product-doc" data-url="{{ $product->docSpecificationUrl }}">下载文档</button> @else - @endif</li>

@@ -120,6 +120,8 @@ class ProductService
                     'parentId'      => $product->category->parent_id,
                     'briefDesc'     => $product->brief_description,
                     'url'           => $product->url,
+                    'contactName'   => $product->contact_name,
+                    'contactPhone'  => $product->contact_phone,
                     'thumbnailUrl'  => Storage::url($product->thumbnail_path),
                     'docSpecificationUrl'   => $product->doc_specification_path ?
                         Storage::url($product->doc_specification_path) : null,
@@ -167,6 +169,8 @@ class ProductService
             'name'          => $sku->name,
             'briefDesc'     => $sku->brief_description,
             'url'           => $sku->url,
+            'contactName'   => $sku->contact_name,
+            'contactPhone'  => $sku->contact_phone,
             'thumbnailUrl'  => Storage::url($sku->thumbnail_path),
             'docSpecificationUrl'   => $sku->doc_specification_path ?
                 Storage::url($sku->doc_specification_path) : null,
@@ -203,6 +207,8 @@ class ProductService
         string $categoryId,
         string $briefDesc,
         int $status,
+	?string $contactName,
+	?string $contactPhone,
         ?string $url,
         UploadedFile $thumbnail,
         ?UploadedFile $docSpecification,
@@ -216,6 +222,8 @@ class ProductService
             'category_id'       => $categoryId,
             'brief_description' => $briefDesc,
             'status'            => $status,
+	    'contact_name'	=> $contactName,
+	    'contact_phone'	=> $contactPhone,
             'url'               => $url,
             'thumbnail_path'    => $thumbnail->store('images/skus'),
             'doc_specification_path'    => $docSpecification ?
@@ -256,6 +264,8 @@ class ProductService
         string $categoryId,
         string $briefDesc,
         int $status,
+	?string $contactName,
+	?string $contactPhone,
         ?string $url,
         ?UploadedFile $thumbnail,
         ?UploadedFile $docSpecification,
@@ -273,6 +283,8 @@ class ProductService
         $sku->category_id = $categoryId;
         $sku->brief_description = $briefDesc;
         $sku->status = $status;
+	$sku->contact_name = $contactName;
+	$sku->contact_phone = $contactPhone;
         $sku->url = $url;
         if ($thumbnail) {
             $oldThumbnailPath = $sku->thumbnail_path;
