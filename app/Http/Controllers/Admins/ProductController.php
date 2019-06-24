@@ -90,10 +90,10 @@ class ProductController extends BaseController
             'status'        => 'required|integer|in:1,-1',
             'thumbnail'     => 'required|image|max:2000|mimes:jpeg,png,jpg,svg|dimensions:width=102,height=93',
             'url'           => 'string|nullable|max:256',
-            'docSpecification'  => 'file|max:2000|mimes:pdf',
-            'doc'               => 'file|max:2000|mimes:pdf',
-            'docInstruction'    => 'file|max:2000|mimes:pdf',
-            'docOther'          => 'file|max:2000|mimes:pdf',
+            'docSpecification'  => 'file|max:10000|mimes:pdf',
+            'doc'               => 'file|max:10000|mimes:pdf',
+            'docInstruction'    => 'file|max:10000|mimes:pdf',
+            'docOther'          => 'file|max:10000|mimes:pdf',
         ], [
             'thumbnail.dimensions'  => '图片规格为: 102 * 93',
         ]);
@@ -137,10 +137,10 @@ class ProductController extends BaseController
             'status'        => 'required|integer|in:1,-1',
             'url'           => 'string|nullable|max:256',
             'thumbnail'     => 'image|max:2000|mimes:jpeg,png,jpg,svg|dimensions:width=102,height=93',
-            'docSpecification'  => 'file|max:2000|mimes:pdf',
-            'doc'           => 'file|max:2000|mimes:pdf',
-            'docInstruction'    => 'file|max:2000|mimes:pdf',
-            'docOther'      => 'file|max:2000|mimes:pdf',
+            'docSpecification'  => 'file|max:10000|mimes:pdf',
+            'doc'           => 'file|max:10000|mimes:pdf',
+            'docInstruction'    => 'file|max:10000|mimes:pdf',
+            'docOther'      => 'file|max:10000|mimes:pdf',
         ], [
             'thumbnail.dimensions'  => '图片规格为: 102 * 93',
         ]);

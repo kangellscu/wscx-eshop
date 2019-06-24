@@ -56,10 +56,10 @@
 						<p><img src="/web/image/icon1.png?{{ config('assets.version') }}"/><a href="">{{ $topCategory->name }}</a></p>
 						<div class="hideItem">
 							<div class="item">
-								<h1>{{ $topCategory->name }}</h1>
+								<h1><a href="#{{ $topCategory->id }}">{{ $topCategory->name }}</a></h1>
 								<ul>
         @foreach($categories->where('parentId', $topCategory->id) as $subCategory)
-									<li><a href="">{{ $subCategory->name }}</a></li>
+									<li><a href="#{{ $subCategory->id }}">{{ $subCategory->name }}</a></li>
         @endforeach
 								</ul>
 							</div>
@@ -116,10 +116,13 @@
 			<div class="main_width">
 				
     @foreach($categories->where('level', 1) as $topCategory)
+                <a name="{{ $topCategory->id }}"></a>
+
 				<div class="product">
 					
 					<h1 class="class_title">{{ $topCategory->name }}</h1>
         @foreach($categories->where('parentId', $topCategory->id) as $subCategory)
+                    <a name="{{ $subCategory->id }}"></a>
 					<div class="prduct_lsit">
 						<div class="left_title">
 							<p>{{ $subCategory->name }}</p>

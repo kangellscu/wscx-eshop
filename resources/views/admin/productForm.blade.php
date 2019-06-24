@@ -111,7 +111,7 @@
             <input type="file" name="docSpecification" class="form-content-file" />
             <p />
             <div class="alert alert-info col-sm-4">
-                <p>Tips: 上传文档为pdf, 大小限制为2M</p>
+                <p>Tips: 上传文档为pdf, 大小限制为10M</p>
             </div>
         </div>
     </div>
@@ -124,7 +124,7 @@
             <input type="file" name="doc" class="form-content-file" />
             <p />
             <div class="alert alert-info col-sm-4">
-                <p>Tips: 上传文档为pdf, 大小限制为2M</p>
+                <p>Tips: 上传文档为pdf, 大小限制为10M</p>
             </div>
         </div>
     </div>
@@ -137,7 +137,7 @@
             <input type="file" name="docInstruction" class="form-content-file" />
             <p />
             <div class="alert alert-info col-sm-4">
-                <p>Tips: 上传文档为pdf, 大小限制为2M</p>
+                <p>Tips: 上传文档为pdf, 大小限制为10M</p>
             </div>
         </div>
     </div>
@@ -150,7 +150,7 @@
             <input type="file" name="docOther" class="form-content-file" />
             <p />
             <div class="alert alert-info col-sm-4">
-                <p>Tips: 上传文档为pdf, 大小限制为2M</p>
+                <p>Tips: 上传文档为pdf, 大小限制为10M</p>
             </div>
         </div>
     </div>
