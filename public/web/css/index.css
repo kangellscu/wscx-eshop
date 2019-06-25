@@ -1,19 +1,4 @@
-/*===========================================================
- * =================================banner===================
- * ==========================================================*/
-.contact_main{
-    width: 1190px;
-    margin: 0 auto;
-    padding: 50px 0;
-}
-.contact_width{
-    width: 100%;
-}
-.contact_width img{
-    display: block;
-    width: 100%;
-}
-
+.left_title p
 
 /*===========================================================
  * =================================banner===================
@@ -155,6 +140,9 @@
 	position: absolute;
 	left: 0;
 	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .left_title:before{
 	content: " ";
@@ -180,8 +168,10 @@
 }
 .left_title p{
 	width: 20px;
-	margin: 40px auto;
-	font-size: 20px;
+	margin: 0 auto;
+	font-size: 16px;
+	box-sizing: border-box;
+	overflow: hidden;
 	/*transform: rotate(90deg);*/
 }
 .prduct_lsit ul{
