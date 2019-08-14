@@ -154,10 +154,10 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label">其它文档</label>
+        <label class="col-sm-2 control-label">应用案例</label>
         <div class="col-sm-10 input-group">
             @if ($product && $product->docOtherUrl)
-            <a href="{{ $product->docOtherUrl }}" target="_blank">其它文档</a>
+            <a href="{{ $product->docOtherUrl }}" target="_blank">应用案例</a>
             @endif
             <input type="file" name="docOther" class="form-content-file" />
             <p />

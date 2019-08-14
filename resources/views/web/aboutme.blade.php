@@ -15,10 +15,10 @@
 		<!--header start-->
 		<div class="header">
 			<div class="head_main">
-				<p>你好，欢迎来到为时创想科技</p>
+				<p>工业智能制造服务平台、定制化技术解决方案专家</p>
 				<div class="head_tel">
 					<p>联系我们</p>
-					<p><img src="/web/image/phone.png?{{ config('assets.version') }}"/>300-400-4325</p>
+					<p><img src="/web/image/phone.png?{{ config('assets.version') }}"/>028-64023118</p>
 				</div>
 			</div>
 		</div>
@@ -29,7 +29,7 @@
 			<div class="nav_main">
 				
 				<div class="logo">
-					<a href="javascript:void(0)" class="logoImg"><img src="/web/image/logo.png?{{ config('assets.version') }}"/></a>
+					<a href="javascript:void(0)" class="logoImg"><img src="/web/image/foot_logo.png?{{ config('assets.version') }}"/></a>
 					<a href="javascript:void(0)" class="logoText"><img src="/web/image/logo_text.png?{{ config('assets.version') }}"/></a>
 				</div>
 				
@@ -71,12 +71,15 @@
 						<img src="/web/image/foot1.png?{{ config('assets.version') }}"/>
 						<h1>闪电发货<strong>货期保障</strong></h1>
 					</li>
+                    <!--
 					<li>
 						<img src="/web/image/foot3.png?{{ config('assets.version') }}"/>
 						<h1>7天无理由退换货<strong>企业定制类产品除外</strong></h1>
 					</li>
+                    -->
 				</ul>
 				
+                <!--
 				<ul class="ship">
 					<li>
 						<p>如何注册</p>
@@ -108,6 +111,7 @@
 						<a href="">全部品牌</a>
 					</li>
 				</ul>
+                -->
 				
 				<div class="foot_logo">
 					<p class="footLogo">
@@ -116,7 +120,7 @@
 					<p class="foot_code"><img src="/web/image/code.png?{{ config('assets.version') }}"/><span>微信服务号</span></p>
 				</div>
 				
-				<p class="copyright">版权所有©2006-2019 固安捷（中国）工业品销售有限责任公司 沪ICP备06042629号-1</p>
+				<p class="copyright"></p>
 				
 			</div>
 			

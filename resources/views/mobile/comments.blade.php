@@ -14,7 +14,7 @@
         <div class="return"><span></span><p>为时创想</p></div>
 		<div class="leave">
 			<p>这是一段信息这是一段信息这是一段信息这是一段信息这是一段信息这是一段信息这是一段信息这是一段信息</p>
-			<h1>我们的服务热线：300-400-5124</h1>
+			<h1>我们的服务热线：028-64023118</h1>
 		</div>
 		
         <form method="post" action="/mobile/comment">
