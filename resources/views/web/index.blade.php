@@ -29,7 +29,7 @@
 			<div class="nav_main">
 				
 				<div class="logo">
-					<a href="javascript:void(0)" class="logoImg"><img src="/web/image/logo.png?{{ config('assets.version') }}"/></a>
+					<a href="javascript:void(0)" class="logoImg"><img src="/web/image/foot_logo.png?{{ config('assets.version') }}"/></a>
 					<a href="javascript:void(0)" class="logoText"><img src="/web/image/logo_text.png?{{ config('assets.version') }}"/></a>
 				</div>
 				
