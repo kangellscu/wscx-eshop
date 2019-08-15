@@ -240,6 +240,12 @@ table {
 	width: 33%;
 	float: left;
 	overflow: hidden;
+    display: flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
 }
 .foot_tab li img{
 	display: block;
@@ -469,5 +475,12 @@ table {
 	color: #E83935;
 }
 
+.contact_width {
+    width: 1190px;
+    margin: 0 auto;
+}
 
-
+.contact_width img {
+    display: block;
+    width: 100%;
+}
