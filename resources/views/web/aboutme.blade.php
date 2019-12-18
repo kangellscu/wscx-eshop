@@ -120,7 +120,7 @@
 					<p class="foot_code"><img src="/web/image/code.png?{{ config('assets.version') }}"/><span>微信服务号</span></p>
 				</div>
 				
-				<p class="copyright"></p>
+				<p class="copyright"><a href="http://beian.miit.gov.cn" target="blank">蜀ICP备19009690</a></p>
 				
 			</div>
 			

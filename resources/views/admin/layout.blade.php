@@ -28,6 +28,14 @@
       <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 70px;
+            border-top: 1px solid #e5e5e5;
+        }
+    </style>
   </head>
 
   <body>
@@ -79,6 +87,12 @@
         </div>
       </div>
     </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p><a href="http://beian.miit.gov.cn" target="blank">蜀ICP备19009690</a></p>
+      </div>
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

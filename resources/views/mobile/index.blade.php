@@ -8,6 +8,14 @@
 		<link rel="stylesheet" type="text/css" href="/h5/css/reset.css?{{ config('assets.version') }}"/>
 		<link rel="stylesheet" type="text/css" href="/h5/css/swiper-3.2.7.min.css?{{ config('assets.version') }}" />
 		<link rel="stylesheet" href="/h5/css/index.css?{{ config('assets.version') }}" />
+		<style type="text/css">
+				.icp {
+						text-align: center;
+						padding: 30px 0;
+						margin-top: 70px;
+						border-top: 1px solid #e5e5e5;
+				}
+		</style>
 		
 	</head>
 	<body>
@@ -41,6 +49,11 @@
 
 	  		</div>
         @endforeach
+
+        <div class="icp">
+          <p><a href="http://beian.miit.gov.cn" target="blank">蜀ICP备19009690</a></p>
+        </div>
+		</div>
 	  	</div>
 	  	
 	  	<div class="footer">

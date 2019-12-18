@@ -7,7 +7,14 @@
 		<title>留言</title>
 		<link rel="stylesheet" type="text/css" href="/h5/css/reset.css?{{ config('assets.version') }}"/>
 		<link rel="stylesheet" href="/h5/css/leave.css?{{ config('assets.version') }}" />
-        <link rel="stylesheet" href="/h5/css/alert.css?{{ config('assets.version') }}" />
+    <link rel="stylesheet" href="/h5/css/alert.css?{{ config('assets.version') }}" />
+		<style type="text/css">
+				.icp {
+						text-align: center;
+						padding: 30px 0;
+						border-top: 1px solid #e5e5e5;
+				}
+		</style>
 	</head>
 	<body>
 		
@@ -32,6 +39,9 @@
 
 		<div class="btn">
 			<button id="submitButton" class="btnActive">我要留言</button>
+      <div class="icp">
+        <p><a href="http://beian.miit.gov.cn" target="blank">蜀ICP备19009690</a></p>
+      </div>
 		</div>
 		
 		<div class="footer">

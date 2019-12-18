@@ -7,6 +7,14 @@
 		<title>产品</title>
 		<link rel="stylesheet" href="/h5/css/reset.css?{{ config('assets.version') }}" />
 		<link rel="stylesheet" href="/h5/css/product.css?{{ config('assets.version') }}" />
+		<style type="text/css">
+				.icp {
+						text-align: center;
+						padding: 30px 0;
+						margin-top: 70px;
+						border-top: 1px solid #e5e5e5;
+				}
+		</style>
 	</head>
 	<body>
         <div class="return"><span></span><p>为时创想</p></div>
@@ -62,6 +70,10 @@
 				</li>
 @endforeach
 			</ul>
+      <div class="icp">
+        <p><a href="http://beian.miit.gov.cn" target="blank">蜀ICP备19009690</a></p>
+      </div>
+		</div>
 		</div>
         <form method="get" action="/mobile/products">
             <input type="hidden" name="brandId" value="{{ $brandId ? $brandId : '' }}" />
